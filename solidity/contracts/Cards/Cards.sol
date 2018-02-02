@@ -110,6 +110,10 @@ contract Cards is Ownable, ERC721 {
         return tokensOwned[_owner][_index];
     }
 
+    function getUserCards(address _owner) public view returns (uint[]) {
+        return tokensOwned[_owner];
+    }
+
     /// @notice add card with cardId to Owner
     /// @param _owner address of new owner
     /// @param _cardId of card for new owner
