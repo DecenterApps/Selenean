@@ -9,6 +9,7 @@ module.exports = function(deployer) {
   deployer.deploy(CardMetadata);
   deployer.deploy(DecenterCards);
 
-  deployer.deploy(Battle);
-  deployer.deploy(PlayerStats);
+  deployer.deploy(Battle).then(() => {
+    return deployer.deploy(PlayerStats, Battle.address);
+  });
 };
