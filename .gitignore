@@ -1,3 +1,5 @@
 .env
 npm_modules
 solidity/build
+solidity/scripts
+.DS_STORE
