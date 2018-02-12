@@ -98,11 +98,13 @@ contract Battle is Ownable {
     /// @dev You can only join only 1 match at a time
     /// @dev You can only join if there isn't a second player in the match
     /// @dev You can only join if the match is active
+    /// @dev You must put the same or bigger value in the match
     /// @param _matchId The id of the match you want to join
     function joinMatch(uint _matchId) external payable matchExists(_matchId) {
         require(inMatch[msg.sender] == false);
         require(matches[_matchId].player2.exists == false);
         require(matches[_matchId].ended == false);
+        require(matches[_matchId].player1.value >= msg.value);
         
         matches[_matchId].player2.playerAddress = msg.sender;
         matches[_matchId].player2.exists = true;
