@@ -174,6 +174,7 @@ contract Battle is Ownable {
     /// @param _matchId The id of the match to judge
     /// @param _whoWon true if the first has won, false if the second player has won
     function judge(uint _matchId, bool _whoWon) external onlyServer matchExists(_matchId) {
+        require(matches[_matchId].ended == false);
         require(matches[_matchId].disagree == true || (matches[_matchId].startTime + 1 hours) > now);
         
         Player memory p1 = matches[_matchId].player1;
