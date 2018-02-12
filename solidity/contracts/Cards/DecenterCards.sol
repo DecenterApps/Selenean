@@ -6,11 +6,11 @@ import "./Booster.sol";
 
 /// @title Contract derived from Cards contract with custom implementation on Booster and Metadata
 contract DecenterCards is Cards {
-	
-	CardMetadata metadataContract;
+    
+    CardMetadata metadataContract;
     Booster boosterContract;
 
-	mapping(uint => CardMetadata.CardProperties) public metadata;
+    mapping(uint => CardMetadata.CardProperties) public metadata;
 
     modifier onlyBoosterContract() {
         require(msg.sender == address(boosterContract));
@@ -20,16 +20,26 @@ contract DecenterCards is Cards {
     /// @notice create card with specific type and index 
     /// @dev should be onlyBooster after we finish boosterContract
     /// @param _owner address of new owner
-    /// @param _metadataType type(rarity) of metadata 
-    /// @param _index index of metadata in that specific type
-    function createCard(address _owner, uint _metadataType, uint _index) public returns(uint) {
-        require(_index < metadataContract.getNumberOfCards(_metadataType));
+    /// @param _metadataId id of metadata we are using
+    function createCard(address _owner, uint _metadataId) public returns(uint) {
+        require(_metadataId < metadataContract.getNumberOfCards());
 
         uint cardId = createCard(_owner);
         
-        uint power = metadataContract.properties(_metadataType, _index);
+        uint id;
+        uint rarity;
+        bytes32 ipfsHash;
+        uint8 ipfsHashFunction;
+        uint8 ipfsSize;
+
+        (id, rarity, ipfsHash, ipfsHashFunction, ipfsSize) = metadataContract.properties(_metadataId);
+        
         metadata[cardId] = CardMetadata.CardProperties({
-                power: power
+                id: id,
+                rarity: rarity,
+                ipfsHash: ipfsHash,
+                ipfsHashFunction: ipfsHashFunction,
+                ipfsSize: ipfsSize
             });
 
         return cardId;

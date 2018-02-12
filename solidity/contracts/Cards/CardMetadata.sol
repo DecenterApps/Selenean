@@ -3,29 +3,36 @@ pragma solidity ^0.4.18;
 /// @title Contract holding all metadata about token(card)
 contract CardMetadata {
 
-    uint numberOfRarityTypes = 4;
-
     struct CardProperties {
-        uint power;
+        uint id;
+        uint rarity;
+        bytes32 ipfsHash;
+        uint8 ipfsHashFunction;
+        uint8 ipfsSize;
     }
 
-    /// @notice this number must be same as numberOfRarityTypes
-    CardProperties[][4] public properties;  
+    CardProperties[] public properties;  
      
     /// @notice method to add metadata types
-    /// @param _power strength of card
-    /// @param _type type(rarity) of card
-    function addCardMetadata(uint _power, uint _type) public {
-        require(_type < numberOfRarityTypes);
+    /// @dev needs to use three params for ipfs hash due to Solidity limitations for sending string from contract to contract
+    /// @param _rarity of card
+    /// @param _ipfsHash ipfs hash to card attributes
+    /// @param _ipfsHashFunction hash function that is used
+    /// @param _ipfsSize length of hash
+    function addCardMetadata(uint _rarity, bytes32 _ipfsHash, uint8 _ipfsHashFunction, uint8 _ipfsSize) public {
+        uint metadataId = properties.length;
 
-        properties[_type].push(CardProperties({
-                    power: _power
+        properties.push(CardProperties({
+                    ipfsHash: _ipfsHash,
+                    ipfsHashFunction: _ipfsHashFunction,
+                    ipfsSize: _ipfsSize,
+                    rarity: _rarity,
+                    id: metadataId
                 }));
     }
 
-    /// @notice returns how many cards there are in specific type
-    /// @param _type type of cards we are looking for
-    function getNumberOfCards(uint _type) view public returns (uint) {
-        return properties[_type].length;
+    /// @notice returns how many cards there are 
+    function getNumberOfCards() view public returns (uint) {
+        return properties.length;
     }
 }
