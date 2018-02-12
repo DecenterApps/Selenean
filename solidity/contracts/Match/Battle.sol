@@ -126,6 +126,7 @@ contract Battle is Ownable {
         Player memory p2 = matches[_matchId].player2;
         
         require(p2.exists == true);
+        require(_winner != 0x0);
         require(msg.sender == p2.playerAddress || msg.sender == p1.playerAddress);
         require(matches[_matchId].votes[msg.sender] == 0x0);
         
