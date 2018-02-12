@@ -10,10 +10,13 @@ contract Booster is Ownable {
     CardMetadata metadataContract;
 
     uint public BOOSTER_PRICE = 10 ** 15; // 0.001 ether
+    uint public OWNER_PERCENTAGE = 15;
+    uint public USER_INCENTIVE_PERCENTAGE = 15;
 
     uint public numberOfCardsInBooster = 5;
     uint public maxNum = 120;
     uint[120] public numbers;
+    uint public ownerBalance;
 
     mapping(uint => address) public boosterOwners;
     mapping(uint => uint) public blockNumbers;
@@ -47,6 +50,8 @@ contract Booster is Ownable {
         
         numOfBoosters++;
 
+        ownerBalance += msg.value * OWNER_PERCENTAGE / 100;
+
         BoosterBought(msg.sender, boosterId);
     }
 
@@ -74,6 +79,8 @@ contract Booster is Ownable {
         }
         
         boosters[_boosterId] = cardIds;
+
+        msg.sender.transfer(BOOSTER_PRICE * USER_INCENTIVE_PERCENTAGE / 100);
         
         BoosterRevealed(_boosterId);
     }
@@ -99,7 +106,12 @@ contract Booster is Ownable {
 
         metadataContract = CardMetadata(_metadataContract);
     }
-    
+
+    /// @notice withdraw method for owner to pull ether
+    /// @param _amount amount to be withdrawn
+    function withdraw(uint _amount) public onlyOwner {
+        owner.transfer(_amount);   
+    }
 
     function _removeBooster(address _user, uint _boosterId) private {
         uint boostersLength = unrevealedBoosters[_user].length; 
