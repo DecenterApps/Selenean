@@ -19,11 +19,12 @@ contract Battle is Ownable {
         _;
     }
     
-    event MatchCreated();
-    event MatchStarted();
-    event MatchCanceled();
-    event MatchFinished();
-    event MatchDisagreement();
+    event MatchCreated(uint indexed matchId, address player1, uint value, uint time);
+    event MatchStarted(uint indexed matchId, address player2, uint value, uint time);
+    event MatchVoted(uint indexed matchId, address player);
+    event MatchCanceled(uint indexed matchId, address player, bool payment);
+    event MatchFinished(uint indexed matchId, bool winner);
+    event MatchDisagreement(uint indexed matchId);
     
     struct Player {
         address playerAddress;
@@ -42,7 +43,8 @@ contract Battle is Ownable {
     }
     
     mapping (address => bool) public inMatch;
-    
+
+    /// @dev Must be internal, public gives error in current version of solidity
     Match[] internal matches;
     
     uint public numMatches;
@@ -58,7 +60,13 @@ contract Battle is Ownable {
         numMatches = 0;
     }
     
-    // A player can only start a match if he 
+    /// @notice A user should not send ether to the contract address, just in the methods
+    function() external payable {
+        revert();
+    }
+
+    /// @notice Starts a match for 1 player, the second can join this match
+    /// @dev A user can only start a match if no active mathces are currentl active
     function startMatch() external payable {
         require(inMatch[msg.sender] == false);
         
@@ -81,11 +89,16 @@ contract Battle is Ownable {
         
         inMatch[msg.sender] = true;
         
-        MatchStarted();
+        MatchCreated(numMatches, msg.sender, msg.value, now);
         
         numMatches++;
     }
     
+    /// @notice A user can join a created match
+    /// @dev You can only join only 1 match at a time
+    /// @dev You can only join if there isn't a second player in the match
+    /// @dev You can only join if the match is active
+    /// @param _matchId The id of the match you want to join
     function joinMatch(uint _matchId) external payable matchExists(_matchId) {
         require(inMatch[msg.sender] == false);
         require(matches[_matchId].player2.exists == false);
@@ -96,13 +109,15 @@ contract Battle is Ownable {
         matches[_matchId].player2.value = msg.value;
         matches[_matchId].startTime = now;
         
-        MatchStarted();
+        MatchStarted(_matchId, msg.sender, msg.value, now);
     }
     
-    // If the second player is set the game has started 
-    // Only the players in the match can vote
-    // And they can vote only once
-    // TODO: startTime???
+    /// @notice Both players call this function with the result of the game in order to finish it
+    /// @dev Only a match with both players joined, can be finalized
+    /// @dev Only the players in the match can vote
+    /// @dev Players can vote only once
+    /// @param _matchId The id of the match being finalized
+    /// @param _winner The address of the winner in the current match
     function finishMatch(uint _matchId, address _winner) external matchExists(_matchId) {
         
         Player memory p1 = matches[_matchId].player1;
@@ -125,29 +140,38 @@ contract Battle is Ownable {
         } else {
             if (matches[_matchId].votes[otherPlayersAddr] != 0x0 && 
                 matches[_matchId].votes[msg.sender] != 0x0) {
-                    MatchDisagreement();
+                    MatchDisagreement(_matchId);
                     matches[_matchId].disagree = true;
-                }
+            } else {
+                MatchVoted(_matchId, msg.sender);
+            }
             
         }
     }
     
-    // Only if the second player hasn't joined can a user cancel the match
+    /// @notice Cancel a match you made
+    /// @dev You can only cancel your own matches
+    /// @dev Only if the second player hasn't joined can a user cancel the match
+    /// @param _matchId The Id of the match being canceled
     function cancelMatch(uint _matchId) external matchExists(_matchId) {
         require(msg.sender == matches[_matchId].player1.playerAddress);
         require(matches[_matchId].player2.exists == false);
         
         matches[_matchId].ended = true;
         
-        msg.sender.send(matches[_matchId].player1.value);
+        bool res = msg.sender.send(matches[_matchId].player1.value);
         
-        MatchCanceled();
+        MatchCanceled(_matchId, msg.sender, res);
         
     }
     
-    // Server calls if the 2 parties disagree
+    /// @notice Server calls this method to resolve the game
+    /// @dev It can only call if the 2 parties disagree or a timeout happens
+    /// @dev A timeout of 1 hours is set, this may be changed in the future
+    /// @param _matchId The id of the match to judge
+    /// @param _whoWon true if the first has won, false if the second player has won
     function judge(uint _matchId, bool _whoWon) external onlyServer matchExists(_matchId) {
-        require(matches[_matchId].disagree == true);
+        require(matches[_matchId].disagree == true || (matches[_matchId].startTime + 1 hours) > now);
         
         Player memory p1 = matches[_matchId].player1;
         Player memory p2 = matches[_matchId].player2;
@@ -155,16 +179,16 @@ contract Battle is Ownable {
         _matchEnded(_matchId, p1, p2, _whoWon);
     }
     
-    function() external payable {
-        revert();
-    }
-    
+    /// @notice Sets the stats contract only once
+    /// @param _statsAddress The address of the stats contract
     function addStatsContract(address _statsAddress) public onlyOwner {
-        require(_statsAddress == 0x0);
+        require(address(statsContract) == 0x0);
         
         statsContract = PlayerStats(_statsAddress);
     }
     
+    /// @notice Returns the match data for a given matchId
+    /// @param _matchId The id of the match
     function getMatch(uint _matchId) public view 
             returns(address, uint, address, uint, uint, bool) {
         require(matches[_matchId].exists == true);
@@ -183,6 +207,11 @@ contract Battle is Ownable {
     
     // Internal methods
     
+    /// @notice Internal function implements the logic for ending a match
+    /// @param _matchId The Id of the match to end
+    /// @param _p1 The first player in the match
+    /// @param _p2 The second player in the match
+    /// @param _winner true if the first has won, false if the second player has won
     function _matchEnded(uint _matchId, Player _p1, Player _p2, bool _winner) internal {
         matches[_matchId].ended = true;
             
@@ -190,22 +219,30 @@ contract Battle is Ownable {
         inMatch[_p1.playerAddress] = false;
         inMatch[_p2.playerAddress] = false;
         
-        // TODO: who won?
         statsContract.setStats(_p1.playerAddress, _p2.playerAddress, _winner);
         
         _payout(_p1, _p2, _winner);
         
-        MatchFinished();
+        MatchFinished(_matchId, _winner);
     }
     
-    function _getOtherPlayer(address msgSender, Player _p1, Player _p2) internal pure returns (address) {
-        if (_p1.playerAddress == msgSender) {
+    /// @notice Gets the other player in the match given the first players address
+    /// @param _msgSender The address of the player we know
+    /// @param _p1 First player
+    /// @param _p2 Second player
+    /// @return The address of the second player
+    function _getOtherPlayer(address _msgSender, Player _p1, Player _p2) internal pure returns (address) {
+        if (_p1.playerAddress == _msgSender) {
             return _p2.playerAddress;
         } else {
             return _p1.playerAddress;
         }
     }
     
+    /// @notice Returns boolean value who won
+    /// @param _player1Address The address of the first player
+    /// @param _winnersAddress The address of the player who won
+    /// @return Returns boolean value who won
     function _getWhoWon(address _player1Address, address _winnersAddress) internal pure returns (bool) {
         if (_player1Address == _winnersAddress) {
             return true;
@@ -214,13 +251,22 @@ contract Battle is Ownable {
         }
     }
     
+    /// @notice Pays out the correct user who won
+    /// @dev We use .send instead of .transfer() so our state doesn't get reverted if transfer fails
+    /// @param _p1 The first player
+    /// @param _p2 The second player
+    /// @param _winner Boolean value who won
     function _payout(Player _p1, Player _p2,  bool _winner) internal {
         uint reward = _p1.value + _p2.value;
         
-        if (_winner) {
-            _p1.playerAddress.send(reward);
-        } else {
-            _p2.playerAddress.send(reward);
+        bool res = false;
+
+        if (reward > 0) {
+            if (_winner) {
+                res = _p1.playerAddress.send(reward);
+            } else {
+                res = _p2.playerAddress.send(reward);
+            }
         }
     }
 }

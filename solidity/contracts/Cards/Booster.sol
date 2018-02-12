@@ -66,7 +66,7 @@ contract Booster is Ownable {
 
         // hash(random hash), n(size of array we need), maxNum(max number that can be in array)
         uint blockhashNum = uint(block.blockhash(blockNumbers[_boosterId]));
-        uint[] memory randomNumbers = _random(blockhashNum, numberOfCardsInBooster, numOfCardTypes);
+        uint[] memory randomNumbers = _random(blockhashNum, numberOfCardsInBooster, numOfCardTypes-1);
         
         uint[] memory cardIds = new uint[](randomNumbers.length);
         for (uint i=0; i<randomNumbers.length; i++) {
