@@ -1,5 +1,5 @@
 .env
-npm_modules
+node_modules
 solidity/build
 solidity/scripts
 .DS_STORE
