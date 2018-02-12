@@ -55,7 +55,7 @@ contract PlayerStats {
         }
         
         players[_player1].MMR = uint(updatedMmr1);
-        players[_player2].losses = uint(updatedMmr2);
+        players[_player2].MMR = uint(updatedMmr2);
         
     }
     

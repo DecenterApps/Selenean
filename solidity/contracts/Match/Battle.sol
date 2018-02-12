@@ -169,6 +169,7 @@ contract Battle is Ownable {
     }
     
     /// @notice Server calls this method to resolve the game
+    /// @dev The match must be active
     /// @dev It can only call if the 2 parties disagree or a timeout happens
     /// @dev A timeout of 1 hours is set, this may be changed in the future
     /// @param _matchId The id of the match to judge
