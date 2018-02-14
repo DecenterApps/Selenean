@@ -98,11 +98,13 @@ contract Battle is Ownable {
     /// @dev You can only join only 1 match at a time
     /// @dev You can only join if there isn't a second player in the match
     /// @dev You can only join if the match is active
+    /// @dev You must put the same or bigger value in the match
     /// @param _matchId The id of the match you want to join
     function joinMatch(uint _matchId) external payable matchExists(_matchId) {
         require(inMatch[msg.sender] == false);
         require(matches[_matchId].player2.exists == false);
         require(matches[_matchId].ended == false);
+        require(matches[_matchId].player1.value >= msg.value);
         
         matches[_matchId].player2.playerAddress = msg.sender;
         matches[_matchId].player2.exists = true;
@@ -124,6 +126,7 @@ contract Battle is Ownable {
         Player memory p2 = matches[_matchId].player2;
         
         require(p2.exists == true);
+        require(_winner != 0x0);
         require(msg.sender == p2.playerAddress || msg.sender == p1.playerAddress);
         require(matches[_matchId].votes[msg.sender] == 0x0);
         
@@ -166,11 +169,13 @@ contract Battle is Ownable {
     }
     
     /// @notice Server calls this method to resolve the game
+    /// @dev The match must be active
     /// @dev It can only call if the 2 parties disagree or a timeout happens
     /// @dev A timeout of 1 hours is set, this may be changed in the future
     /// @param _matchId The id of the match to judge
     /// @param _whoWon true if the first has won, false if the second player has won
     function judge(uint _matchId, bool _whoWon) external onlyServer matchExists(_matchId) {
+        require(matches[_matchId].ended == false);
         require(matches[_matchId].disagree == true || (matches[_matchId].startTime + 1 hours) > now);
         
         Player memory p1 = matches[_matchId].player1;
