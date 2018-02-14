@@ -12,6 +12,7 @@ contract CardMetadata {
     }
 
     CardProperties[] public properties;  
+    uint[] public rarities;
      
     /// @notice method to add metadata types
     /// @dev needs to use three params for ipfs hash due to Solidity limitations for sending string from contract to contract
@@ -21,6 +22,12 @@ contract CardMetadata {
     /// @param _ipfsSize length of hash
     function addCardMetadata(uint _rarity, bytes32 _ipfsHash, uint8 _ipfsHashFunction, uint8 _ipfsSize) public {
         uint metadataId = properties.length;
+        
+        if (metadataId == 0) {
+            rarities.push(_rarity);
+        } else {
+            rarities.push(_rarity + rarities[metadataId-1]);
+        } 
 
         properties.push(CardProperties({
                     ipfsHash: _ipfsHash,
@@ -34,5 +41,36 @@ contract CardMetadata {
     /// @notice returns how many cards there are 
     function getNumberOfCards() view public returns (uint) {
         return properties.length;
+    }
+    
+    function getMaxRandom() view public returns (uint) {
+        return rarities[rarities.length - 1];
+    }
+    
+    function getCardFromRandom(uint _randNum) view public returns (uint) {
+        require(_randNum <= rarities[rarities.length-1]);
+        
+        uint right = rarities.length - 1;
+        uint left = 0;
+        uint index = (right + left) / 2;
+        
+        while (left <= right) {
+            index = (right + left) / 2;
+            
+            /// if it is between right (including) and left we found it
+            if (_randNum <= rarities[index] && (_randNum > rarities[index-1] || index == 0)) {
+                return index;
+            }
+            
+            if (_randNum > rarities[index] && _randNum < rarities[index+1]) {
+                return index+1;
+            }
+            
+            if (_randNum < rarities[index]) {
+                right = index - 1;
+            } else {
+                left = index;
+            }
+        }
     }
 }
