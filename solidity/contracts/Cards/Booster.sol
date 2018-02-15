@@ -10,10 +10,10 @@ contract Booster is Ownable {
     CardMetadata metadataContract;
 
     uint public BOOSTER_PRICE = 10 ** 15; // 0.001 ether
+    uint public OWNER_PERCENTAGE = 15;
 
     uint public numberOfCardsInBooster = 5;
-    uint public maxNum = 120;
-    uint[120] public numbers;
+    uint public ownerBalance;
 
     mapping(uint => address) public boosterOwners;
     mapping(uint => uint) public blockNumbers;
@@ -27,11 +27,6 @@ contract Booster is Ownable {
     
     function Booster(address _cardAddress) public {
         decenterCards = DecenterCards(_cardAddress);
-
-        // we need to put all numbers in numbers so we can do random shuffle
-        for (uint i = 0; i < maxNum; i++) {
-            numbers[i] = i;
-        }
     }
     
     /// @notice buy booster for BOOSTER_PRICE
@@ -46,6 +41,8 @@ contract Booster is Ownable {
         unrevealedBoosters[msg.sender].push(boosterId);
         
         numOfBoosters++;
+
+        ownerBalance += msg.value * OWNER_PERCENTAGE / 100;
 
         BoosterBought(msg.sender, boosterId);
     }
@@ -66,7 +63,7 @@ contract Booster is Ownable {
 
         // hash(random hash), n(size of array we need), maxNum(max number that can be in array)
         uint blockhashNum = uint(block.blockhash(blockNumbers[_boosterId]));
-        uint[] memory randomNumbers = _random(blockhashNum, numberOfCardsInBooster, numOfCardTypes-1);
+        uint[] memory randomNumbers = _random(blockhashNum, numberOfCardsInBooster);
         
         uint[] memory cardIds = new uint[](randomNumbers.length);
         for (uint i=0; i<randomNumbers.length; i++) {
@@ -74,6 +71,8 @@ contract Booster is Ownable {
         }
         
         boosters[_boosterId] = cardIds;
+
+        msg.sender.transfer(BOOSTER_PRICE * 15 / 100);
         
         BoosterRevealed(_boosterId);
     }
@@ -99,7 +98,12 @@ contract Booster is Ownable {
 
         metadataContract = CardMetadata(_metadataContract);
     }
-    
+
+    /// @notice withdraw method for owner to pull ether
+    /// @param _amount amount to be withdrawn
+    function withdraw(uint _amount) public onlyOwner {
+        owner.transfer(_amount);   
+    }
 
     function _removeBooster(address _user, uint _boosterId) private {
         uint boostersLength = unrevealedBoosters[_user].length; 
@@ -118,23 +122,14 @@ contract Booster is Ownable {
         }
     }
 
-    
-    function _random(uint _hash, uint _n, uint _maxNum) private view returns (uint[]){
-        require(_n <= _maxNum);
-        require(_maxNum < numbers.length);
-
+    function _random(uint _hash, uint _n) private view returns (uint[]){
         uint[] memory randomNums = new uint[](_n);
-        uint[120] memory memoryArray = numbers;
+        uint _maxNum = metadataContract.getMaxRandom() + 1;
         
-        for (uint i = _maxNum; i > _maxNum - _n; i--) {
-            uint randomI = _hash % i;
-            
-            uint t = memoryArray[randomI];
-            memoryArray[randomI] = memoryArray[i];
-            
-            memoryArray[i] = t; 
-            
-            randomNums[_maxNum - i] = memoryArray[i];
+        for (uint i=0; i<_n; i++) {
+            _hash = uint(keccak256(_hash, i));
+            uint rand = _hash % _maxNum;
+            randomNums[i] = metadataContract.getCardFromRandom(rand);
         }
         
         return randomNums;
