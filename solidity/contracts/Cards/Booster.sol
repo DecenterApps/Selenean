@@ -6,6 +6,11 @@ import "../Utils/Ownable.sol";
 
 contract Booster is Ownable {
     
+    modifier onlyGiftToken {
+        require(msg.sender == giftTokenAddress);
+        _;
+    }
+
     DecenterCards decenterCards;
     CardMetadata metadataContract;
 
@@ -24,6 +29,8 @@ contract Booster is Ownable {
 
     event BoosterBought(address user, uint boosterId);
     event BoosterRevealed(uint boosterId);
+
+    address public giftTokenAddress;
     
     function Booster(address _cardAddress) public {
         decenterCards = DecenterCards(_cardAddress);
@@ -45,6 +52,21 @@ contract Booster is Ownable {
         ownerBalance += msg.value * OWNER_PERCENTAGE / 100;
 
         BoosterBought(msg.sender, boosterId);
+    }
+
+    /// @notice Buying a booster with a GiftToken
+    /// @param _to Address that will receive a booster
+    function buyBoosterWithToken(address _to) public onlyGiftToken {
+        uint boosterId = numOfBoosters;
+
+        boosterOwners[boosterId] = _to;
+        blockNumbers[boosterId] = block.number;        
+
+        unrevealedBoosters[_to].push(boosterId);
+        
+        numOfBoosters++;
+
+        BoosterBought(_to, boosterId);
     }
 
     /// @notice reveal booster you just bought, if you don't reveal it in first 100 blocks since buying, anyone can reveal it before 255 blocks pass
@@ -99,6 +121,14 @@ contract Booster is Ownable {
         metadataContract = CardMetadata(_metadataContract);
     }
 
+    /// @notice adds GiftToken address only if it doesn't exist
+    /// @param _giftTokenAddress address of GiftToken contract
+    function addGiftTokenAddress(address _giftTokenAddress) public onlyOwner {
+        require(giftTokenAddress == 0x0);
+
+        giftTokenAddress = _giftTokenAddress;
+    }
+
     /// @notice withdraw method for owner to pull ether
     /// @param _amount amount to be withdrawn
     function withdraw(uint _amount) public onlyOwner {
@@ -122,7 +152,7 @@ contract Booster is Ownable {
         }
     }
 
-    function _random(uint _hash, uint _n) private view returns (uint[]){
+    function _random(uint _hash, uint _n) private view returns (uint[]) {
         uint[] memory randomNums = new uint[](_n);
         uint _maxNum = metadataContract.getMaxRandom() + 1;
         
