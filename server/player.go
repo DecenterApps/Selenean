@@ -34,6 +34,11 @@ var upgrader = websocket.Upgrader{
 
 var waitingPlayer *Player
 
+//Only way to go through slice
+type WaitingPlayers struct {
+	waitingPlayers [] Player
+}
+
 // Player is a middleman between the websocket connection and match.
 type Player struct {
 	match *Match
@@ -46,6 +51,9 @@ type Player struct {
 
 	// Important data for matchmaking algorithm - whenever player joins to match, or joins to queue (same thing) radius is going to reset
 	radius float64
+
+	// We also need their rank since we need to filter them by some criteria
+	rank float64
 }
 
 // readPump pumps messages from the websocket connection to the match in goroutine.
