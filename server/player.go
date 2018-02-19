@@ -43,6 +43,9 @@ type Player struct {
 
 	// Buffered channel of outbound messages.
 	send chan []byte
+
+	// Important data for matchmaking algorithm - whenever player joins to match, or joins to queue (same thing) radius is going to reset
+	radius float64
 }
 
 // readPump pumps messages from the websocket connection to the match in goroutine.
