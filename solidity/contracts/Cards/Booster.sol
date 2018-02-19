@@ -127,7 +127,7 @@ contract Booster is Ownable {
         uint _maxNum = metadataContract.getMaxRandom() + 1;
         
         for (uint i=0; i<_n; i++) {
-            _hash = uint(keccak256(_hash, i));
+            _hash = uint(keccak256(_hash, i, numOfBoosters));
             uint rand = _hash % _maxNum;
             randomNums[i] = metadataContract.getCardFromRandom(rand);
         }
