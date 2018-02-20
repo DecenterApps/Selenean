@@ -59,6 +59,8 @@ func newPlayer(match *Match, address string) *Player {
 func (player *Player) readPump() {
 	defer func() {
 		player.match.leave <- player
+		//let the player know if opponent has disconnected
+		getOponent(*player).match.broadcast <- []byte(`{"type":"opponent-disconnect"}`)
 		player.conn.Close()
 	}()
 	player.conn.SetReadLimit(maxMessageSize)

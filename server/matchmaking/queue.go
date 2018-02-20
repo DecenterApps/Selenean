@@ -3,6 +3,7 @@ package matchmaking
 import (
 	"fmt"
 	"time"
+	"reflect"
 )
 
 type Broadcast struct {
@@ -72,13 +73,29 @@ func insert(newPlayer *Player) {
 }
 
 func remove(player *Player) {
-	//TODO: use binary search since array is sorted
-	for i, playerInQueue := range queue.players {
-		if playerInQueue == player {
-			queue.players = append(queue.players[:i], queue.players[i+1:]...)
-			close(player.send)
+
+	startIndex := 0
+	endIndex := len(queue.players) -1
+
+	for startIndex <= endIndex {
+
+		median := (startIndex + endIndex) / 2
+
+		if player.rank < queue.players[median].rank {
+			endIndex = median - 1
+		} else {
+			startIndex = median + 1
 		}
+
 	}
+	if startIndex == len(queue.players) || reflect.DeepEqual(queue.players[startIndex],player) {
+		//Raise an exception - like player not found or something like that
+	} else {
+		//This means we have found player
+		queue.players = append(queue.players[:startIndex], queue.players[startIndex+1:]...)
+		close(player.send)
+	}
+
 }
 
 func incrementRadius() {
