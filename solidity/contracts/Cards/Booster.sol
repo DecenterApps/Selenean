@@ -3,11 +3,12 @@ pragma solidity ^0.4.18;
 import "./DecenterCards.sol";
 import "./CardMetadata.sol";
 import "../Utils/Ownable.sol";
+import "../GiftToken/GiftToken.sol";
 
 contract Booster is Ownable {
     
     modifier onlyGiftToken {
-        require(msg.sender == giftTokenAddress);
+        require(msg.sender == address(giftToken));
         _;
     }
 
@@ -17,6 +18,8 @@ contract Booster is Ownable {
     uint public BOOSTER_PRICE = 10 ** 15; // 0.001 ether
     uint public OWNER_PERCENTAGE = 15;
 
+    uint ONE_GIFT_TOKEN = 100000000;
+
     uint public numberOfCardsInBooster = 5;
     uint public ownerBalance;
 
@@ -25,12 +28,14 @@ contract Booster is Ownable {
     mapping(address => uint[]) public unrevealedBoosters;
     mapping(uint => uint[]) public boosters;
 
+    mapping(uint => bool) public boughtWithToken;
+
     uint public numOfBoosters;
 
     event BoosterBought(address user, uint boosterId);
     event BoosterRevealed(uint boosterId);
 
-    address public giftTokenAddress;
+    GiftToken public giftToken;
     
     function Booster(address _cardAddress) public {
         decenterCards = DecenterCards(_cardAddress);
@@ -59,8 +64,12 @@ contract Booster is Ownable {
     function buyBoosterWithToken(address _to) public onlyGiftToken {
         uint boosterId = numOfBoosters;
 
+        giftToken.transferFrom(_to, this, ONE_GIFT_TOKEN);
+
+        boughtWithToken[boosterId] = true;
+
         boosterOwners[boosterId] = _to;
-        blockNumbers[boosterId] = block.number;        
+        blockNumbers[boosterId] = block.number;
 
         unrevealedBoosters[_to].push(boosterId);
         
@@ -88,13 +97,18 @@ contract Booster is Ownable {
         uint[] memory randomNumbers = _random(blockhashNum, numberOfCardsInBooster);
         
         uint[] memory cardIds = new uint[](randomNumbers.length);
-        for (uint i=0; i<randomNumbers.length; i++) {
+
+        for (uint i = 0; i<randomNumbers.length; i++) {
             cardIds[i] = decenterCards.createCard(msg.sender, randomNumbers[i]);
         }
         
         boosters[_boosterId] = cardIds;
 
-        msg.sender.transfer(BOOSTER_PRICE * 15 / 100);
+        if (boughtWithToken[_boosterId] == true) {
+            giftToken.transfer(msg.sender, ONE_GIFT_TOKEN / 10);
+        } else {
+            msg.sender.transfer(BOOSTER_PRICE * 15 / 100);
+        }
         
         BoosterRevealed(_boosterId);
     }
@@ -123,10 +137,10 @@ contract Booster is Ownable {
 
     /// @notice adds GiftToken address only if it doesn't exist
     /// @param _giftTokenAddress address of GiftToken contract
-    function addGiftTokenAddress(address _giftTokenAddress) public onlyOwner {
-        require(giftTokenAddress == 0x0);
+    function addGiftToken(address _giftTokenAddress) public onlyOwner {
+        require(address(giftToken) == 0x0);
 
-        giftTokenAddress = _giftTokenAddress;
+        giftToken = GiftToken(_giftTokenAddress);
     }
 
     /// @notice withdraw method for owner to pull ether
@@ -138,7 +152,7 @@ contract Booster is Ownable {
     function _removeBooster(address _user, uint _boosterId) private {
         uint boostersLength = unrevealedBoosters[_user].length; 
 
-        for (uint i=0; i<boostersLength; i++) {
+        for (uint i = 0; i<boostersLength; i++) {
             if (unrevealedBoosters[_user][i] == _boosterId) {
                 uint booster = unrevealedBoosters[_user][boostersLength-1];
                 unrevealedBoosters[_user][boostersLength-1] = unrevealedBoosters[_user][i];
@@ -156,7 +170,7 @@ contract Booster is Ownable {
         uint[] memory randomNums = new uint[](_n);
         uint _maxNum = metadataContract.getMaxRandom() + 1;
         
-        for (uint i=0; i<_n; i++) {
+        for (uint i = 0; i<_n; i++) {
             _hash = uint(keccak256(_hash, i));
             uint rand = _hash % _maxNum;
             randomNums[i] = metadataContract.getCardFromRandom(rand);

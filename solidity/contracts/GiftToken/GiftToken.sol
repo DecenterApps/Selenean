@@ -19,9 +19,11 @@ contract GiftToken is StandardToken, Ownable {
 
     string public name = "GiftToken"; 
     string public symbol = "GFT";
-    uint public decimals = 0;
+    uint public decimals = 8;
 
     Booster public booster;
+
+    uint ONE_GIFT_TOKEN = 100000000;
 
     function GiftToken(address _booster) public {
         booster = Booster(_booster);
@@ -41,12 +43,12 @@ contract GiftToken is StandardToken, Ownable {
     /// @notice Calls the Booster contract to buy 1 booster for 1 GiftToken
     /// @dev Check if the user has a balance of at least 1 token
     function buyBoosterWithToken() public {
-        require(this.balanceOf(msg.sender) >= 1);
+        require(this.balanceOf(msg.sender) >= ONE_GIFT_TOKEN);
+
+        approve(address(booster), ONE_GIFT_TOKEN);
 
         booster.buyBoosterWithToken(msg.sender);
 
-        // burn 1 token
-        burn(1, msg.sender);
     }
 
     /// @notice A function a owner can call to stop minting of tokens
@@ -58,11 +60,10 @@ contract GiftToken is StandardToken, Ownable {
 
     /// @notice Private method to destroy the tokens
     /// @param _value The amount of tokens to burn
-    /// @param _owner Owner of the tokens which should get destroyed
-    function burn(uint256 _value, address _owner) private {
+    function burn(uint256 _value) public {
         require(_value <= balances[msg.sender]);
 
-        address burner = _owner;
+        address burner = msg.sender;
         balances[burner] = balances[burner].sub(_value);
         totalSupply_ = totalSupply_.sub(_value);
         Burn(burner, _value);
