@@ -33,6 +33,7 @@ func newMatch() *Match {
 	}
 }
 
+
 // TODO: refactor
 func getOponent(player Player) *Player {
 	for _, playerInGame := range player.match.players {
