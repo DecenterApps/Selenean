@@ -6,8 +6,8 @@ import "../Utils/Ownable.sol";
 
 contract Booster is Ownable {
     
-    DecenterCards decenterCards;
-    CardMetadata metadataContract;
+    DecenterCards public decenterCards;
+    CardMetadata public metadataContract;
 
     uint public BOOSTER_PRICE = 10 ** 15; // 0.001 ether
     uint public OWNER_PERCENTAGE = 15;
