@@ -3,3 +3,6 @@ node_modules
 solidity/build
 solidity/scripts
 .DS_STORE
+
+./solidity/scripts/node_modules
+./solidity/scripts/.env

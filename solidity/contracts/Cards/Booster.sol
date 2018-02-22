@@ -3,14 +3,23 @@ pragma solidity ^0.4.18;
 import "./DecenterCards.sol";
 import "./CardMetadata.sol";
 import "../Utils/Ownable.sol";
+import "../GiftToken/GiftToken.sol";
 
 contract Booster is Ownable {
     
+    modifier onlyGiftToken {
+        require(msg.sender == address(giftToken));
+        _;
+    }
+
     DecenterCards public decenterCards;
     CardMetadata public metadataContract;
 
+
     uint public BOOSTER_PRICE = 10 ** 15; // 0.001 ether
     uint public OWNER_PERCENTAGE = 15;
+
+    uint ONE_GIFT_TOKEN = 10 ** 8;
 
     uint public numberOfCardsInBooster = 5;
     uint public ownerBalance;
@@ -20,10 +29,14 @@ contract Booster is Ownable {
     mapping(address => uint[]) public unrevealedBoosters;
     mapping(uint => uint[]) public boosters;
 
+    mapping(uint => bool) public boughtWithToken;
+
     uint public numOfBoosters;
 
     event BoosterBought(address user, uint boosterId);
     event BoosterRevealed(uint boosterId);
+
+    GiftToken public giftToken;
     
     function Booster(address _cardAddress) public {
         decenterCards = DecenterCards(_cardAddress);
@@ -47,6 +60,25 @@ contract Booster is Ownable {
         BoosterBought(msg.sender, boosterId);
     }
 
+    /// @notice Buying a booster with a GiftToken
+    /// @param _to Address that will receive a booster
+    function buyBoosterWithToken(address _to) public onlyGiftToken {
+        uint boosterId = numOfBoosters;
+
+        giftToken.transferFrom(_to, this, ONE_GIFT_TOKEN);
+
+        boughtWithToken[boosterId] = true;
+
+        boosterOwners[boosterId] = _to;
+        blockNumbers[boosterId] = block.number;
+
+        unrevealedBoosters[_to].push(boosterId);
+        
+        numOfBoosters++;
+
+        BoosterBought(_to, boosterId);
+    }
+
     /// @notice reveal booster you just bought, if you don't reveal it in first 100 blocks since buying, anyone can reveal it before 255 blocks pass
     /// @param _boosterId id of booster that is bought
     function revealBooster(uint _boosterId) public {
@@ -66,13 +98,18 @@ contract Booster is Ownable {
         uint[] memory randomNumbers = _random(blockhashNum, numberOfCardsInBooster);
         
         uint[] memory cardIds = new uint[](randomNumbers.length);
-        for (uint i=0; i<randomNumbers.length; i++) {
+
+        for (uint i = 0; i<randomNumbers.length; i++) {
             cardIds[i] = decenterCards.createCard(msg.sender, randomNumbers[i]);
         }
         
         boosters[_boosterId] = cardIds;
 
-        msg.sender.transfer(BOOSTER_PRICE * 15 / 100);
+        if (boughtWithToken[_boosterId] == true) {
+            giftToken.transfer(msg.sender, ONE_GIFT_TOKEN / 10);
+        } else {
+            msg.sender.transfer(BOOSTER_PRICE * 15 / 100);
+        }
         
         BoosterRevealed(_boosterId);
     }
@@ -99,6 +136,14 @@ contract Booster is Ownable {
         metadataContract = CardMetadata(_metadataContract);
     }
 
+    /// @notice adds GiftToken address only if it doesn't exist
+    /// @param _giftTokenAddress address of GiftToken contract
+    function addGiftToken(address _giftTokenAddress) public onlyOwner {
+        require(address(giftToken) == 0x0);
+
+        giftToken = GiftToken(_giftTokenAddress);
+    }
+
     /// @notice withdraw method for owner to pull ether
     /// @param _amount amount to be withdrawn
     function withdraw(uint _amount) public onlyOwner {
@@ -108,7 +153,7 @@ contract Booster is Ownable {
     function _removeBooster(address _user, uint _boosterId) private {
         uint boostersLength = unrevealedBoosters[_user].length; 
 
-        for (uint i=0; i<boostersLength; i++) {
+        for (uint i = 0; i<boostersLength; i++) {
             if (unrevealedBoosters[_user][i] == _boosterId) {
                 uint booster = unrevealedBoosters[_user][boostersLength-1];
                 unrevealedBoosters[_user][boostersLength-1] = unrevealedBoosters[_user][i];
@@ -122,10 +167,11 @@ contract Booster is Ownable {
         }
     }
 
-    function _random(uint _hash, uint _n) private view returns (uint[]){
+    function _random(uint _hash, uint _n) private view returns (uint[]) {
         uint[] memory randomNums = new uint[](_n);
         uint _maxNum = metadataContract.getMaxRandom() + 1;
         
+
         for (uint i=0; i<_n; i++) {
             _hash = uint(keccak256(_hash, i, numOfBoosters));
             uint rand = _hash % _maxNum;

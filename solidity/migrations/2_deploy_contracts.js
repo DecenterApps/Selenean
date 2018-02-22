@@ -4,6 +4,7 @@ const CardMetadata = artifacts.require("./CardMetadata.sol");
 
 const PlayerStats = artifacts.require("./PlayerStats.sol");
 const Battle = artifacts.require("./Battle.sol");
+const GiftToken = artifacts.require('./GiftToken');
 
 module.exports = function(deployer) {
 	deployer.deploy(CardMetadata)
