@@ -6,15 +6,12 @@ import (
 )
 
 type Ownership struct {
-	Pubkey           string
-	Signature        string
 	Cards            []Card
-	ShuffleCardsHash string
 }
 
-type Init struct {
-	Type string `json:"type"`
-	Msg []byte `json:"msg"`
+type Message struct {
+	Ok bool `json:"ok"`
+	Message []byte `json:"message"`
 }
 
 func extractOwnership(message []byte) Ownership {
@@ -41,9 +38,4 @@ func extractCard(message []byte) *Card {
 	}
 
 	return &card
-}
-
-func createInitMessage(msg []byte) []byte {
-	message, _ := json.Marshal(&Init{"init", msg})
-	return message
 }

@@ -1,11 +1,12 @@
 package main
 
 import (
-	"bytes"
+	"fmt"
 	"log"
 	"time"
 
 	"github.com/gorilla/websocket"
+	"bytes"
 )
 
 const (
@@ -32,10 +33,10 @@ var upgrader = websocket.Upgrader{
 	WriteBufferSize: 4096,
 }
 
-var waitingPlayer *Player
-
 // Player is a middleman between the websocket connection and match.
 type Player struct {
+	address string
+
 	match *Match
 
 	// The websocket connection.
@@ -45,17 +46,28 @@ type Player struct {
 	send chan []byte
 }
 
+func newPlayer(match *Match, address string) *Player {
+	return &Player{
+		address: address,
+		match:   match,
+		conn:    nil,
+		send:    make(chan []byte, 256),
+	}
+}
+
 // readPump pumps messages from the websocket connection to the match in goroutine.
-func (c *Player) readPump() {
+func (player *Player) readPump() {
 	defer func() {
-		c.match.leave <- c
-		c.conn.Close()
+		player.match.leave <- player
+		//let the player know if opponent has disconnected
+		getOponent(*player).match.broadcast <- []byte(`{"type":"opponent-disconnect"}`)
+		player.conn.Close()
 	}()
-	c.conn.SetReadLimit(maxMessageSize)
-	c.conn.SetReadDeadline(time.Now().Add(pongWait))
-	c.conn.SetPongHandler(func(string) error { c.conn.SetReadDeadline(time.Now().Add(pongWait)); return nil })
+	player.conn.SetReadLimit(maxMessageSize)
+	player.conn.SetReadDeadline(time.Now().Add(pongWait))
+	player.conn.SetPongHandler(func(string) error { player.conn.SetReadDeadline(time.Now().Add(pongWait)); return nil })
 	for {
-		_, message, err := c.conn.ReadMessage()
+		_, message, err := player.conn.ReadMessage()
 		if err != nil {
 			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
 				log.Printf("error: %v", err)
@@ -64,35 +76,37 @@ func (c *Player) readPump() {
 		}
 		message = bytes.TrimSpace(bytes.Replace(message, newline, space, -1))
 
-		response, err := turn(*c, c.match.state, message)
+		response, err := turn(*player, player.match.state, message)
 
 		if err != nil {
 			log.Printf("error validating step: %v", err)
 			break
 		}
 
-		c.match.broadcast <- response
+		fmt.Println(message)
+
+		player.match.broadcast <- response
 	}
 }
 
 // writePump pumps messages from the match to the websocket connection in goroutine.
-func (c *Player) writePump() {
+func (player *Player) writePump() {
 	ticker := time.NewTicker(pingPeriod)
 	defer func() {
 		ticker.Stop()
-		c.conn.Close()
+		player.conn.Close()
 	}()
 	for {
 		select {
-		case message, ok := <-c.send:
-			c.conn.SetWriteDeadline(time.Now().Add(writeWait))
+		case message, ok := <-player.send:
+			player.conn.SetWriteDeadline(time.Now().Add(writeWait))
 			if !ok {
 				// The match closed the channel.
-				c.conn.WriteMessage(websocket.CloseMessage, []byte{})
+				player.conn.WriteMessage(websocket.CloseMessage, []byte{})
 				return
 			}
 
-			w, err := c.conn.NextWriter(websocket.TextMessage)
+			w, err := player.conn.NextWriter(websocket.TextMessage)
 			if err != nil {
 				return
 			}
@@ -100,18 +114,18 @@ func (c *Player) writePump() {
 			w.Write(message)
 
 			// Add queued chat messages to the current websocket message.
-			n := len(c.send)
+			n := len(player.send)
 			for i := 0; i < n; i++ {
 				w.Write(newline)
-				w.Write(<-c.send)
+				w.Write(<-player.send)
 			}
 
 			if err := w.Close(); err != nil {
 				return
 			}
 		case <-ticker.C:
-			c.conn.SetWriteDeadline(time.Now().Add(writeWait))
-			if err := c.conn.WriteMessage(websocket.PingMessage, nil); err != nil {
+			player.conn.SetWriteDeadline(time.Now().Add(writeWait))
+			if err := player.conn.WriteMessage(websocket.PingMessage, nil); err != nil {
 				return
 			}
 		}
