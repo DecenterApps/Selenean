@@ -18,7 +18,7 @@ contract Booster is Ownable {
     uint public BOOSTER_PRICE = 10 ** 15; // 0.001 ether
     uint public OWNER_PERCENTAGE = 15;
 
-    uint ONE_GIFT_TOKEN = 100000000;
+    uint ONE_GIFT_TOKEN = 10 ** 8;
 
     uint public numberOfCardsInBooster = 5;
     uint public ownerBalance;
