@@ -2,3 +2,6 @@
 node_modules
 solidity/build
 .DS_STORE
+
+./solidity/scripts/node_modules
+./solidity/scripts/.env

@@ -2,9 +2,7 @@ package main
 
 import (
 	"fmt"
-	"encoding/hex"
 
-	"github.com/ethereum/go-ethereum/crypto/secp256k1"
 	"github.com/ethereum/go-ethereum/ethclient"
 	"github.com/ethereum/go-ethereum/common"
 	"github.com/ethereum/go-ethereum/accounts/abi/bind"
@@ -48,15 +46,7 @@ func (turnValidator TurnValidator) isValidatorActive(player Player, state State)
 func (ownershipValidator OwnershipValidator) validate(player Player, state *State, message []byte) bool {
 	ownership := extractOwnership(message)
 
-	signatureDecoded, _ := hex.DecodeString(ownership.Signature)
-	msgDecoded, _ := hex.DecodeString(string(state.msg))
-
-	if !VerifySignature(msgDecoded, signatureDecoded) {
-		fmt.Printf("Signature is not valid")
-		return false
-	}
-
-	if !VerifyCardsOwnership(ownership.Pubkey, ownership.Cards) {
+	if !VerifyCardsOwnership(player.address, ownership.Cards) {
 		fmt.Printf("Player doesn't own every card")
 		return false
 	}
@@ -66,7 +56,6 @@ func (ownershipValidator OwnershipValidator) validate(player Player, state *Stat
 	}
 
 	state.step[player]++
-	state.pubkeys[player] = ownership.Pubkey
 
 	return true
 }
@@ -96,16 +85,6 @@ func (turnValidator TurnValidator) validate(player Player, state *State, message
 	return false
 }
 
-func VerifySignature(msg, signature []byte) bool {
-	pubkey, err := secp256k1.RecoverPubkey(msg, signature)
-
-	if err != nil {
-		fmt.Println(err)
-	}
-
-	return secp256k1.VerifySignature(pubkey, msg, signature[:64])
-}
-
 func VerifyCardsOwnership(pubkey string, cards []Card) bool {
 	client, err := getClient()
 
@@ -114,7 +93,7 @@ func VerifyCardsOwnership(pubkey string, cards []Card) bool {
 		return false
 	}
 
-	cardsContract, err := NewCards(common.HexToAddress("0x56c4784ae8ea17f481adcd922a509b967c14e2a2"), client)
+	cardsContract, err := NewCards(common.HexToAddress("0x67cfb193bb554851d0a42e75165ede6954fea248"), client)
 
 	for _, card := range cards {
 		address, _ := cardsContract.OwnerOf(&bind.CallOpts{Pending: true}, &card.Uid)
