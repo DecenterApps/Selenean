@@ -134,6 +134,8 @@ const sendRawTransaction = (web3, transactionParams, privateKey) =>
 function deconstructIpfsHash(ipfs) {
     const ipfsBase58 = bs58.decode(ipfs).toString('hex');
 
+    console.log('ipfs: ', ipfs, 'IpfsB58: ', ipfsBase58);
+
     const hashFunction = '0x' + ipfsBase58.slice(0, 2);
     const size = '0x' + ipfsBase58.slice(2, 4);
     const ipfsHash = '0x' + ipfsBase58.slice(4);
@@ -145,6 +147,19 @@ function deconstructIpfsHash(ipfs) {
     };
 }
 
+function constructIpfsHash(hashFunction, size, ipfsHash) {
+    const hexHashFunction = hashFunction.toString(16);
+    const hexSize = size.toString(16);
+
+    console.log(hexHashFunction, hexSize, ipfsHash);
+
+    return bs58.encode(Buffer.from(`${hexHashFunction}${hexSize}${ipfsHash}`, 'hex'));
+}
+
 (async () => {
     await ipfs();
+
+    //const ipfsHash = constructIpfsHash(18, 32, "2e29612cea9f1a7cbcd16a68eb9b27a3a37e0b2ca926d4034e1d9a27a4642677");
+
+    //console.log(ipfsHash);
 })();
