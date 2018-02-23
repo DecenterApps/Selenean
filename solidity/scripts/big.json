@@ -1,0 +1,22 @@
+{
+    "cards" : [
+        {
+            "name": "Some name",
+            "desc": "Some desc",
+            "rarity": 4,
+            "img": "./images/img1.jpg"
+        },
+        {
+            "name": "Some name",
+            "desc": "Some desc",
+            "rarity": 8,
+            "img": "./images/img2.jpg" 
+        },
+        {
+            "name": "Some name",
+            "desc": "Some desc",
+            "rarity": 2,
+            "img": "./images/img3.jpg" 
+        }
+    ]
+}
