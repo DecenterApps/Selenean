@@ -1,9 +1,10 @@
-package matchmaking
+package main
 
 import (
 	"fmt"
 	"time"
 	"reflect"
+	"net/http"
 )
 
 type Broadcast struct {
@@ -48,6 +49,8 @@ func (queue *Queue) run() {
 			insert(player)
 		case player := <-queue.unregister:
 			remove(player)
+		case broadcast := <-queue.broadcast:
+			broadcast.player.send <-broadcast.message
 		}
 	}
 }
@@ -109,21 +112,33 @@ func (queue *Queue) matchPlayers() {
 	for range time.NewTicker(time.Second).C {
 		incrementRadius()
 
-		fmt.Println("Matching...")
+		fmt.Println(fmt.Sprintf("Matching %s...", len(queue.players)))
 		i := 0
 		for i < len(queue.players) - 1 {
 			curr := queue.players[i]
 			next := queue.players[i+1]
-			fmt.Println(curr.address, curr.rank, curr.radius)
-			fmt.Println(next.address, next.rank, next.radius)
 
 			if validate(*curr, *next) {
-				fmt.Println("We have found a new pair for game : ")
-				fmt.Println("First player : ", curr)
-				fmt.Println("Second player : ", next)
+				//TODO consts
+				match := Match{RandomString(32), getHost(), ""}
+				address1Key := RandomString(64)
+				address2Key := RandomString(64)
+				BindAddressKeysToMatchId(match, address1Key, address2Key, next.address, curr.address)
+
+				_, err := http.Get(fmt.Sprintf("%s/create?key=%s&address1=%s&address2=%s", match.Host, match.Id, curr.address, next.address))
+
+				if err != nil {
+					fmt.Println(err)
+				}
+
+				queue.broadcast <- Broadcast{curr, createResponse(address1Key)}
+				queue.broadcast <- Broadcast{next, createResponse(address2Key)}
+
+				curr.conn.Close()
+				next.conn.Close()
 
 				queue.players = append(queue.players[:i], queue.players[i+2:]...)
-				i-- //because there will be some players skipped since we are decreasing size of players
+				i--
 			}
 
 			i++

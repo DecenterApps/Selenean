@@ -6,7 +6,7 @@ import "./Booster.sol";
 
 /// @title Contract derived from Cards contract with custom implementation on Booster and Metadata
 contract DecenterCards is Cards {
-
+    
     CardMetadata metadataContract;
     Booster boosterContract;
 
@@ -17,7 +17,7 @@ contract DecenterCards is Cards {
         _;
     }
 
-    /// @notice create card with specific type and index
+    /// @notice create card with specific type and index 
     /// @dev should be onlyBooster after we finish boosterContract
     /// @param _owner address of new owner
     /// @param _metadataId id of metadata we are using
@@ -25,7 +25,7 @@ contract DecenterCards is Cards {
         require(_metadataId < metadataContract.getNumberOfCards());
 
         uint cardId = createCard(_owner);
-
+        
         uint id;
         uint rarity;
         bytes32 ipfsHash;
@@ -33,7 +33,7 @@ contract DecenterCards is Cards {
         uint8 ipfsSize;
 
         (id, rarity, ipfsHash, ipfsHashFunction, ipfsSize) = metadataContract.properties(_metadataId);
-
+        
         metadata[cardId] = CardMetadata.CardProperties({
                 id: id,
                 rarity: rarity,

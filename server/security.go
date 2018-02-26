@@ -17,7 +17,7 @@ func verifySignature(msg, signature []byte) bool {
 	return secp256k1.VerifySignature(pubkey, msg, signature[:64])
 }
 
-func secureRequest(signature string, address string) error {
+func secureRequest(address string, signature string) error {
 	message, err := getMessage(address)
 
 	msg, err := hex.DecodeString(message)

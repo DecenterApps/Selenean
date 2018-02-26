@@ -46,7 +46,7 @@ type Player struct {
 	send chan []byte
 }
 
-func newPlayer(match *Match, address string) *Player {
+func newPlayer(match *Match, address string, ) *Player {
 	return &Player{
 		address: address,
 		match:   match,

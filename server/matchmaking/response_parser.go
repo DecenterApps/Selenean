@@ -1,13 +1,15 @@
-package matchmaking
+package main
 
 import "encoding/json"
 
-type Message struct {
+type Response struct {
 	Ok bool `json:"ok"`
-	Message []byte `json:"message"`
+	Key string `json:"key"`
+	Type string `json:"type"`
 }
 
-func createMessage(message []byte) []byte {
-	messageStruct, _ := json.Marshal(&Message{true, message})
+func createResponse(key string) []byte {
+	messageStruct, _ := json.Marshal(&Response{true, key, "created-match"})
+
 	return messageStruct
 }

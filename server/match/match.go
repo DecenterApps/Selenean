@@ -2,9 +2,6 @@ package main
 
 // match keeps track of players in the game and broadcasts messages.
 type Match struct {
-	// Players in game.
-	players [2]*Player
-
 	// Indicate weather player is in match
 	inMatch map[*Player]bool
 
@@ -22,10 +19,7 @@ type Match struct {
 }
 
 func newMatch() *Match {
-	var players [2]*Player
-
 	return &Match{
-		players:   players,
 		inMatch:   make(map[*Player]bool),
 		broadcast: make(chan []byte),
 		join:      make(chan *Player),
@@ -33,10 +27,9 @@ func newMatch() *Match {
 	}
 }
 
-
 // TODO: refactor
 func getOponent(player Player) *Player {
-	for _, playerInGame := range player.match.players {
+	for _, playerInGame := range player.match.state.players {
 		if player != *playerInGame {
 			return playerInGame
 		}
@@ -48,13 +41,8 @@ func getOponent(player Player) *Player {
 func (match *Match) run() {
 	for {
 		select {
-		case client := <-match.join:
-			for _, player := range match.players {
-				// TODO is it ok to add match.inGame[player] != true condition
-				if player == client {
-					match.inMatch[player] = true
-				}
-			}
+		case player := <-match.join:
+			match.inMatch[player] = true
 		case player := <-match.leave:
 			if _, ok := match.inMatch[player]; ok {
 				delete(match.inMatch, player)
