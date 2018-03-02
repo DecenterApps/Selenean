@@ -31,15 +31,17 @@ contract DecenterCards is Cards {
         bytes32 ipfsHash;
         uint8 ipfsHashFunction;
         uint8 ipfsSize;
+        address artist;
 
-        (id, rarity, ipfsHash, ipfsHashFunction, ipfsSize) = metadataContract.properties(_metadataId);
+        (id, rarity, ipfsHash, ipfsHashFunction, ipfsSize, artist) = metadataContract.properties(_metadataId);
         
         metadata[cardId] = CardMetadata.CardProperties({
                 id: id,
                 rarity: rarity,
                 ipfsHash: ipfsHash,
                 ipfsHashFunction: ipfsHashFunction,
-                ipfsSize: ipfsSize
+                ipfsSize: ipfsSize,
+                artist: artist
             });
 
         return cardId;
