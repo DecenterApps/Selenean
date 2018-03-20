@@ -18,10 +18,9 @@ contract DecenterCards is Cards {
     }
 
     /// @notice create card with specific type and index 
-    /// @dev should be onlyBooster after we finish boosterContract
     /// @param _owner address of new owner
     /// @param _metadataId id of metadata we are using
-    function createCard(address _owner, uint _metadataId) public returns(uint) {
+    function createCard(address _owner, uint _metadataId) public onlyBoosterContract returns(uint) {
         require(_metadataId < metadataContract.getNumberOfCards());
 
         uint cardId = createCard(_owner);
