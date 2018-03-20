@@ -59,9 +59,6 @@ contract Booster is Ownable {
         ownerBalance += msg.value * OWNER_PERCENTAGE / 100;
 
         BoosterBought(msg.sender, boosterId);
-
-
-
     }
 
 
