@@ -18,10 +18,9 @@ contract DecenterCards is Cards {
     }
 
     /// @notice create card with specific type and index 
-    /// @dev should be onlyBooster after we finish boosterContract
     /// @param _owner address of new owner
     /// @param _metadataId id of metadata we are using
-    function createCard(address _owner, uint _metadataId) public returns(uint) {
+    function createCard(address _owner, uint _metadataId) public onlyBoosterContract returns(uint) {
         require(_metadataId < metadataContract.getNumberOfCards());
 
         uint cardId = createCard(_owner);
@@ -31,15 +30,17 @@ contract DecenterCards is Cards {
         bytes32 ipfsHash;
         uint8 ipfsHashFunction;
         uint8 ipfsSize;
+        address artist;
 
-        (id, rarity, ipfsHash, ipfsHashFunction, ipfsSize) = metadataContract.properties(_metadataId);
+        (id, rarity, ipfsHash, ipfsHashFunction, ipfsSize, artist) = metadataContract.properties(_metadataId);
         
         metadata[cardId] = CardMetadata.CardProperties({
                 id: id,
                 rarity: rarity,
                 ipfsHash: ipfsHash,
                 ipfsHashFunction: ipfsHashFunction,
-                ipfsSize: ipfsSize
+                ipfsSize: ipfsSize,
+                artist: artist
             });
 
         return cardId;
