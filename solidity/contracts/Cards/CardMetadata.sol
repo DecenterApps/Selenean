@@ -44,7 +44,7 @@ contract CardMetadata {
 
     /// @notice returns artist of card
     /// @param _metadataId is matadataId of card
-    function getArtist(uint _metadataId) view public returns(uint){
+    function getArtist(uint _metadataId) view public returns(address){
         return properties[_metadataId].artist;
     }
     /// @notice returns how many cards there are 
