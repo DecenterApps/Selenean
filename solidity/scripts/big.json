@@ -1,22 +1,458 @@
 {
-    "cards" : [
-        {
-            "name": "Some name",
-            "desc": "Some desc",
-            "rarity": 4,
-            "img": "./images/img1.jpg"
+    "cards": [
+      {
+        "title": "Computer Case",
+        "rarity": 700,
+        "cost": {
+          "funds": 10,
+          "space": 5,
+          "level": 1
         },
-        {
-            "name": "Some name",
-            "desc": "Some desc",
-            "rarity": 8,
-            "img": "./images/img2.jpg" 
+        "values": {
+          "space": 1
         },
-        {
-            "name": "Some name",
-            "desc": "Some desc",
-            "rarity": 2,
-            "img": "./images/img3.jpg" 
-        }
+        "image": "computer-case.jpg",
+        "type": "Container",
+        "description": "Test description for card computer"
+      },
+      {
+        "title": "Rig",
+        "rarity": 200,
+        "cost": {
+          "funds": 1000,
+          "level": 3,
+          "space": 15
+        },
+        "values": {
+          "space": 4
+        },
+        "image": "mining-rig.jpg",
+        "type": "Container",
+        "description": ""
+      },
+      {
+        "title": "Mount",
+        "rarity": 300,
+        "cost": {
+          "funds": 10000,
+          "level": 6,
+          "space": 25
+        },
+        "values": {
+          "space": 4
+        },
+        "image": "mount.jpg",
+        "type": "Container",
+        "description": ""
+      },
+      {
+        "title": "CPU",
+        "rarity": 820,
+        "cost": {
+          "funds": 10,
+          "level": 1,
+          "space": 1,
+          "power": 1
+        },
+        "bonus": {
+          "funds": 1
+        },
+        "image": "cpu.jpg",
+        "type": "Mining",
+        "description": "CPU brate moy"
+      },
+      {
+        "title": "Graphics card",
+        "rarity": 730,
+        "cost": {
+          "funds": 100,
+          "space": 1,
+          "level": 3,
+          "power": 4
+        },
+        "bonus": {
+          "funds": 5
+        },
+        "image": "graphics-card.jpg",
+        "type": "Mining",
+        "description": ""
+      },
+      {
+        "title": "ASIC miner",
+        "rarity": 900,
+        "cost": {
+          "funds": 10000,
+          "level": 6,
+          "power": 16,
+          "space": 1
+        },
+        "bonus": {
+          "funds": 100
+        },
+        "image": "asic-miner.jpg",
+        "type": "Mining",
+        "description": ""
+      },
+      {
+        "title": "Garage",
+        "rarity": 910,
+        "cost": {
+          "level": 1
+        },
+        "values": {
+          "space": 40,
+          "power": 3
+        },
+        "image": "garage.jpg",
+        "type": "Location",
+        "description": ""
+      },
+      {
+        "title": "Coworking space",
+        "rarity": 130,
+        "cost": {
+          "funds": 500,
+          "level": 2
+        },
+        "values": {
+          "space": 60,
+          "power": 9
+        },
+        "image": "coworking-space.jpg",
+        "type": "Location",
+        "description": ""
+      },
+      {
+        "title": "Shantytown Office",
+        "rarity": 650,
+        "cost": {
+          "funds": 2000,
+          "level": 4
+        },
+        "values": {
+          "space": 80,
+          "power": 20
+        },
+        "image": "shanty-town-office.jpg",
+        "type": "Location",
+        "description": ""
+      },
+      {
+        "title": "Downtown Office",
+        "rarity": 650,
+        "cost": {
+          "funds": 10000,
+          "level": 6
+        },
+        "values": {
+          "space": 120,
+          "power": 50
+        },
+        "image": "downtown-office.jpg",
+        "type": "Location",
+        "description": ""
+      },
+      {
+        "title": "Elite Office",
+        "rarity": 550,
+        "cost": {
+          "funds": 100000,
+          "level": 10
+        },
+        "values": {
+          "space": 160,
+          "power": 110
+        },
+        "image": "elite-office.jpg",
+        "type": "Location",
+        "description": ""
+      },
+      {
+        "title": "Office Building",
+        "rarity": 220,
+        "cost": {
+          "funds": 1000000,
+          "level": 20
+        },
+        "values": {
+          "space": 200,
+          "power": 230
+        },
+        "image": "office-building.jpg",
+        "type": "Location",
+        "description": ""
+      },
+      {
+        "title": "Intern Developer",
+        "rarity": 750,
+        "cost": {
+          "space": 10,
+          "funds": 15,
+          "level": 1
+        },
+        "bonus": {
+          "development": 1
+        },
+        "image": "intern-dev.jpg",
+        "type": "Development",
+        "description": ""
+      },
+      {
+        "title": "Junior Developer",
+        "rarity": 770,
+        "cost": {
+          "space": 10,
+          "funds": 100,
+          "level": 2
+        },
+        "bonus": {
+          "development": 4
+        },
+        "image": "junior-dev.jpg",
+        "type": "Development",
+        "description": ""
+      },
+      {
+        "title": "Freelance Expert",
+        "rarity": 510,
+        "cost": {
+          "space": 20,
+          "funds": 500,
+          "level": 4
+        },
+        "bonus": {
+          "development": 10
+        },
+        "image": "freelancer.jpg",
+        "type": "Development",
+        "description": ""
+      },
+      {
+        "title": "Senior Developer",
+        "rarity": 510,
+        "cost": {
+          "space": 20,
+          "funds": 3000,
+          "level": 5
+        },
+        "bonus": {
+          "development": 22
+        },
+        "image": "senior-dev.jpg",
+        "type": "Development",
+        "description": ""
+      },
+      {
+        "title": "Tech Lead",
+        "rarity": 250,
+        "cost": {
+          "space": 40,
+          "funds": 10000,
+          "level": 6
+        },
+        "bonus": {
+          "development": 46
+        },
+        "image": "tech-lead.jpg",
+        "type": "Development",
+        "description": ""
+      },
+      {
+        "title": "Project Architect",
+        "rarity": 50,
+        "cost": {
+          "space": 40,
+          "funds": 40000,
+          "level": 10
+        },
+        "bonus": {
+          "development": 76
+        },
+        "image": "project-architect.jpg",
+        "type": "Development",
+        "description": ""
+      },
+      {
+        "title": "Hacker",
+        "rarity": 220,
+        "cost": {
+          "level": 1
+        },
+        "bonus": null,
+        "image": "hacker.jpg",
+        "type": "Development",
+        "description": ""
+      },
+      {
+        "title": "Outsourcing Gig",
+        "rarity": 750,
+        "cost": {
+          "development": 8,
+          "time": 70
+        },
+        "bonus": {
+          "xp": 8,
+          "funds": 100
+        },
+        "image": "part-time-gig.jpg",
+        "type": "Project",
+        "description": ""
+      },
+      {
+        "title": "For-profit Đapp",
+        "rarity": 950,
+        "cost": {
+          "development": 16,
+          "time": 210,
+          "funds": 50
+        },
+        "bonus": {
+          "xp": 64,
+          "funds": 200
+        },
+        "image": "outsourcing.jpeg",
+        "type": "Project",
+        "description": ""
+      },
+      {
+        "title": "Optimize Mining Algorithm",
+        "rarity": 950,
+        "cost": {
+          "development": 32,
+          "time": 420,
+          "funds": 1000
+        },
+        "bonus": {
+          "xp": 512,
+          "funds": 4000
+        },
+        "image": "algo.jpg",
+        "type": "Project",
+        "description": ""
+      },
+      {
+        "title": "Token Crowdsale",
+        "rarity": 550,
+        "cost": {
+          "development": 56,
+          "time": 2520,
+          "funds": 5000
+        },
+        "bonus": {
+          "xp": 4096,
+          "funds": 20000
+        },
+        "image": "missing.jpeg",
+        "type": "Project",
+        "description": ""
+      },
+      {
+        "title": "Develop Decentralized Protocol",
+        "rarity": 150,
+        "cost": {
+          "development": 120,
+          "time": 10080,
+          "funds": 20000
+        },
+        "bonus": {
+          "xp": 32796,
+          "funds": 100000
+        },
+        "image": "missing.jpeg",
+        "type": "Project",
+        "description": ""
+      },
+      {
+        "title": "Consensus Research Project",
+        "rarity": 160,
+        "cost": {
+          "development": 240,
+          "time": 20160,
+          "funds": 100000
+        },
+        "bonus": {
+          "xp": 262144,
+          "funds": 500000
+        },
+        "image": "missing.jpeg",
+        "type": "Project",
+        "description": ""
+      },
+      {
+        "title": "Solar Panels",
+        "rarity": 750,
+        "cost": {
+          "funds": 500,
+          "space": 15,
+          "level": 1
+        },
+        "bonus": {
+          "power": 15
+        },
+        "image": "solar-panels.jpeg",
+        "type": "Power",
+        "description": ""
+      },
+      {
+        "title": "Black market batteries",
+        "rarity": 770,
+        "cost": {
+          "funds": 3000,
+          "space": 30,
+          "level": 1
+        },
+        "bonus": {
+          "power": 50
+        },
+        "image": "black-market-batteries.JPG",
+        "type": "Power",
+        "description": ""
+      },
+      {
+        "title": "Jury-rigged Generator",
+        "rarity": 32,
+        "cost": {
+          "funds": 10000,
+          "space": 60,
+          "level": 1
+        },
+        "bonus": {
+          "power": 500
+        },
+        "image": "generator.jpg",
+        "type": "Power",
+        "description": ""
+      },
+      {
+        "title": "GRID Connector",
+        "rarity": 5,
+        "cost": {
+          "funds": 1000,
+          "level": 1
+        },
+        "bonus": {
+          "TODO": true,
+          "funds": 10
+        },
+        "image": "connector.jpg",
+        "type": "Misc",
+        "description": ""
+      },
+      {
+        "title": "Coffe Miner",
+        "rarity": 220,
+        "cost": {
+          "funds": 20,
+          "level": 1
+        },
+        "bonus": {
+          "TODO": true,
+          "funds": 10
+        },
+        "image": "coffe-miner.jpeg",
+        "type": "Misc",
+        "description": ""
+      }
     ]
-}
+  }
+  

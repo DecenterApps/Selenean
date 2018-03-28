@@ -29,8 +29,10 @@ async function parseBigJson(cb) {
 
     const numCards = bigJson.cards.length - 1;
 
-    bigJson.cards.forEach(async (card, i) => {
-        const { stdout, stderr } = await exec('ipfs add -q ' + card.img);
+    let i = 0;
+
+    for(let card of bigJson.cards) {
+        const { stdout, stderr } = await exec('ipfs add -q ./images/' + card.image);
 
         const ipfsHashes  = stdout.split('\n');
 
@@ -46,9 +48,11 @@ async function parseBigJson(cb) {
             if (numCards === i) {
                 cb();
             }
+
+            i++;
         });
         
-    });
+    }
 }
 
 async function ipfs() {
@@ -156,8 +160,16 @@ function constructIpfsHash(hashFunction, size, ipfsHash) {
     return bs58.encode(Buffer.from(`${hexHashFunction}${hexSize}${ipfsHash}`, 'hex'));
 }
 
+function hexToBase58(hex) {
+
+}
+
 (async () => {
     await ipfs();
+
+    // const ipfsBase58 = bs58.encode(Buffer.from("1220cc4e84e88983588834fbebc707dc6c7c89bc8275f8e0b337f6ea002ffacb755c", "hex"));
+
+    // console.log(ipfsBase58);
 
     //const ipfsHash = constructIpfsHash(18, 32, "2e29612cea9f1a7cbcd16a68eb9b27a3a37e0b2ca926d4034e1d9a27a4642677");
 
