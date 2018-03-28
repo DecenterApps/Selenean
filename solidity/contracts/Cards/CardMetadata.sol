@@ -54,7 +54,7 @@ contract CardMetadata {
                 continue; 
             }
 
-            rarities[i] = rarities[i-1] + properties[_metadataId].rarity;
+            rarities[i] = rarities[i-1] + properties[i].rarity;
         }
     }
 
