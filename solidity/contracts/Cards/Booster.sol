@@ -108,7 +108,7 @@ contract Booster is Ownable {
         for (uint i = 0; i<randomNumbers.length; i++) {
             cardIds[i] = decenterCards.createCard(msg.sender, randomNumbers[i]);
 
-            address memory artist = metadataContract.getArtist(randomNumbers[i]);
+            address artist = metadataContract.getArtist(randomNumbers[i]);
 
             //If address of artist is contract we won't send him ether
             if (!isContract(artist)) {
