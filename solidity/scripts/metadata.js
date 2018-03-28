@@ -11,12 +11,12 @@ const fs = require('fs');
 
 const testAbi = require('./testAbi.json');
 const bigJson = require('./big.json');
-const testContractAddress = '0x1d78ed073470a4cc90d63358e82e5a921e9fb7d2';
+const testContractAddress = '0xfb6fd18408fb2bc0159759518e9ea2fae0bf706a';
 
 const ourAddress = process.env.ADDRESS;
 const ourPrivateKey = process.env.PRIV_KEY;
 
-const web3 = new Web3(new Web3.providers.HttpProvider("http://ropsten.decenter.com"));
+const web3 = new Web3(new Web3.providers.HttpProvider("http://kovan.decenter.com"));
 web3.eth.defaultAccount = ourAddress;
 
 const testContract = web3.eth.contract(testAbi.abi).at(testContractAddress);
@@ -83,9 +83,11 @@ async function sendTxInBatch(arr, rarity, artist) {
 
         console.log(rarity[i], ipfsHash, hashFunction, size);
 
-        await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size, artist[i]], gasPrice, web3.toHex(nonce));
-        nonce++;
-        i++;
+        if (rarity[i] != undefined) {
+            await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size, artist[i]], gasPrice, web3.toHex(nonce));
+            nonce++;
+            i++;
+        }
     }
 }
 

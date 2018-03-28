@@ -1,131 +1,84 @@
-require('dotenv').load();
 
-const util = require('util');
-const exec = util.promisify(require('child_process').exec);
-const EthereumTx = require('ethereumjs-tx');
-const Web3 = require('web3');
+// STATE
+// /funds/fundsPerBlock/experience/devLeft/blockNumber/registryPosition/
+// 48 16 32 20 36 8        total 152/256
+// /card/blockNumberUntilFinished/
+// 10 * 6 18 project               total 240/256
+// /card/numberOfCards/space/computeCaseSpaceLeft/rigSpaceLeft/mountSpaceLeft/powerLeft/devPointsCount/CoffeMiner
+// 3 * 6 10 13 10 10 10 13 12 1      total 255/256
+// 3 * 6 10 13 10 10 10 13 12 1     total 255/256
+// /cardType/numberOfCards/
+// 11 5 karta
 
-const bs58 = require('bs58');
+// MOVES
+// /blockNumber/
+// 32
+// /add/dynamic-static/cardSpecificBits/card/blockNumberOffset            
+// n * 1 4 11 16        total 32 + n * 32
 
-const fs = require('fs');
+const inputBinary = "0000000000000000000000000000001110010010000100000000000011001000000000000000000000000000000011110000000000000000100000000000000000110011111000100000100000000101";
 
-const testAbi = require('./testAbi.json');
-const bigJson = require('./big.json');
-const testContractAddress = '0x471e5e671e70c34ad90d5077bbeda782e7e8c6b3';
-
-const ourAddress = process.env.ADDRESS;
-const ourPrivateKey = process.env.PRIV_KEY;
-
-const web3 = new Web3(new Web3.providers.HttpProvider("https://ropsten.infura.io"));
-web3.eth.defaultAccount = ourAddress;
-
-const BN = require('bn.js');
-
-const testContract = web3.eth.contract(testAbi.abi).at(testContractAddress);
-
-let nonce = web3.eth.getTransactionCount(ourAddress);
-
-const gasPrice = 8502509001;
-
-const getEncodedParams = (contractMethod, params = null) => {
-    let encodedTransaction = null;
-    if (!params) {
-      encodedTransaction = contractMethod.request.apply(contractMethod); // eslint-disable-line
-    } else {
-      encodedTransaction = contractMethod.request.apply(contractMethod, params); // eslint-disable-line
-    }
-    return encodedTransaction.params[0];
-  };
-
-const sendTransaction = async (web3, contractMethod, from, params, _gasPrice, nonce) =>
-    new Promise(async (resolve, reject) => {
-    try {
-        const privateKey = new Buffer(ourPrivateKey, 'hex');
-
-        const { to, data } = getEncodedParams(contractMethod, params);
-
-        const gasPrice = web3.toHex(_gasPrice);
-
-        const gas = web3.toHex(590000);
-
-        let transactionParams = { from, to, data, gas, gasPrice, nonce };
-
-        const txHash = await sendRawTransaction(web3, transactionParams, privateKey);
-        console.log('TX hash', txHash);
-        resolve(txHash);
-    } catch (err) {
-        reject(err);
-    }
-});
-
-const sendRawTransaction = (web3, transactionParams, privateKey) =>
-    new Promise((resolve, reject) => {
-        const tx = new EthereumTx(transactionParams);
-
-        tx.sign(privateKey);
-
-        const serializedTx = `0x${tx.serialize().toString('hex')}`;
-
-        web3.eth.sendRawTransaction(serializedTx, (error, transactionHash) => {
-            console.log("Err: ", error);
-            if (error) reject(error);
-
-            resolve(transactionHash);
-        });
-});
-
-const convert = async (cards) => {
-    let b = '0x';
-
-    const arr = [];
-
-    cards.forEach(card => {
-        const a0 = web3.toHex(card);
-        const a = a0.slice(2, a0);
-        let a1 = Array(3 - a.length).join("0");
-        b += a1 + a;
-
-        if(b.length === 64) {
-            arr.push(b);
-            b = '0x';
-        }
-    });
-
-    if (b.length < 64) {
-        b = b.padEnd(64, '0');
-    }
-
-    arr.push(b);
-
-    return arr;
+const metadata = {
+    funds: {
+        startPos: 0,
+        endPos: 48
+    },
+    fundsPerBlock: {
+        startPos: 48,
+        endPos: 16
+    },
+    experience: {
+        startPos: 64,
+        endPos: 32
+    },
+    devLeft: {
+        startPos: 96,
+        endPos: 20
+    },
+    blockNumber: {
+        startPos: 116,
+        endPos: 36
+    },
+    registryPosition: {
+        startPos: 152,
+        endPos: 8
+    },
+    slots: [
+        1, 2, 3, 4, 5, 6
+    ]
 };
 
-async function updateState(inputs) {
+const state = {
+    funds: 234000,
+    fundsPerBlock: 200,
+    experience: 15,
+    devLeft: 8,
+    blockNumber: 3400200,
+    registryPosition: 5
+};
 
-    await sendTransaction(web3, testContract.updateState, ourAddress, [inputs], gasPrice, web3.toHex(nonce));
-    nonce++;
+function getBinState(_binState, _type) {
+    return _binState.substr(metadata[_type].startPos, metadata[_type].endPos);
 }
 
-(async () => {
-    //await parseData();
+function fromBinaryState(_inputBinary) {
+    console.log('Funds: ', bin2dec(getBinState(_inputBinary, 'funds')));
+    console.log('Funds per block: ', bin2dec(getBinState(_inputBinary, 'fundsPerBlock')));
+    console.log('Experience: ', bin2dec(getBinState(_inputBinary, 'experience')));
+    console.log('Dev left: ', bin2dec(getBinState(_inputBinary, 'devLeft')));
+    console.log('Blocknumber: ', bin2dec(getBinState(_inputBinary, 'blockNumber')));
+    console.log('Registry Position: ', bin2dec(getBinState(_inputBinary, 'registryPosition')));
+}
 
-    const parsedArr = await convert(["180","180","180","180","180","180","180","180" ,"180" ,"180" ,"180", "20",
-     "20", "20", "20", "20", "20", "20", "20", "20", "20", "20", "130", "130", "130", "130",
-     "130", "130", "130", "130", "130", "130", "130", "10", "10", "10", "10", "10", "10", "10",
-     "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10", "10",
-     "10", "10", "10", "10", "10", "10", "10", "10", "0", "0", "0", "0", "0", "0", "0", "0", "0",
-     "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0",
-     "0", "0", "0"]);
+function fromStateToBinary(_state) {
+    console.log(dec2bin(_state.funds, 48), dec2bin(_state.fundsPerBlock, 16),
+    dec2bin(_state.experience, 32), dec2bin(_state.devLeft, 20),
+    dec2bin(_state.blockNumber, 36), dec2bin(_state.registryPosition, 8)
+    );
+}
 
-    console.log(parsedArr);
+const dec2bin = (d, l) => (d >>> 0).toString(2).padStart(l, '0');
+const bin2dec = (bin) => parseInt(bin, 2);
 
-    const results = parsedArr.map(p => (new BN(p, 16)).toString(10));
-
-    console.log(results);
-
-    await updateState(results);
-
-
-    //console.log('0xb4b4b4b4b4b4b4b4b4b4b4141414141414141414141482828282828282828282820a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a0a00000000000000000000000000000000000000000000000000000000000000'.length)
-
-})();
+fromStateToBinary(state);
+fromBinaryState(inputBinary);
