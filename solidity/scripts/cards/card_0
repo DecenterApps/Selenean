@@ -1,1 +1,1 @@
-{"name":"Some name","desc":"Some desc","rarity":4,"img":"QmbQ2CPx3P7FvfuFHAFag25gQyUGx4BzUGw4ETEk4fKXk2"}
+{"title":"Computer Case","rarity":700,"artist":"0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca","cost":{"funds":10,"space":5,"level":1},"values":{"space":1},"image":"computer-case.jpg","type":"Container","description":"Test description for card computer","img":"QmXAbVFUypjwEMrgdqBmY7kmztZ382mzkukvWuNLCsoTHP"}

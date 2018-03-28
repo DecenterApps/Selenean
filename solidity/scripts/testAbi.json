@@ -1,0 +1,157 @@
+{"abi": [
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "rarities",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_randNum",
+                "type": "uint256"
+            }
+        ],
+        "name": "getCardFromRandom",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_metadataId",
+                "type": "uint256"
+            }
+        ],
+        "name": "getArtist",
+        "outputs": [
+            {
+                "name": "",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getMaxRandom",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [],
+        "name": "getNumberOfCards",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": false,
+        "inputs": [
+            {
+                "name": "_rarity",
+                "type": "uint256"
+            },
+            {
+                "name": "_ipfsHash",
+                "type": "bytes32"
+            },
+            {
+                "name": "_ipfsHashFunction",
+                "type": "uint8"
+            },
+            {
+                "name": "_ipfsSize",
+                "type": "uint8"
+            },
+            {
+                "name": "_artist",
+                "type": "address"
+            }
+        ],
+        "name": "addCardMetadata",
+        "outputs": [],
+        "payable": false,
+        "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "",
+                "type": "uint256"
+            }
+        ],
+        "name": "properties",
+        "outputs": [
+            {
+                "name": "id",
+                "type": "uint256"
+            },
+            {
+                "name": "rarity",
+                "type": "uint256"
+            },
+            {
+                "name": "ipfsHash",
+                "type": "bytes32"
+            },
+            {
+                "name": "ipfsHashFunction",
+                "type": "uint8"
+            },
+            {
+                "name": "ipfsSize",
+                "type": "uint8"
+            },
+            {
+                "name": "artist",
+                "type": "address"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    }
+]
+}

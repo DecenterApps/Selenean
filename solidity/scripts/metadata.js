@@ -9,9 +9,9 @@ const bs58 = require('bs58');
 
 const fs = require('fs');
 
-const testAbi = require('../build/contracts/CardMetadata.json');
+const testAbi = require('./testAbi.json');
 const bigJson = require('./big.json');
-const testContractAddress = '0x3ade0e8977355a734ed21c58f707ef4650feb6e0';
+const testContractAddress = '0x1d78ed073470a4cc90d63358e82e5a921e9fb7d2';
 
 const ourAddress = process.env.ADDRESS;
 const ourPrivateKey = process.env.PRIV_KEY;
@@ -29,8 +29,10 @@ async function parseBigJson(cb) {
 
     const numCards = bigJson.cards.length - 1;
 
-    bigJson.cards.forEach(async (card, i) => {
-        const { stdout, stderr } = await exec('ipfs add -q ' + card.img);
+    let i = 0;
+
+    for(let card of bigJson.cards) {
+        const { stdout, stderr } = await exec('ipfs add -q ./images/' + card.image);
 
         const ipfsHashes  = stdout.split('\n');
 
@@ -46,9 +48,11 @@ async function parseBigJson(cb) {
             if (numCards === i) {
                 cb();
             }
+
+            i++;
         });
         
-    });
+    }
 }
 
 async function ipfs() {
@@ -62,13 +66,14 @@ async function ipfs() {
         ipfsHashes.pop();
     
         const rarity = bigJson.cards.map(c => c.rarity);
+        const artist = bigJson.cards.map(c => c.artist);
     
-        await sendTxInBatch(ipfsHashes, rarity);
+        await sendTxInBatch(ipfsHashes, rarity, artist);
     });
 
 }
 
-async function sendTxInBatch(arr, rarity) {
+async function sendTxInBatch(arr, rarity, artist) {
     let i = 0;
 
     for (const key in arr) {
@@ -78,7 +83,7 @@ async function sendTxInBatch(arr, rarity) {
 
         console.log(rarity[i], ipfsHash, hashFunction, size);
 
-        await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size], gasPrice, web3.toHex(nonce));
+        await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size, artist[i]], gasPrice, web3.toHex(nonce));
         nonce++;
         i++;
     }
@@ -156,8 +161,16 @@ function constructIpfsHash(hashFunction, size, ipfsHash) {
     return bs58.encode(Buffer.from(`${hexHashFunction}${hexSize}${ipfsHash}`, 'hex'));
 }
 
+function hexToBase58(hex) {
+
+}
+
 (async () => {
     await ipfs();
+
+    // const ipfsBase58 = bs58.encode(Buffer.from("1220cc4e84e88983588834fbebc707dc6c7c89bc8275f8e0b337f6ea002ffacb755c", "hex"));
+
+    // console.log(ipfsBase58);
 
     //const ipfsHash = constructIpfsHash(18, 32, "2e29612cea9f1a7cbcd16a68eb9b27a3a37e0b2ca926d4034e1d9a27a4642677");
 

@@ -1,1 +1,1 @@
-{"name":"Some name","desc":"Some desc","rarity":8,"img":"QmfBzCk1MC1qYMFEGdad5GfNfVfUmWry9PevTxjAqu5MHC"}
+{"title":"Rig","rarity":200,"artist":"0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca","cost":{"funds":1000,"level":3,"space":15},"values":{"space":4},"image":"mining-rig.jpg","type":"Container","description":"","img":"QmX7sejxHNi3rR1zgB9dVRac7EBr7KSWC5nfSpnWgv7Xns"}
