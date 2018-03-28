@@ -42,6 +42,22 @@ contract CardMetadata {
                 }));
     }
 
+
+    /// @dev only dev method needs to be removed before deployment
+    function changeCardRarity(uint _metadataId, uint _rarity) public {
+
+        properties[_metadataId].rarity = _rarity;
+
+        for (uint i=_metadataId; i<rarities.length; i++) {
+            if (i == 0) {
+                rarities[0] = properties[_metadataId].rarity;
+                continue; 
+            }
+
+            rarities[i] = rarities[i-1] + properties[_metadataId].rarity;
+        }
+    }
+
     /// @notice returns artist of card
     /// @param _metadataId is matadataId of card
     function getArtist(uint _metadataId) view public returns(address){
