@@ -9,9 +9,9 @@ const bs58 = require('bs58');
 
 const fs = require('fs');
 
-const testAbi = require('../build/contracts/CardMetadata.json');
+const testAbi = require('./testAbi.json');
 const bigJson = require('./big.json');
-const testContractAddress = '0x3ade0e8977355a734ed21c58f707ef4650feb6e0';
+const testContractAddress = '0x1d78ed073470a4cc90d63358e82e5a921e9fb7d2';
 
 const ourAddress = process.env.ADDRESS;
 const ourPrivateKey = process.env.PRIV_KEY;
@@ -66,13 +66,14 @@ async function ipfs() {
         ipfsHashes.pop();
     
         const rarity = bigJson.cards.map(c => c.rarity);
+        const artist = bigJson.cards.map(c => c.artist);
     
-        await sendTxInBatch(ipfsHashes, rarity);
+        await sendTxInBatch(ipfsHashes, rarity, artist);
     });
 
 }
 
-async function sendTxInBatch(arr, rarity) {
+async function sendTxInBatch(arr, rarity, artist) {
     let i = 0;
 
     for (const key in arr) {
@@ -82,7 +83,7 @@ async function sendTxInBatch(arr, rarity) {
 
         console.log(rarity[i], ipfsHash, hashFunction, size);
 
-        await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size], gasPrice, web3.toHex(nonce));
+        await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size, artist[i]], gasPrice, web3.toHex(nonce));
         nonce++;
         i++;
     }
