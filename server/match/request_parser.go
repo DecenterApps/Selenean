@@ -6,11 +6,11 @@ import (
 )
 
 type Ownership struct {
-	Cards            []Card
+	Cards []Card `json:"cards"`
 }
 
 type Message struct {
-	Ok bool `json:"ok"`
+	Ok      bool   `json:"ok"`
 	Message []byte `json:"message"`
 }
 

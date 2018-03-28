@@ -25,9 +25,8 @@ contract Cards is Ownable, ERC721 {
     }
 
     /// @notice create card for specific owner
-    /// @dev should be changed to internal in future (will be called from derived contract)
     /// @param _owner address for new cards owner
-    function createCard(address _owner) public returns(uint) {
+    function createCard(address _owner) internal returns(uint) {
         
         uint cardId = numOfCards;
         tokensForOwner[cardId] = _owner;

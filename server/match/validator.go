@@ -51,6 +51,8 @@ func (ownershipValidator OwnershipValidator) validate(player Player, state *Stat
 		return false
 	}
 
+	state.cardsValidated[player] = true
+
 	for _, card := range ownership.Cards {
 		state.cards[player] = append(state.cards[player], card)
 	}
@@ -85,7 +87,7 @@ func (turnValidator TurnValidator) validate(player Player, state *State, message
 	return false
 }
 
-func VerifyCardsOwnership(pubkey string, cards []Card) bool {
+func VerifyCardsOwnership(address string, cards []Card) bool {
 	client, err := getClient()
 
 	if err != nil {
@@ -96,10 +98,10 @@ func VerifyCardsOwnership(pubkey string, cards []Card) bool {
 	cardsContract, err := NewCards(common.HexToAddress("0x67cfb193bb554851d0a42e75165ede6954fea248"), client)
 
 	for _, card := range cards {
-		address, _ := cardsContract.OwnerOf(&bind.CallOpts{Pending: true}, &card.Uid)
+		ownerOfCard, _ := cardsContract.OwnerOf(&bind.CallOpts{Pending: true}, &card.Uid)
 
-		if address != common.HexToAddress(pubkey) {
-			fmt.Println("Player doesn't own card")
+		if ownerOfCard != common.HexToAddress(address) {
+			fmt.Println("Player doesn't own card", address)
 			return false
 		}
 	}

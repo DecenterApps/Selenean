@@ -1,9 +1,11 @@
-package matchmaking
+package main
 
 import (
 	"time"
 
 	"github.com/gorilla/websocket"
+	"fmt"
+	"log"
 )
 
 const (
@@ -64,6 +66,22 @@ func (player *Player) readPump() {
 	player.conn.SetReadLimit(maxMessageSize)
 	player.conn.SetReadDeadline(time.Now().Add(pongWait))
 	player.conn.SetPongHandler(func(string) error { player.conn.SetReadDeadline(time.Now().Add(pongWait)); return nil })
+	for {
+		_, message, err := player.conn.ReadMessage()
+		if err != nil {
+			if websocket.IsUnexpectedCloseError(err, websocket.CloseGoingAway, websocket.CloseAbnormalClosure) {
+				log.Printf("error: %v", err)
+			}
+			break
+		}
+
+		if err != nil {
+			log.Printf("error validating step: %v", err)
+			break
+		}
+
+		fmt.Println(message)
+	}
 }
 
 // writePump pumps messages from the match to the websocket connection in goroutine.

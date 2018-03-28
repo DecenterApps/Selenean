@@ -3,5 +3,7 @@ node_modules
 solidity/build
 .DS_STORE
 
-./solidity/scripts/node_modules
-./solidity/scripts/.env
+solidity/scripts/node_modules
+solidity/scripts/.env
+solidity/scripts/__pycache__
+solidity/dev-scripts

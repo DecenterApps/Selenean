@@ -18,11 +18,12 @@ contract Booster is Ownable {
 
     uint public BOOSTER_PRICE = 10 ** 15; // 0.001 ether
     uint public OWNER_PERCENTAGE = 15;
-
+    uint public CARD_ARTIST_PERCENTAGE = 15;
     uint ONE_GIFT_TOKEN = 10 ** 8;
 
     uint public numberOfCardsInBooster = 5;
     uint public ownerBalance;
+
 
     mapping(uint => address) public boosterOwners;
     mapping(uint => uint) public blockNumbers;
@@ -60,6 +61,8 @@ contract Booster is Ownable {
         BoosterBought(msg.sender, boosterId);
     }
 
+
+
     /// @notice Buying a booster with a GiftToken
     /// @param _to Address that will receive a booster
     function buyBoosterWithToken(address _to) public onlyGiftToken {
@@ -85,6 +88,9 @@ contract Booster is Ownable {
         require(blockNumbers[_boosterId] > block.number - 255);
         require(boosterOwners[_boosterId] == msg.sender || blockNumbers[_boosterId] < block.number - 100);
 
+        //this is amount for every card artist
+        uint amountForArtists = (BOOSTER_PRICE*CARD_ARTIST_PERCENTAGE/100)/numberOfCardsInBooster;
+
         uint numOfCardTypes = metadataContract.getNumberOfCards();
 
         assert(numOfCardTypes >= numberOfCardsInBooster);
@@ -101,8 +107,15 @@ contract Booster is Ownable {
 
         for (uint i = 0; i<randomNumbers.length; i++) {
             cardIds[i] = decenterCards.createCard(msg.sender, randomNumbers[i]);
+
+            address artist = metadataContract.getArtist(randomNumbers[i]);
+
+            //If address of artist is contract we won't send him ether
+            if (!isContract(artist)) {
+                artist.transfer(amountForArtists);
+            }
         }
-        
+
         boosters[_boosterId] = cardIds;
 
         if (boughtWithToken[_boosterId] == true) {
@@ -110,7 +123,7 @@ contract Booster is Ownable {
         } else {
             msg.sender.transfer(BOOSTER_PRICE * 15 / 100);
         }
-        
+
         BoosterRevealed(_boosterId);
     }
 
@@ -179,5 +192,12 @@ contract Booster is Ownable {
         }
         
         return randomNums;
+    }
+
+
+    function isContract(address addr) private returns (bool) {
+        uint size;
+        assembly { size := extcodesize(addr) }
+        return size > 0;
     }
 }

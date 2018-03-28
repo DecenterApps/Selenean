@@ -11,25 +11,32 @@ var matches map[string]*Match
 
 func create(w http.ResponseWriter, r *http.Request) {
 	key := r.URL.Query().Get("key")
+
 	address1 := r.URL.Query().Get("address1")
 	address2 := r.URL.Query().Get("address2")
 
 	match := newMatch()
-	matches[key] = match
 
 	player1 := newPlayer(match, address1)
 	player2 := newPlayer(match, address2)
 
-	match.players = [2]*Player{player1, player2}
+	state := newState([2]*Player{player1, player2})
+
+	match.state = *state
+	matches[key] = match
+
+	go match.run()
 }
 
 func ws(w http.ResponseWriter, r *http.Request) {
-	key := r.URL.Query().Get("key")
+	id := r.URL.Query().Get("id")
 	address := r.URL.Query().Get("address")
 
-	match := matches[key]
+	fmt.Println(id, address)
 
-	if match != nil {
+	match := matches[id]
+
+	if match == nil {
 		//TODO error handling
 		fmt.Print("Match doesnt exist")
 		return
@@ -37,9 +44,14 @@ func ws(w http.ResponseWriter, r *http.Request) {
 
 	conn, err := upgrader.Upgrade(w, r, nil)
 
+	if err != nil {
+		log.Println(err)
+		return
+	}
+
 	var player *Player
 
-	for _, playerInMatch := range match.players {
+	for _, playerInMatch := range match.state.players {
 		//TODO handle if no match
 		if playerInMatch.address == address {
 			player = playerInMatch
@@ -49,19 +61,17 @@ func ws(w http.ResponseWriter, r *http.Request) {
 		}
 	}
 
-	if player == nil {
-		//TODO error handling
-		fmt.Print("Player not in match")
-		return
-	}
-
-	if err != nil {
-		log.Println(err)
-		return
-	}
-
 	go player.writePump()
 	go player.readPump()
+
+	//stateJson, err := json.Marshal(match.state)
+	//
+	//if err != nil {
+	////TODO handle error
+	//	fmt.Println(err)
+	//	return
+	//}
+	//player.match.broadcast <- stateJson
 }
 
 func main() {

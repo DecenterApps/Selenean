@@ -1,4 +1,4 @@
-package matchmaking
+package main
 
 import (
 	"encoding/hex"
@@ -7,7 +7,14 @@ import (
 	"github.com/ethereum/go-ethereum/crypto/randentropy"
 	"time"
 	"bytes"
+	"encoding/json"
 )
+
+type Match struct {
+	Id string `json:"id"`
+	Host string `json:"host"`
+	Address string `json:"address"`
+}
 
 var client *redis.Client
 
@@ -61,19 +68,75 @@ func invalidateMessage(address string) (bool, error) {
 	return true, nil
 }
 
-func hasActiveMatch(address string) (bool, error) {
+func hasActiveMatch(address string) (string, error) {
 	client := redisClient()
 
 	//TODO extract constant
-	result, err := client.Get(bytes.NewBufferString("match-" + address).String()).Result()
+	key, err := client.Get(bytes.NewBufferString("match-" + address).String()).Result()
 
 	if err != nil {
-		return false, err
+		return "", err
 	}
 
-	if result == "" {
-		return true, nil
+	return key, nil
+}
+
+func getHost() (string) {
+	return "http://localhost:8082"
+}
+
+func BindAddressKeysToMatchId(match Match, address1Key string, address2Key string, address1 string, address2 string) (error) {
+	match.Address = address1
+	match1Json, err := json.Marshal(match)
+
+	if err != nil {
+		return err
 	}
 
-	return false, nil
+	match.Address = address2
+
+	match2Json, err := json.Marshal(match)
+
+	if err != nil {
+		return err
+	}
+
+	BindAddressKeyToMatchId(match1Json, address1Key, "key")
+
+	if err != nil {
+		return err
+	}
+
+	BindAddressKeyToMatchId(match1Json, address1Key, "address")
+
+	if err != nil {
+		return err
+	}
+
+	BindAddressKeyToMatchId(match2Json, address2Key, "key")
+
+	if err != nil {
+		return err
+	}
+
+	BindAddressKeyToMatchId(match2Json, address2Key, "address")
+
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func BindAddressKeyToMatchId(matchJson []byte, addressKey string, prefix string) error {
+	client := redisClient()
+
+	//TODO extract constant
+	_, err := client.Set(prefix + "-" + addressKey , matchJson, time.Duration(2000000000000)).Result()
+
+	if err != nil {
+		return err
+	}
+
+	return nil
 }
