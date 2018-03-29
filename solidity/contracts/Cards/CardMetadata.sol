@@ -25,6 +25,7 @@ contract CardMetadata {
     function addCardMetadata(uint _rarity, bytes32 _ipfsHash, uint8 _ipfsHashFunction, uint8 _ipfsSize, address _artist) public {
         uint metadataId = properties.length;
         
+        // we can't do aks for rarities[-1] so if metadataId is zero we just add it
         if (metadataId == 0) {
             rarities.push(_rarity);
         } else {
@@ -72,7 +73,7 @@ contract CardMetadata {
         return rarities[rarities.length - 1];
     }
     
-    function getCardFromRandom(uint _randNum) view public returns (uint) {
+    function getCardByRarity(uint _randNum) view public returns (uint) {
         require(_randNum <= rarities[rarities.length-1]);
         
         uint right = rarities.length - 1;
