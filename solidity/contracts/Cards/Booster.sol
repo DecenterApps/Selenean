@@ -89,7 +89,7 @@ contract Booster is Ownable {
         require(boosterOwners[_boosterId] == msg.sender || blockNumbers[_boosterId] < block.number - 100);
 
         //this is amount for every card artist
-        uint amountForArtists = (BOOSTER_PRICE*CARD_ARTIST_PERCENTAGE/100)/numberOfCardsInBooster;
+        uint amountForArtists = (BOOSTER_PRICE*CARD_ARTIST_PERCENTAGE/100) / numberOfCardsInBooster;
 
         uint numOfCardTypes = metadataContract.getNumberOfCards();
 
@@ -108,7 +108,9 @@ contract Booster is Ownable {
         for (uint i = 0; i<randomNumbers.length; i++) {
             cardIds[i] = decenterCards.createCard(msg.sender, randomNumbers[i]);
 
-            address artist = metadataContract.getArtist(randomNumbers[i]);
+            if (!boughtWithToken[_boosterId]){
+                address artist = metadataContract.getArtist(randomNumbers[i]);
+            }
 
             //If address of artist is contract we won't send him ether
             if (!isContract(artist)) {
@@ -186,7 +188,8 @@ contract Booster is Ownable {
         
 
         for (uint i=0; i<_n; i++) {
-            _hash = uint(keccak256(_hash, i, numOfBoosters));
+            // balanceOf is used because you would get same cards if buyBooster called at same block
+            _hash = uint(keccak256(_hash, i, numOfBoosters, decenterCards.balanceOf(msg.sender), msg.sender));
             uint rand = _hash % _maxNum;
             randomNums[i] = metadataContract.getCardByRarity(rand);
         }
@@ -195,7 +198,7 @@ contract Booster is Ownable {
     }
 
 
-    function isContract(address addr) private returns (bool) {
+    function isContract(address addr) private view returns (bool) {
         uint size;
         assembly { size := extcodesize(addr) }
         return size > 0;
