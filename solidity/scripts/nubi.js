@@ -1,7 +1,7 @@
 // # STATE
 // STATE
 // /funds/fundsPerBlock/experience/devLeft/blockNumber/registryPosition/
-// 48 16 32 20 36 8        total 152/256
+// 48 16 32 20 36 8        total 160/256
 // /card/blockNumberUntilFinished/
 // 10 * (6 + 18) project               total 240/256
 // /card/numberOfCards/space/computeCaseSpaceLeft/rigSpaceLeft/mountSpaceLeft/powerLeft/devPointsCount/CoffeMiner
@@ -17,6 +17,10 @@
 // n * 1 1 4 10 16        n * 32
 
 const bigInt = require("big-integer");
+
+//This is only for the first uint
+const firstUintStateBin = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001110010010000100000000000011001000000000000000000000000000000011110000000000000000100000000000000000110011111000100000100000000101";
+const firstUintStateHex = "00000000000000000000000000000003921000c80000000f0000800033e20805";
 
 const metadata = {
     funds: {
@@ -155,6 +159,22 @@ const state = {
             devPointsCount: 50,
             coffeMiner: 1,
         }],
+        cardPositions: [{
+            cardType: 46,
+            numberOfCards: 5
+        },
+        {
+            cardType: 36,
+            numberOfCards: 2
+        },
+        {
+            cardType: 16,
+            numberOfCards: 7
+        },
+        {
+            cardType: 66,
+            numberOfCards: 9
+        }],
         blockNumber: 345345,
         moves: [{
             add: 0,
@@ -221,20 +241,45 @@ const state = {
         }]
 };
 
+// A test method to read the first uint from the state
+function readFromBinary() {
+    let bin = (new bigInt(firstUintStateHex, 16).toString(2));
+
+    bin = bin.padStart(160, 0)
+
+    // /funds/fundsPerBlock/experience/devLeft/blockNumber/registryPosition/
+// 48 16 32 20 36 8        total 160/256
+
+    console.log('Funds: ', bin2dec(bin.substr(0, 48)));
+    console.log('Funds per block: ', bin2dec(bin.substr(48, 16)));
+    console.log('Experience: ', bin2dec(bin.substr(64, 32)));
+    console.log('DevLeft: ', bin2dec(bin.substr(96, 20)));
+    console.log('blockNum', bin2dec(bin.substr(116, 36)));
+    console.log('registryPosition', bin2dec(bin.substr(152, 48)));
+}
+
+// Ispada da state ne treba da se packuje, vec samo moves
 function fromStateToBinary(_state) {
-
     //first uint
-    const firstHex = toHex(getBinary(_state, 'funds') + getBinary(_state, 'fundsPerBlock') +
+    const firstHex = getBinary(_state, 'funds') + getBinary(_state, 'fundsPerBlock') +
     getBinary(_state, 'experience') + getBinary(_state, 'devLeft') +
-    getBinary(_state, 'blockNumber') + getBinary(_state, 'registryPosition'));
+    getBinary(_state, 'blockNumber') + getBinary(_state, 'registryPosition');
 
-    const secondHex = getProjects(_state);
+    // const secondHex = getProjects(_state);
 
-    const locHexes = getLocations(_state);
+    // const locHexes = getLocations(_state);
+
+    // const cardPos = packCardPositions(_state);
 
     const moves = packMoves(_state);
 
-    console.log(firstHex, secondHex, locHexes[0], locHexes[1], moves);
+    //console.log(firstHex);
+    // console.log(dec2bin(234000, 48));
+    // console.log(dec2bin(200, 16));
+    // console.log(dec2bin(15, 32));
+    // console.log(dec2bin(8, 20));
+    // console.log(dec2bin(3400200, 36));
+    // console.log(dec2bin(5, 8));
 }
 // Helper functions
 
@@ -260,10 +305,24 @@ function packMoves(_state) {
         + dec2bin(move.cardSpecificBits, 4) + dec2bin(move.card, 10) + dec2bin(move.blockNumberOffset, 16));
 
     
-    const hexValues = [];
-    let str = blockNum;
+    return _pack(binMoves, blockNum);
+}
 
-    binMoves.forEach(b => {
+function packCardPositions(_state) {
+    const bin = _state.cardPositions.map(c => dec2bin(c.card, 10) + dec2bin(c.numberOfCards, 6));
+
+    console.log(bin);
+
+    return _pack(bin, "");
+}
+
+// helper functions
+
+function _pack(arr, start) {
+    const hexValues = [];
+    let str = start;
+
+    arr.forEach(b => {
         if ((str.length + b.length) < 256) {
             str += b;
         } else {
@@ -279,7 +338,6 @@ function packMoves(_state) {
     return hexValues.map(h => toHex(h));
 }
 
-// helper functions
 const dec2bin = (d, l) => (d >>> 0).toString(2).padStart(l, '0');
 const bin2dec = (bin) => parseInt(bin, 2);
 const getBinState = (bin, type) => bin.substr(metadata[type].startPos, metadata[type].endPos);
@@ -288,4 +346,6 @@ const getBinary = (state, type) => dec2bin(state[type], metadata[type].endPos);
 const toHex = (str) => '0x' + ((new bigInt(str.padStart(256, '0'), 2)).toString(16)).padStart(64, 0);
 
 // call the methods
-fromStateToBinary(state);
+//fromStateToBinary(state);
+
+readFromBinary();
