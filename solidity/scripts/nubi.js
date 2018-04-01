@@ -22,6 +22,19 @@ const bigInt = require("big-integer");
 const firstUintStateBin = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001110010010000100000000000011001000000000000000000000000000000011110000000000000000100000000000000000110011111000100000100000000101";
 const firstUintStateHex = "00000000000000000000000000000003921000c80000000f0000800033e20805";
 
+const secondUintStateBin = "0000000000000000000100000001000101111110000100000001000101111110000100000001000101111110000100000001000101111110000100000001000101111110000100000001000101111110000100000001000101111110000100000001000101111110000100000001000101111110000100000001000101111110";
+const secondUintStateHex = "000010117e10117e10117e10117e10117e10117e10117e10117e10117e10117e";
+
+// 8 20 205 100 110 120 1000 900 0 - values in dec
+const thirdUintStateBin = "0001000000001010000000110011010001100100000110111000011110000001111101000001110000100000100000000101000000011001101000110010000011011100001111000000111110100000111000010000010000000010100000001100110100011001000001101110000111100000011111010000011100001000";
+const thirdUintStateHex = "100a0334641b8781f41c20805019a320dc3c0fa0e1040280cd1906e1e07d0708";
+
+const forthUintStateBin = "0001000000001010000000110011010001100100000110111000011110000001111101000001110000100000100000000101000000011001101000110010000011011100001111000000111110100000111000010000010000000010100000001100110100011001000001101110000111100000011111010000011100001000";
+const forthUintStateHex = "100a0334641b8781f41c20805019a320dc3c0fa0e1040280cd1906e1e07d0708";
+
+const dynamicBin = "0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000001100100001000000110010000100000011001000010000001100100001000000110010000100000011001000010000001100100001000000110010000100000011001000010000001100100001000";
+const dynamicHex = "0000000000000000000000001908190819081908190819081908190819081908";
+
 const metadata = {
     funds: {
         startPos: 0,
@@ -242,13 +255,31 @@ const state = {
 };
 
 // A test method to read the first uint from the state
-function readFromBinary() {
-    let bin = (new bigInt(firstUintStateHex, 16).toString(2));
+// static are the first four hex numbers of the state in an array (without 0x at the start)
+// dynamic is a non fixed array of uints represtening the 16 bit increment
+function readFromBinary(static, dynamic) {
+    let bin = (new bigInt(static[0], 16).toString(2));
+    bin = bin.padStart(160, 0);
 
-    bin = bin.padStart(160, 0)
+    let bin2 = (new bigInt(static[1], 16).toString(2));
+    bin2 = bin2.padStart(240, 0);
 
-    // /funds/fundsPerBlock/experience/devLeft/blockNumber/registryPosition/
-// 48 16 32 20 36 8        total 160/256
+    let bin3 = (new bigInt(static[2], 16).toString(2));
+    bin3 = bin3.padStart(255, 0);
+
+    let bin4 = (new bigInt(static[3], 16).toString(2));
+    bin4 = bin4.padStart(255, 0);
+
+    const dynamicBins = [];
+
+    for(let i = 0; i < dynamic.length; ++i) {
+        let bin5 = (new bigInt(dynamicHex, 16).toString(2));
+        if (bin5.length % 16 !== 0) {
+            bin5 = bin5.padStart(Math.ceil(bin5.length / 16) * 16, 0);
+        }
+
+        dynamicBins.push(bin5);
+    }
 
     console.log('Funds: ', bin2dec(bin.substr(0, 48)));
     console.log('Funds per block: ', bin2dec(bin.substr(48, 16)));
@@ -256,6 +287,51 @@ function readFromBinary() {
     console.log('DevLeft: ', bin2dec(bin.substr(96, 20)));
     console.log('blockNum', bin2dec(bin.substr(116, 36)));
     console.log('registryPosition', bin2dec(bin.substr(152, 48)));
+
+    console.log("Projects: ");
+    for(let i = 0; i < 10; ++i) {
+        console.log("Card: ", bin2dec(bin2.substr(0 + (i*24), 6)));
+        console.log("blockNumberUntilFinished: ", bin2dec(bin2.substr(6 + (i*24), 18)));
+    }
+
+    console.log("Locations: ");
+    readLocation(bin3);
+    readLocation(bin4);
+
+    dynamicBins.forEach(d => {
+        console.log(readDynamic(d));
+    });
+}
+
+function readLocation(bin) {
+    for(let i = 0; i < 3; ++i) {
+        console.log("    ");
+        console.log("card: ", bin2dec(bin.substr(0 + (i*85), 6)));
+        console.log("numberOfCards: ", bin2dec(bin.substr(6 + (i*85), 10)));
+        console.log("space: ", bin2dec(bin.substr(16 + (i*85), 13)));
+        console.log("computeCaseSpaceLeft: ", bin2dec(bin.substr(29 + (i*85), 10)));
+        console.log("rigSpaceLeft: ", bin2dec(bin.substr(39 + (i*85), 10)));
+        console.log("mountSpaceLeft: ", bin2dec(bin.substr(49 + (i*85), 10)));
+        console.log("powerLeft: ", bin2dec(bin.substr(59 + (i*85), 13)));
+        console.log("devPointsCount: ", bin2dec(bin.substr(72 + (i*85), 12)));
+        console.log("CoffeMiner: ", bin2dec(bin.substr(84 + (i*85), 1)));
+        console.log("    ");
+    }
+}
+
+function readDynamic(bin) {
+    const arr = [];
+
+    for(let i = 0; i < bin.length/16; ++i) {
+        const cardType = bin2dec(bin.substr(0 + (i*16), 10));
+        const numberOfCards = bin2dec(bin.substr(0 + (i*16), 6));
+
+        if (cardType != NaN && numberOfCards != NaN) {
+            arr.push({cardType, numberOfCards});
+        }
+    }
+
+    return arr;
 }
 
 // Ispada da state ne treba da se packuje, vec samo moves
@@ -348,4 +424,5 @@ const toHex = (str) => '0x' + ((new bigInt(str.padStart(256, '0'), 2)).toString(
 // call the methods
 //fromStateToBinary(state);
 
-readFromBinary();
+readFromBinary([firstUintStateHex, secondUintStateHex, thirdUintStateHex, forthUintStateHex],
+               [dynamicHex]);
