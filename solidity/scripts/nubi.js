@@ -1,12 +1,12 @@
 // # STATE
 // STATE
 // /funds/fundsPerBlock/experience/devLeft/blockNumber/registryPosition/
-// 48 16 32 20 36 8        total 160/256
+// 48 16 32 20 32 8        total 156/256
 // /card/blockNumberUntilFinished/
 // 10 * (6 + 18) project               total 240/256
 // /card/numberOfCards/space/computeCaseSpaceLeft/rigSpaceLeft/mountSpaceLeft/powerLeft/devPointsCount/CoffeMiner
-// 3 * 6 10 13 10 10 10 13 12 1      total 255/256 locations
-// 3 * 6 10 13 10 10 10 13 12 1     total 255/256
+// 3 * 6 10 13 10 10 10 13 11 1 1    total 255/256 locations
+// 3 * 6 10 13 10 10 10 13 11 1 1   total 255/256
 // /cardType/numberOfCards/
 // 10 6 karta
 
@@ -188,69 +188,20 @@ const state = {
             cardType: 66,
             numberOfCards: 9
         }],
-        blockNumber: 345345,
+        blockNumber: 2000000,
         moves: [{
-            add: 0,
+            add: 1,
             dynamicStatic: 1,
-            cardSpecificBits: 2,
-            card: 6,
-            blockNumberOffset: 54
+            cardSpecificBits: 0,
+            card: 0,
+            blockNumberOffset: 0
         },
         {
-            add: 0,
+            add: 1,
             dynamicStatic: 1,
-            cardSpecificBits: 2,
-            card: 6,
-            blockNumberOffset: 54
-        },
-        {
-            add: 0,
-            dynamicStatic: 1,
-            cardSpecificBits: 2,
-            card: 6,
-            blockNumberOffset: 54
-        },
-        {
-            add: 0,
-            dynamicStatic: 1,
-            cardSpecificBits: 2,
-            card: 6,
-            blockNumberOffset: 54
-        },
-        {
-            add: 0,
-            dynamicStatic: 1,
-            cardSpecificBits: 2,
-            card: 6,
-            blockNumberOffset: 54
-        },
-        {
-            add: 0,
-            dynamicStatic: 1,
-            cardSpecificBits: 2,
-            card: 6,
-            blockNumberOffset: 54
-        },
-        {
-            add: 0,
-            dynamicStatic: 1,
-            cardSpecificBits: 2,
-            card: 6,
-            blockNumberOffset: 54
-        },
-        {
-            add: 0,
-            dynamicStatic: 1,
-            cardSpecificBits: 2,
-            card: 6,
-            blockNumberOffset: 54
-        },
-        {
-            add: 0,
-            dynamicStatic: 1,
-            cardSpecificBits: 2,
-            card: 6,
-            blockNumberOffset: 54
+            cardSpecificBits: 0,
+            card: 72,
+            blockNumberOffset: 0
         }]
 };
 
@@ -258,35 +209,38 @@ const state = {
 // static are the first four hex numbers of the state in an array (without 0x at the start)
 // dynamic is a non fixed array of uints represtening the 16 bit increment
 function readFromBinary(static, dynamic) {
-    let bin = (new bigInt(static[0], 16).toString(2));
-    bin = bin.padStart(160, 0);
+    //console.log(new bigInt('61706420899545226580811344369225475828280826903809855696245096448', 10).toString(16));
 
-    let bin2 = (new bigInt(static[1], 16).toString(2));
-    bin2 = bin2.padStart(240, 0);
+    let bin = (new bigInt(static[0], 10).toString(2));
+    bin = bin.padStart(256, 0);
 
-    let bin3 = (new bigInt(static[2], 16).toString(2));
+    let bin2 = (new bigInt(static[1], 10).toString(2));
+    bin2 = bin2.padStart(256, 0);
+
+    let bin3 = (new bigInt(static[2], 10).toString(2));
     bin3 = bin3.padStart(255, 0);
 
-    let bin4 = (new bigInt(static[3], 16).toString(2));
+    let bin4 = (new bigInt(static[3], 10).toString(2));
     bin4 = bin4.padStart(255, 0);
 
     const dynamicBins = [];
 
     for(let i = 0; i < dynamic.length; ++i) {
-        let bin5 = (new bigInt(dynamicHex, 16).toString(2));
-        if (bin5.length % 16 !== 0) {
-            bin5 = bin5.padStart(Math.ceil(bin5.length / 16) * 16, 0);
-        }
-
+        let bin5 = (new bigInt(dynamic[i], 10).toString(2));
+        
+        bin5 = bin5.padStart(256, 0);
+        
         dynamicBins.push(bin5);
     }
+
+    console.log(dynamicBins);
 
     console.log('Funds: ', bin2dec(bin.substr(0, 48)));
     console.log('Funds per block: ', bin2dec(bin.substr(48, 16)));
     console.log('Experience: ', bin2dec(bin.substr(64, 32)));
     console.log('DevLeft: ', bin2dec(bin.substr(96, 20)));
-    console.log('blockNum', bin2dec(bin.substr(116, 36)));
-    console.log('registryPosition', bin2dec(bin.substr(152, 48)));
+    console.log('blockNum', bin2dec(bin.substr(116, 32)));
+    console.log('registryPosition', bin2dec(bin.substr(148, 8)));
 
     console.log("Projects: ");
     for(let i = 0; i < 10; ++i) {
@@ -313,7 +267,8 @@ function readLocation(bin) {
         console.log("rigSpaceLeft: ", bin2dec(bin.substr(39 + (i*85), 10)));
         console.log("mountSpaceLeft: ", bin2dec(bin.substr(49 + (i*85), 10)));
         console.log("powerLeft: ", bin2dec(bin.substr(59 + (i*85), 13)));
-        console.log("devPointsCount: ", bin2dec(bin.substr(72 + (i*85), 12)));
+        console.log("devPointsCount: ", bin2dec(bin.substr(72 + (i*85), 11)));
+        console.log("GridConnector: ", bin2dec(bin.substr(83 + (i*85), 1)));
         console.log("CoffeMiner: ", bin2dec(bin.substr(84 + (i*85), 1)));
         console.log("    ");
     }
@@ -324,7 +279,7 @@ function readDynamic(bin) {
 
     for(let i = 0; i < bin.length/16; ++i) {
         const cardType = bin2dec(bin.substr(0 + (i*16), 10));
-        const numberOfCards = bin2dec(bin.substr(0 + (i*16), 6));
+        const numberOfCards = bin2dec(bin.substr(10 + (i*16), 6));
 
         if (cardType != NaN && numberOfCards != NaN) {
             arr.push({cardType, numberOfCards});
@@ -348,6 +303,8 @@ function fromStateToBinary(_state) {
     // const cardPos = packCardPositions(_state);
 
     const moves = packMoves(_state);
+
+    console.log(toHex('11000000000000000000000000000000'));
 
     //console.log(firstHex);
     // console.log(dec2bin(234000, 48));
@@ -375,19 +332,25 @@ function getLocations(_state) {
 }
 
 function packMoves(_state) {
-    const blockNum = dec2bin(_state.blockNumber, 32);
+    let blockNum = dec2bin(_state.blockNumber, 32);
 
-    const binMoves = _state.moves.map(move => dec2bin(move.add, 1) + dec2bin(move.dynamicStatic, 1) +
+    //blockNum = bin2Hex(blockNum, 8);
+
+    //console.log(_state.moves[1], bin2Hex(dec2bin(72, 10)));
+
+    let binMoves = _state.moves.map(move => dec2bin(move.add, 1) + dec2bin(move.dynamicStatic, 1) +
         + dec2bin(move.cardSpecificBits, 4) + dec2bin(move.card, 10) + dec2bin(move.blockNumberOffset, 16));
 
+
+    binMoves = binMoves.map(b => b.padEnd(32, 0));
+
+    console.log(binMoves);
     
-    return _pack(binMoves, blockNum);
+    //return _pack(binMoves, blockNum);
 }
 
 function packCardPositions(_state) {
     const bin = _state.cardPositions.map(c => dec2bin(c.card, 10) + dec2bin(c.numberOfCards, 6));
-
-    console.log(bin);
 
     return _pack(bin, "");
 }
@@ -411,7 +374,13 @@ function _pack(arr, start) {
         hexValues.push(str);
     }
 
-    return hexValues.map(h => toHex(h));
+    // if (hexValues[hexValues.length - 1].length < 256) {
+    //     hexValues[hexValues.length - 1] += '11111111111111111111111111111111';
+    // }
+
+    console.log(hexValues);
+
+    return hexValues.map(h => toHexPadEnd(h));
 }
 
 const dec2bin = (d, l) => (d >>> 0).toString(2).padStart(l, '0');
@@ -420,9 +389,10 @@ const getBinState = (bin, type) => bin.substr(metadata[type].startPos, metadata[
 const getState = (bin, type) => bin2dec(getBinState(bin, type));
 const getBinary = (state, type) => dec2bin(state[type], metadata[type].endPos);
 const toHex = (str) => '0x' + ((new bigInt(str.padStart(256, '0'), 2)).toString(16)).padStart(64, 0);
+const toHexPadEnd = (str) => '0x' + ((new bigInt(str.padEnd(256, '0'), 2)).toString(16)).padEnd(64, 0);
+const bin2Hex = (bin, l) => (new bigInt(bin, 2)).toString(16).padStart(l, 0);
 
 // call the methods
 //fromStateToBinary(state);
 
-readFromBinary([firstUintStateHex, secondUintStateHex, thirdUintStateHex, forthUintStateHex],
-               [dynamicHex]);
+readFromBinary(['6277101735386680764208986145439095946313251598311591247872', '0', '1770621562624077136751594888481572415259330284799763914617723870913757184', '0'], ['4074442531914582603780854200584325924361416629803446040187491075361412743168']);
