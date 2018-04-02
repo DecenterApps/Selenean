@@ -1,7 +1,7 @@
 pragma solidity ^0.4.18;
 
 import "../Utils/Ownable.sol";
-import "../Utils/ERC721.sol";
+import "./ERC721.sol";
 
 /// @title Standard ERC721 token based on cards
 contract Cards is Ownable, ERC721 {
