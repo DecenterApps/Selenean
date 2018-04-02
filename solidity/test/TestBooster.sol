@@ -13,6 +13,6 @@ contract TestBooster {
 	function testBuyBooster() public {
 		Booster booster = Booster(DeployedAddresses.Booster());
 
-		
+
 	}
 }

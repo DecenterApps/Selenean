@@ -1,7 +1,9 @@
 pragma solidity ^0.4.18;
 
 /// @title Contract holding all metadata about token(card)
-contract CardMetadata {
+import "../Utils/Ownable.sol";
+
+contract CardMetadata is Ownable{
 
     struct CardProperties {
         uint id;
@@ -22,7 +24,7 @@ contract CardMetadata {
     /// @param _ipfsHashFunction hash function that is used
     /// @param _ipfsSize length of hash
     /// @param _artist is address of card artist
-    function addCardMetadata(uint _rarity, bytes32 _ipfsHash, uint8 _ipfsHashFunction, uint8 _ipfsSize, address _artist) public {
+    function addCardMetadata(uint _rarity, bytes32 _ipfsHash, uint8 _ipfsHashFunction, uint8 _ipfsSize, address _artist) public onlyOwner{
         uint metadataId = properties.length;
         
         // we can't do aks for rarities[-1] so if metadataId is zero we just add it
@@ -44,21 +46,6 @@ contract CardMetadata {
     }
 
 
-    /// @dev only dev method needs to be removed before deployment
-    function changeCardRarity(uint _metadataId, uint _rarity) public {
-
-        properties[_metadataId].rarity = _rarity;
-
-        for (uint i=_metadataId; i<rarities.length; i++) {
-            if (i == 0) {
-                rarities[0] = properties[_metadataId].rarity;
-                continue; 
-            }
-
-            rarities[i] = rarities[i-1] + properties[i].rarity;
-        }
-    }
-
     /// @notice returns artist of card
     /// @param _metadataId is matadataId of card
     function getArtist(uint _metadataId) view public returns(address){
@@ -68,11 +55,12 @@ contract CardMetadata {
     function getNumberOfCards() view public returns (uint) {
         return properties.length;
     }
-    
+    /// @notice returns maximal number value
     function getMaxRandom() view public returns (uint) {
         return rarities[rarities.length - 1];
     }
-    
+
+
     function getCardByRarity(uint _randNum) view public returns (uint) {
         require(_randNum <= rarities[rarities.length-1]);
         

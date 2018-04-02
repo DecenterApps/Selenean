@@ -38,7 +38,9 @@ contract Booster is Ownable {
     event BoosterRevealed(uint boosterId);
 
     GiftToken public giftToken;
-    
+
+
+
     function Booster(address _cardAddress) public {
         decenterCards = DecenterCards(_cardAddress);
     }
