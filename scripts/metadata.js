@@ -9,9 +9,9 @@ const bs58 = require('bs58');
 
 const fs = require('fs');
 
-const testAbi = require('./testAbi.json');
+const conf = require('./config.dist.json');
 const bigJson = require('./big.json');
-const testContractAddress = '0xfb6fd18408fb2bc0159759518e9ea2fae0bf706a';
+const testContractAddress = conf.metadataContract.address;
 
 const ourAddress = process.env.ADDRESS;
 const ourPrivateKey = process.env.PRIV_KEY;
@@ -19,7 +19,7 @@ const ourPrivateKey = process.env.PRIV_KEY;
 const web3 = new Web3(new Web3.providers.HttpProvider("http://kovan.decenter.com"));
 web3.eth.defaultAccount = ourAddress;
 
-const testContract = web3.eth.contract(testAbi.abi).at(testContractAddress);
+const testContract = web3.eth.contract(conf.metadataContract.abi).at(testContractAddress);
 
 let nonce = web3.eth.getTransactionCount(ourAddress);
 
