@@ -45,6 +45,19 @@ contract CardMetadata is Ownable{
                 }));
     }
 
+    /// @dev only for testing purposes
+    function setNewRarities(uint[] _rarities) public {
+        require (_rarities.length == rarities.length);
+        
+
+        rarities[0] = _rarities[0];
+        for(uint i=1; i<_rarities.length; i++) {
+        
+            rarities[i] = _rarities[i] + rarities[i-1];
+            properties[i].rarity = _rarities[i];
+        }
+    }
+
 
     /// @notice returns artist of card
     /// @param _metadataId is matadataId of card
