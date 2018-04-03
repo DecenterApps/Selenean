@@ -200,8 +200,22 @@ const state = {
             add: 1,
             dynamicStatic: 1,
             cardSpecificBits: 0,
-            card: 72,
-            blockNumberOffset: 0
+            card: 36,
+            blockNumberOffset: 1
+        },
+        {
+            add: 1,
+            dynamicStatic: 1,
+            cardSpecificBits: 0,
+            card: 54,
+            blockNumberOffset: 2
+        },
+        {
+            add: 1,
+            dynamicStatic: 1,
+            cardSpecificBits: 0,
+            card: 150,
+            blockNumberOffset: 500
         }]
 };
 
@@ -304,7 +318,7 @@ function fromStateToBinary(_state) {
 
     const moves = packMoves(_state);
 
-    console.log(toHex('11000000000000000000000000000000'));
+    console.log(moves);
 
     //console.log(firstHex);
     // console.log(dec2bin(234000, 48));
@@ -332,21 +346,11 @@ function getLocations(_state) {
 }
 
 function packMoves(_state) {
-    let blockNum = dec2bin(_state.blockNumber, 32);
+    let blockNum = bin2Hex(dec2bin(_state.blockNumber, 32), 8);
 
-    //blockNum = bin2Hex(blockNum, 8);
+    let binMoves = _state.moves.map(move => bin2Hex(dec2bin(move.add, 1) + dec2bin(move.dynamicStatic, 1) + dec2bin(move.cardSpecificBits, 4) + dec2bin(move.card, 10) + dec2bin(move.blockNumberOffset, 16)));  
 
-    //console.log(_state.moves[1], bin2Hex(dec2bin(72, 10)));
-
-    let binMoves = _state.moves.map(move => dec2bin(move.add, 1) + dec2bin(move.dynamicStatic, 1) +
-        + dec2bin(move.cardSpecificBits, 4) + dec2bin(move.card, 10) + dec2bin(move.blockNumberOffset, 16));
-
-
-    binMoves = binMoves.map(b => b.padEnd(32, 0));
-
-    console.log(binMoves);
-    
-    //return _pack(binMoves, blockNum);
+    return _pack(binMoves, blockNum);
 }
 
 function packCardPositions(_state) {
@@ -362,7 +366,7 @@ function _pack(arr, start) {
     let str = start;
 
     arr.forEach(b => {
-        if ((str.length + b.length) < 256) {
+        if ((str.length + b.length) < 64) {
             str += b;
         } else {
             hexValues.push(str);
@@ -374,13 +378,11 @@ function _pack(arr, start) {
         hexValues.push(str);
     }
 
-    // if (hexValues[hexValues.length - 1].length < 256) {
-    //     hexValues[hexValues.length - 1] += '11111111111111111111111111111111';
-    // }
+    if (hexValues[hexValues.length - 1].length < 64) {
+        hexValues[hexValues.length - 1] += 'FFFFFFFF';
+    }
 
-    console.log(hexValues);
-
-    return hexValues.map(h => toHexPadEnd(h));
+    return hexValues.map(h => h.padEnd(64, 0));
 }
 
 const dec2bin = (d, l) => (d >>> 0).toString(2).padStart(l, '0');
@@ -393,6 +395,6 @@ const toHexPadEnd = (str) => '0x' + ((new bigInt(str.padEnd(256, '0'), 2)).toStr
 const bin2Hex = (bin, l) => (new bigInt(bin, 2)).toString(16).padStart(l, 0);
 
 // call the methods
-//fromStateToBinary(state);
+fromStateToBinary(state);
 
-readFromBinary(['6277101735386680764208986145439095946313251598311591247872', '0', '1770621562624077136751594888481572415259330284799763914617723870913757184', '0'], ['4074442531914582603780854200584325924361416629803446040187491075361412743168']);
+//readFromBinary(['6277101735386680764208986147815940821741181726117909757952', '0', '1770621562624077136751594888481572415259330284799763914617723870913757184', '0'], ['10180572787253050507058960199280696488197962213797316436696694931848075149312']);
