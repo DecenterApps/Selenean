@@ -61,8 +61,8 @@ contract CardMetadata is Ownable{
     }
 
 
-    function getCardByRarity(uint _randNum) view public returns (uint) {
-        require(_randNum <= rarities[rarities.length-1]);
+    function getCardByRarity(uint _rarity) view public returns (uint) {
+        require(_rarity <= rarities[rarities.length-1]);
         
         uint right = rarities.length - 1;
         uint left = 0;
@@ -72,15 +72,15 @@ contract CardMetadata is Ownable{
             index = (right + left) / 2;
             
             /// if it is between right (including) and left we found it
-            if (_randNum <= rarities[index] && (_randNum > rarities[index-1] || index == 0)) {
+            if (_rarity <= rarities[index] && (index == 0 || _rarity > rarities[index-1])) {
                 return index;
             }
             
-            if (_randNum > rarities[index] && _randNum < rarities[index+1]) {
+            if (_rarity > rarities[index] && _rarity <= rarities[index+1]) {
                 return index+1;
             }
             
-            if (_randNum < rarities[index]) {
+            if (_rarity < rarities[index]) {
                 right = index - 1;
             } else {
                 left = index;
