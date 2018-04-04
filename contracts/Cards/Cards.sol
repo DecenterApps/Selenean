@@ -20,8 +20,8 @@ contract Cards is Ownable, ERC721 {
     event Mint(address indexed _to, uint256 indexed _tokenId);
     
     function Cards() public {
-        name = "Card";
-        symbol = "CARD";
+        name = "SeleneanCardToken";
+        symbol = "SEL";
     }
 
     /// @notice create card for specific owner
