@@ -11,9 +11,9 @@ for contract in os.listdir(directory):
 			dictdump = json.loads(json_contract.read())
 			if(dictdump["abi"] <> None):
 				abi[contract] = dictdump["abi"]
-			if(dictdump["networks"].get("4447") <> None ):
+			if(dictdump["networks"].get("42") <> None ):
 				#print (contract,dictdump["networks"]["4447"]["address"])
-				dict[contract] = dictdump["networks"]["4447"]["address"]
+				dict[contract] = dictdump["networks"]["42"]["address"]
 
 
 
