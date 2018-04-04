@@ -23,7 +23,6 @@ contract Booster is Ownable {
     uint ONE_GIFT_TOKEN = 10 ** 8;
 
     uint public numberOfCardsInBooster = 5;
-    uint public ownerBalance;
 
     mapping(address => uint) public withdrawBalance;
     mapping(uint => address) public boosterOwners;
@@ -58,8 +57,6 @@ contract Booster is Ownable {
         unrevealedBoosters[msg.sender].push(boosterId);
         
         numOfBoosters++;
-
-        ownerBalance += msg.value * OWNER_PERCENTAGE / 100;
 
         BoosterBought(msg.sender, boosterId);
     }
@@ -158,7 +155,9 @@ contract Booster is Ownable {
 
     /// @notice withdraw method for anyone who owns money on contract
     function withdraw() public {
-        msg.sender.transfer(withdrawBalance[msg.sender]);   
+        uint balance = withdrawBalance[msg.sender];
+        withdrawBalance[msg.sender] = 0;
+        msg.sender.transfer(balance);   
     }
 
     function _removeBooster(address _user, uint _boosterId) private {
