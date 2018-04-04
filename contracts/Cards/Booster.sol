@@ -141,7 +141,8 @@ contract Booster is Ownable {
     /// @notice adds metadata address to contract only if it doesn't exist
     /// @param _metadataContract address of metadata contract
     function addMetadataContract(address _metadataContract) public onlyOwner {
-        require(address(metadataContract) == 0x0);
+        // not required while on testnet
+        // require(address(metadataContract) == 0x0);
 
         metadataContract = CardMetadata(_metadataContract);
     }
@@ -149,7 +150,8 @@ contract Booster is Ownable {
     /// @notice adds GiftToken address only if it doesn't exist
     /// @param _giftTokenAddress address of GiftToken contract
     function addGiftToken(address _giftTokenAddress) public onlyOwner {
-        require(address(giftToken) == 0x0);
+        // not required while on testnet
+        // require(address(giftToken) == 0x0);
 
         giftToken = GiftToken(_giftTokenAddress);
     }
