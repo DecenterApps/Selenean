@@ -172,9 +172,7 @@ contract Booster is Ownable {
 
         for (uint i = 0; i<boostersLength; i++) {
             if (unrevealedBoosters[_user][i] == _boosterId) {
-                uint booster = unrevealedBoosters[_user][boostersLength-1];
-                unrevealedBoosters[_user][boostersLength-1] = unrevealedBoosters[_user][i];
-                unrevealedBoosters[_user][i] = booster; 
+                unrevealedBoosters[_user][i] = unrevealedBoosters[_user][boostersLength-1];
 
                 delete unrevealedBoosters[_user][boostersLength-1];
                 unrevealedBoosters[_user].length--;
