@@ -31,7 +31,7 @@ for contract in os.listdir(directory):
 for key in dict:
 	print (key, dict[key])
 
-with open("config.dist.json","r+") as jsonFile:
+with open("config.json","r+") as jsonFile:
 	data = json.load(jsonFile)
 
 	cardMetadata = data["metadataContract"]
