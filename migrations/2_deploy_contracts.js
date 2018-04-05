@@ -1,4 +1,4 @@
-const DecenterCards = artifacts.require("./DecenterCards.sol");
+const DecenterCards = artifacts.require("./SeleneanCards.sol");
 const Booster = artifacts.require("./Booster.sol");
 const CardMetadata = artifacts.require("./CardMetadata.sol");
 const GiftToken = artifacts.require('./GiftToken');

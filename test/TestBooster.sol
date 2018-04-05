@@ -2,7 +2,7 @@ pragma solidity ^0.4.18;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/Cards/DecenterCards.sol";
+import "../contracts/Cards/SeleneanCards.sol";
 import "../contracts/Cards/CardMetadata.sol";
 import "../contracts/Cards/Booster.sol";
 

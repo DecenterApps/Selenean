@@ -2,18 +2,18 @@ pragma solidity ^0.4.18;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "../contracts/Cards/DecenterCards.sol";
+import "../contracts/Cards/SeleneanCards.sol";
 import "../contracts/Cards/CardMetadata.sol";
 
 contract TestToken {
   function testInitialNumberOfCardsDeployedContract() public {
-    DecenterCards token = DecenterCards(DeployedAddresses.DecenterCards());
+    SeleneanCards token = SeleneanCards(DeployedAddresses.SeleneanCards());
 
     Assert.equal(token.numOfCards(), 0, "Should be no cards when deploying.");
   }
 
   function testInitialAddingFirstCard() public {
-    DecenterCards token = DecenterCards(DeployedAddresses.DecenterCards());
+    SeleneanCards token = SeleneanCards(DeployedAddresses.SeleneanCards());
 
     uint cardId = token.createCard(this);
 
@@ -30,7 +30,7 @@ contract TestToken {
   }
 
   function testTransferingCard() public {
-  	DecenterCards token = DecenterCards(DeployedAddresses.DecenterCards());
+  	SeleneanCards token = SeleneanCards(DeployedAddresses.SeleneanCards());
 
 	  uint cardId = token.createCard(this);
 
@@ -44,7 +44,7 @@ contract TestToken {
   // not using deployed contracts
   function testInitialAddingFirstCardWithProperties() public {
   	// using new so we can test onlyOwner methods
-    DecenterCards token = new DecenterCards();
+    SeleneanCards token = new SeleneanCards();
     CardMetadata data = new CardMetadata();
     token.addMetadataContract(address(data));
 
