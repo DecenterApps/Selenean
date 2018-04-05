@@ -1,6 +1,6 @@
 pragma solidity ^0.4.18;
 
-import "./DecenterCards.sol";
+import "./SeleneanCards.sol";
 import "./CardMetadata.sol";
 import "../Utils/Ownable.sol";
 import "../GiftToken/GiftToken.sol";
@@ -12,7 +12,7 @@ contract Booster is Ownable {
         _;
     }
 
-    DecenterCards public decenterCards;
+    SeleneanCards public seleneanCards;
     CardMetadata public metadataContract;
 
 
@@ -42,7 +42,7 @@ contract Booster is Ownable {
 
 
     function Booster(address _cardAddress) public {
-        decenterCards = DecenterCards(_cardAddress);
+        seleneanCards = SeleneanCards(_cardAddress);
     }
     
     /// @notice buy booster for BOOSTER_PRICE
@@ -101,7 +101,7 @@ contract Booster is Ownable {
         uint[] memory cardIds = new uint[](randomNumbers.length);
 
         for (uint i = 0; i<randomNumbers.length; i++) {
-            cardIds[i] = decenterCards.createCard(msg.sender, randomNumbers[i]);
+            cardIds[i] = seleneanCards.createCard(msg.sender, randomNumbers[i]);
 
             if (!boughtWithToken[_boosterId]){
                 address artist = metadataContract.getArtist(randomNumbers[i]);
@@ -184,7 +184,7 @@ contract Booster is Ownable {
 
         for (uint i=0; i<_n; i++) {
             // balanceOf is used because you would get same cards if buyBooster called at same block
-            _hash = uint(keccak256(_hash, i, numOfBoosters, decenterCards.balanceOf(msg.sender), msg.sender));
+            _hash = uint(keccak256(_hash, i, numOfBoosters, seleneanCards.balanceOf(msg.sender), msg.sender));
             uint rand = _hash % _maxNum;
             randomNums[i] = metadataContract.getCardByRarity(rand);
         }
