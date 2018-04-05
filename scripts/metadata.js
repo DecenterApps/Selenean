@@ -31,7 +31,9 @@ async function parseBigJson(cb) {
 
     let i = 0;
 
-    for(let card of bigJson.cards) {
+    let cards = bigJson.cards.sort((a,b) => parseInt(a.ID) - parseInt(b.ID));
+
+    for(let card of cards) {
         const { stdout, stderr } = await exec('ipfs add -q ./images/' + card.image);
 
         const ipfsHashes  = stdout.split('\n');
@@ -58,14 +60,20 @@ async function parseBigJson(cb) {
 async function ipfs() {
 
     parseBigJson(async () => {
-        const { stdout, stderr } = await exec('ipfs add -rq ./cards');
+        const cards = ['card_0', 'card_1', 'card_2', 'card_3', 'card_4', 'card_5', 'card_6', 'card_7', 'card_8', 'card_9', 'card_10', 'card_11', 'card_12', 'card_13', 'card_14', 'card_15', 'card_16', 'card_17', 'card_18', 'card_19', 'card_20', 'card_21', 'card_22', 'card_23', 'card_24', 'card_25', 'card_26', 'card_27', 'card_28', 'card_29']
 
-        let ipfsHashes = stdout.split('\n');
-    
-        ipfsHashes.pop();
-        ipfsHashes.pop();
-    
-        const rarity = bigJson.cards.map(c => c.rarity);
+        let ipfsHashes = [];
+
+        for(let card of cards) {
+            const { stdout, stderr } = await exec('ipfs add -q ./cards/' + card);
+
+            ipfsHashes.push(stdout.split('\n')[0]);
+        }
+
+        const rarity = bigJson.cards.map(c => c.rarityScore);
+
+        console.log(rarity);
+
         const artist = bigJson.cards.map(c => c.artist);
     
         await sendTxInBatch(ipfsHashes, rarity, artist);
@@ -81,11 +89,11 @@ async function sendTxInBatch(arr, rarity, artist) {
 
         const {hashFunction, size, ipfsHash} = deconstructIpfsHash(hash);
 
-        console.log(rarity[i], ipfsHash, hashFunction, size);
-
         if (rarity[i] != undefined) {
-            await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size, artist[i]], gasPrice, web3.toHex(nonce));
-            nonce++;
+            console.log(hash, rarity[i], ipfsHash);
+
+            // await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size, artist[i]], gasPrice, web3.toHex(nonce));
+            // nonce++;
             i++;
         }
     }
@@ -141,7 +149,7 @@ const sendRawTransaction = (web3, transactionParams, privateKey) =>
 function deconstructIpfsHash(ipfs) {
     const ipfsBase58 = bs58.decode(ipfs).toString('hex');
 
-    console.log('ipfs: ', ipfs, 'IpfsB58: ', ipfsBase58);
+    //console.log('ipfs: ', ipfs, 'IpfsB58: ', ipfsBase58);
 
     const hashFunction = '0x' + ipfsBase58.slice(0, 2);
     const size = '0x' + ipfsBase58.slice(2, 4);
@@ -168,7 +176,9 @@ function hexToBase58(hex) {
 }
 
 (async () => {
-    await ipfs();
+    //await ipfs();
+
+    console.log(constructIpfsHash(18, 32, '5e896d13a472bcc493b2ea5d74cf12e1fe4c0ca6c122d7b25809ec52a44043c5'));
 
     // const ipfsBase58 = bs58.encode(Buffer.from("1220cc4e84e88983588834fbebc707dc6c7c89bc8275f8e0b337f6ea002ffacb755c", "hex"));
 

@@ -1,488 +1,589 @@
 {
-    "cards": [
-      {
-        "title": "Computer Case",
-        "rarity": 700,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 10,
-          "space": 5,
-          "level": 1
-        },
-        "values": {
-          "space": 1
-        },
-        "image": "computer-case.jpg",
-        "type": "Container",
-        "description": "Test description for card computer"
+  "cards": [
+    {
+      "ID": "0",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "cost": {
+        "funds": 100,
+        "level": 1
       },
-      {
-        "title": "Rig",
-        "rarity": 200,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 1000,
-          "level": 3,
-          "space": 15
-        },
-        "values": {
-          "space": 4
-        },
-        "image": "mining-rig.jpg",
-        "type": "Container",
-        "description": ""
-      },
-      {
-        "title": "Mount",
-        "rarity": 300,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 10000,
-          "level": 6,
-          "space": 25
-        },
-        "values": {
-          "space": 4
-        },
-        "image": "mount.jpg",
-        "type": "Container",
-        "description": ""
-      },
-      {
-        "title": "CPU",
-        "rarity": 820,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 10,
-          "level": 1,
-          "space": 1,
-          "power": 1
-        },
-        "bonus": {
-          "funds": 1
-        },
-        "image": "cpu.jpg",
-        "type": "Mining",
-        "description": "CPU brate moy"
-      },
-      {
-        "title": "Graphics card",
-        "rarity": 730,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 100,
-          "space": 1,
-          "level": 3,
-          "power": 4
-        },
-        "bonus": {
-          "funds": 5
-        },
-        "image": "graphics-card.jpg",
-        "type": "Mining",
-        "description": ""
-      },
-      {
-        "title": "ASIC miner",
-        "rarity": 900,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 10000,
-          "level": 6,
-          "power": 16,
-          "space": 1
-        },
-        "bonus": {
-          "funds": 100
-        },
-        "image": "asic-miner.jpg",
-        "type": "Mining",
-        "description": ""
-      },
-      {
-        "title": "Garage",
-        "rarity": 910,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "level": 1
-        },
-        "values": {
-          "space": 40,
-          "power": 3
-        },
-        "image": "garage.jpg",
-        "type": "Location",
-        "description": ""
-      },
-      {
-        "title": "Coworking space",
-        "rarity": 130,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 500,
-          "level": 2
-        },
-        "values": {
-          "space": 60,
-          "power": 9
-        },
-        "image": "coworking-space.jpg",
-        "type": "Location",
-        "description": ""
-      },
-      {
-        "title": "Shantytown Office",
-        "rarity": 650,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 2000,
-          "level": 4
-        },
-        "values": {
-          "space": 80,
-          "power": 20
-        },
-        "image": "shanty-town-office.jpg",
-        "type": "Location",
-        "description": ""
-      },
-      {
-        "title": "Downtown Office",
-        "rarity": 650,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 10000,
-          "level": 6
-        },
-        "values": {
-          "space": 120,
-          "power": 50
-        },
-        "image": "downtown-office.jpg",
-        "type": "Location",
-        "description": ""
-      },
-      {
-        "title": "Elite Office",
-        "rarity": 550,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 100000,
-          "level": 10
-        },
-        "values": {
-          "space": 160,
-          "power": 110
-        },
-        "image": "elite-office.jpg",
-        "type": "Location",
-        "description": ""
-      },
-      {
-        "title": "Office Building",
-        "rarity": 220,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 1000000,
-          "level": 20
-        },
-        "values": {
-          "space": 200,
-          "power": 230
-        },
-        "image": "office-building.jpg",
-        "type": "Location",
-        "description": ""
-      },
-      {
-        "title": "Intern Developer",
-        "rarity": 750,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "space": 10,
-          "funds": 15,
-          "level": 1
-        },
-        "bonus": {
-          "development": 1
-        },
-        "image": "intern-dev.jpg",
-        "type": "Development",
-        "description": ""
-      },
-      {
-        "title": "Junior Developer",
-        "rarity": 770,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "space": 10,
-          "funds": 100,
-          "level": 2
-        },
-        "bonus": {
-          "development": 4
-        },
-        "image": "junior-dev.jpg",
-        "type": "Development",
-        "description": ""
-      },
-      {
-        "title": "Freelance Expert",
-        "rarity": 510,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "space": 20,
-          "funds": 500,
-          "level": 4
-        },
-        "bonus": {
-          "development": 10
-        },
-        "image": "freelancer.jpg",
-        "type": "Development",
-        "description": ""
-      },
-      {
-        "title": "Senior Developer",
-        "rarity": 510,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "space": 20,
-          "funds": 3000,
-          "level": 5
-        },
-        "bonus": {
-          "development": 22
-        },
-        "image": "senior-dev.jpg",
-        "type": "Development",
-        "description": ""
-      },
-      {
-        "title": "Tech Lead",
-        "rarity": 250,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "space": 40,
-          "funds": 10000,
-          "level": 6
-        },
-        "bonus": {
-          "development": 46
-        },
-        "image": "tech-lead.jpg",
-        "type": "Development",
-        "description": ""
-      },
-      {
-        "title": "Project Architect",
-        "rarity": 50,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "space": 40,
-          "funds": 40000,
-          "level": 10
-        },
-        "bonus": {
-          "development": 76
-        },
-        "image": "project-architect.jpg",
-        "type": "Development",
-        "description": ""
-      },
-      {
-        "title": "Hacker",
-        "rarity": 220,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "level": 1
-        },
-        "bonus": null,
-        "image": "hacker.jpg",
-        "type": "Development",
-        "description": ""
-      },
-      {
-        "title": "Outsourcing Gig",
-        "rarity": 750,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "development": 8,
-          "time": 70
-        },
-        "bonus": {
-          "xp": 8,
-          "funds": 100
-        },
-        "image": "part-time-gig.jpg",
-        "type": "Project",
-        "description": ""
-      },
-      {
-        "title": "For-profit Đapp",
-        "rarity": 950,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "development": 16,
-          "time": 210,
-          "funds": 50
-        },
-        "bonus": {
-          "xp": 64,
-          "funds": 200
-        },
-        "image": "outsourcing.jpeg",
-        "type": "Project",
-        "description": ""
-      },
-      {
-        "title": "Optimize Mining Algorithm",
-        "rarity": 950,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "development": 32,
-          "time": 420,
-          "funds": 1000
-        },
-        "bonus": {
-          "xp": 512,
-          "funds": 4000
-        },
-        "image": "algo.jpg",
-        "type": "Project",
-        "description": ""
-      },
-      {
-        "title": "Token Crowdsale",
-        "rarity": 550,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "development": 56,
-          "time": 2520,
-          "funds": 5000
-        },
-        "bonus": {
-          "xp": 4096,
-          "funds": 20000
-        },
-        "image": "missing.jpeg",
-        "type": "Project",
-        "description": ""
-      },
-      {
-        "title": "Develop Decentralized Protocol",
-        "rarity": 150,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "development": 120,
-          "time": 10080,
-          "funds": 20000
-        },
-        "bonus": {
-          "xp": 32796,
-          "funds": 100000
-        },
-        "image": "missing.jpeg",
-        "type": "Project",
-        "description": ""
-      },
-      {
-        "title": "Consensus Research Project",
-        "rarity": 160,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "development": 240,
-          "time": 20160,
-          "funds": 100000
-        },
-        "bonus": {
-          "xp": 262144,
-          "funds": 500000
-        },
-        "image": "missing.jpeg",
-        "type": "Project",
-        "description": ""
-      },
-      {
-        "title": "Solar Panels",
-        "rarity": 750,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 500,
-          "space": 15,
-          "level": 1
-        },
-        "bonus": {
-          "power": 15
-        },
-        "image": "solar-panels.jpeg",
-        "type": "Power",
-        "description": ""
-      },
-      {
-        "title": "Black market batteries",
-        "rarity": 770,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 3000,
-          "space": 30,
-          "level": 1
-        },
-        "bonus": {
-          "power": 50
-        },
-        "image": "black-market-batteries.JPG",
-        "type": "Power",
-        "description": ""
-      },
-      {
-        "title": "Jury-rigged Generator",
-        "rarity": 32,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 10000,
-          "space": 60,
-          "level": 1
-        },
-        "bonus": {
-          "power": 500
-        },
-        "image": "generator.jpg",
-        "type": "Power",
-        "description": ""
-      },
-      {
-        "title": "GRID Connector",
-        "rarity": 5,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 1000,
-          "level": 1
-        },
-        "bonus": {
-          "TODO": true,
-          "funds": 10
-        },
-        "image": "connector.jpg",
-        "type": "Misc",
-        "description": ""
-      },
-      {
-        "title": "Coffe Miner",
-        "rarity": 220,
-        "artist": "0x93cdb0a93fc36f6a53ed21ecf6305ab80d06beca",
-        "cost": {
-          "funds": 20,
-          "level": 1
-        },
-        "bonus": {
-          "TODO": true,
-          "funds": 10
-        },
-        "image": "coffe-miner.jpeg",
-        "type": "Misc",
-        "description": ""
+      "flavorText": "Well, you gotta start somewhere...",
+      "image": "garage.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Garage",
+      "type": "Location",
+      "unique": false,
+      "values": {
+        "power": 5,
+        "space": 40
       }
-    ]
-  }
-  
+    },
+    {
+      "ID": "1",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "cost": {
+        "funds": 500,
+        "level": 2
+      },
+      "flavorText": "",
+      "image": "coworking-space.jpg",
+      "mechanicsText": "",
+      "rarityScore": "576",
+      "title": "Coworking Space",
+      "type": "Location",
+      "unique": false,
+      "values": {
+        "power": 12,
+        "space": 60
+      }
+    },
+    {
+      "ID": "10",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 5
+      },
+      "cost": {
+        "funds": 100,
+        "level": 3,
+        "power": 4,
+        "space": 1
+      },
+      "flavorText": "Legend says that these were used to play the mighty videogames of old...",
+      "image": "gpu.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "GPU",
+      "type": "Mining",
+      "unique": false
+    },
+    {
+      "ID": "11",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 100
+      },
+      "cost": {
+        "funds": 10000,
+        "level": 6,
+        "power": 16,
+        "space": 1
+      },
+      "flavorText": "A truly efficient miner, from a more profitable age.",
+      "image": "asic-miner.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "ASIC Miner",
+      "type": "Mining",
+      "unique": false
+    },
+    {
+      "ID": "12",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "development": 1
+      },
+      "cost": {
+        "funds": 15,
+        "level": 1,
+        "space": 10
+      },
+      "flavorText": "I have no idea what I'm doing...",
+      "image": "intern-programmer.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Intern Programmer",
+      "type": "Development",
+      "unique": false
+    },
+    {
+      "ID": "13",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "development": 4
+      },
+      "cost": {
+        "funds": 100,
+        "level": 2,
+        "space": 10
+      },
+      "flavorText": "It compiled! That means it's working.",
+      "image": "junior-developer.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Junior Developer",
+      "type": "Development",
+      "unique": false
+    },
+    {
+      "ID": "14",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "development": 10
+      },
+      "cost": {
+        "funds": 500,
+        "level": 4,
+        "space": 20
+      },
+      "flavorText": "You've just hired me for 14.5 seconds. How can I help?",
+      "image": "freelance-consultant.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Freelance Consultant",
+      "type": "Development",
+      "unique": false
+    },
+    {
+      "ID": "15",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "development": 22
+      },
+      "cost": {
+        "funds": 3000,
+        "level": 5,
+        "space": 20
+      },
+      "flavorText": "I remeber the old days: The DAO hack, Parity bug, optimizing around gas limits... You kids have it easy.",
+      "image": "senior-developer.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Senior Developer",
+      "type": "Development",
+      "unique": false
+    },
+    {
+      "ID": "16",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "development": 46
+      },
+      "cost": {
+        "funds": 10000,
+        "level": 6,
+        "space": 40
+      },
+      "flavorText": "I'm sure you can accomplish ALL these tasks today! Just don't forget to SMILE.",
+      "image": "techical-team-leader.jpg",
+      "mechanicsText": "",
+      "rarityScore": "576",
+      "title": "Techical Team Leader",
+      "type": "Development",
+      "unique": false
+    },
+    {
+      "ID": "17",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "development": 76
+      },
+      "cost": {
+        "funds": 40000,
+        "level": 10,
+        "space": 40
+      },
+      "flavorText": "Silence! Do not disturb my thinking! We have a future to build.",
+      "image": "project-architect.jpg",
+      "mechanicsText": "",
+      "rarityScore": "485",
+      "title": "Project Architect",
+      "type": "Development",
+      "unique": false
+    },
+    {
+      "ID": "18",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "development": 2,
+        "funds": 2
+      },
+      "cost": {
+        "funds": 500,
+        "level": 4,
+        "space": 20
+      },
+      "flavorText": "",
+      "image": "black-hat-hacker.jpg",
+      "mechanicsText": "Gain X funds each block.",
+      "rarityScore": "576",
+      "title": "Black Hat Hacker",
+      "type": "Development",
+      "unique": false
+    },
+    {
+      "ID": "19",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "power": 15
+      },
+      "cost": {
+        "funds": 500,
+        "level": 2,
+        "space": 15
+      },
+      "flavorText": "Free power, free people!",
+      "image": "solar-panels.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Solar Panels",
+      "type": "Power",
+      "unique": false
+    },
+    {
+      "ID": "2",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "cost": {
+        "funds": 2000,
+        "level": 4
+      },
+      "flavorText": "I love the smell of damp mould in the morning...",
+      "image": "shaggy-office.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Shaggy Office",
+      "type": "Location",
+      "unique": false,
+      "values": {
+        "power": 20,
+        "space": 100
+      }
+    },
+    {
+      "ID": "20",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "power": 50
+      },
+      "cost": {
+        "funds": 3000,
+        "level": 6,
+        "space": 30
+      },
+      "flavorText": "I know a guy who boosts these bad boys from parked self driving cars at the MegaMall.",
+      "image": "black-market-batteries.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Black Market Batteries",
+      "type": "Power",
+      "unique": false
+    },
+    {
+      "ID": "21",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "power": 500
+      },
+      "cost": {
+        "funds": 10000,
+        "level": 10,
+        "space": 60
+      },
+      "flavorText": "We hacked this together from 3D printed parts and retired Chineese tech. It's only slightly radioactive.",
+      "image": "diy-power-generator.jpg",
+      "mechanicsText": "",
+      "rarityScore": "485",
+      "title": "DIY Power Generator",
+      "type": "Power",
+      "unique": false
+    },
+    {
+      "ID": "22",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 10
+      },
+      "cost": {
+        "funds": 1000,
+        "level": 4,
+        "space": 10
+      },
+      "flavorText": "GRIDCONEEEEEEEEECT",
+      "image": "grid-connector.jpg",
+      "mechanicsText": "Unique. For each unit of unspent POWER at location, gain X FUNDS.",
+      "rarityScore": "250",
+      "title": "GRID Connector",
+      "type": "Misc",
+      "unique": true
+    },
+    {
+      "ID": "23",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 10,
+        "development": 10
+      },
+      "cost": {
+        "funds": 1000,
+        "level": 3,
+        "space": 10
+      },
+      "flavorText": "Make money by grinding sweet sweet coffee... Truly makind's greatest invention. ",
+      "image": "coffee-machine-miner.jpg",
+      "mechanicsText": "Unique. Gain X funds each block. All developers on location gain X% bonus DEV. ",
+      "rarityScore": "576",
+      "title": "Coffee Machine Miner",
+      "type": "Misc",
+      "unique": true
+    },
+    {
+      "ID": "24",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 100,
+        "xp": 8
+      },
+      "cost": {
+        "development": 1,
+        "level": 1,
+        "time": 70
+      },
+      "flavorText": "Hey, this isn't what I signed up for!",
+      "image": "outourced-project.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Outourced Project",
+      "type": "Project",
+      "unique": false
+    },
+    {
+      "ID": "25",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 200,
+        "xp": 64
+      },
+      "cost": {
+        "development": 8,
+        "funds": 50,
+        "level": 2,
+        "time": 210
+      },
+      "flavorText": "Dude, it's a provably fair system... It is guaranteed to make us money!",
+      "image": "profitable-dapp.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Profitable Đapp",
+      "type": "Project",
+      "unique": false
+    },
+    {
+      "ID": "26",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 4000,
+        "xp": 512
+      },
+      "cost": {
+        "development": 32,
+        "funds": 1000,
+        "level": 5,
+        "time": 420
+      },
+      "flavorText": "-We keep pointlessly messing with the hardware, that makes hashing EVEN MORE random!\n -Genius!",
+      "image": "mining-algorithm-optimization.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Mining Algorithm Optimization",
+      "type": "Project",
+      "unique": false
+    },
+    {
+      "ID": "27",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 20000,
+        "xp": 4096
+      },
+      "cost": {
+        "development": 56,
+        "funds": 5000,
+        "level": 7,
+        "time": 2520
+      },
+      "flavorText": "Get your buzzwords here! Get'em while they're hot!",
+      "image": "initial-coin-offering.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Initial Coin Offering",
+      "type": "Project",
+      "unique": false
+    },
+    {
+      "ID": "28",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 100000,
+        "xp": 32796
+      },
+      "cost": {
+        "development": 120,
+        "funds": 20000,
+        "level": 9,
+        "time": 10080
+      },
+      "flavorText": "It's not just a protocol exchange protocol, it's a protocol exchange protocol FRAMEWORK.",
+      "image": "decentralized-protocol-development.jpg",
+      "mechanicsText": "",
+      "rarityScore": "576",
+      "title": "Decentralized Protocol Development",
+      "type": "Project",
+      "unique": false
+    },
+    {
+      "ID": "29",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 500000,
+        "xp": 262144
+      },
+      "cost": {
+        "development": 240,
+        "funds": 100000,
+        "level": 11,
+        "time": 20160
+      },
+      "flavorText": "Just a small contribution to the quadratic sharding merkelized cross-chain token swap fraud proofs.",
+      "image": "consensus-improvement.jpg",
+      "mechanicsText": "",
+      "rarityScore": "485",
+      "title": "Consensus Improvement",
+      "type": "Project",
+      "unique": false
+    },
+    {
+      "ID": "3",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "cost": {
+        "funds": 10000,
+        "level": 6
+      },
+      "flavorText": "The rent is not a problem, we spend all our money on overpriced lattes!",
+      "image": "downtown-office.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Downtown Office",
+      "type": "Location",
+      "unique": false,
+      "values": {
+        "power": 50,
+        "space": 140
+      }
+    },
+    {
+      "ID": "4",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "cost": {
+        "funds": 100000,
+        "level": 10
+      },
+      "flavorText": "I swear, one day these things are going to run themselves.",
+      "image": "smart-office.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "Smart Office",
+      "type": "Location",
+      "unique": false,
+      "values": {
+        "power": 110,
+        "space": 200
+      }
+    },
+    {
+      "ID": "5",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "cost": {
+        "funds": 1000000,
+        "level": 20
+      },
+      "flavorText": "Lambo parking? Check. Helipad? Check. We'll take it!",
+      "image": "office-building.jpg",
+      "mechanicsText": "",
+      "rarityScore": "576",
+      "title": "Office Building",
+      "type": "Location",
+      "unique": false,
+      "values": {
+        "power": 230,
+        "space": 240
+      }
+    },
+    {
+      "ID": "6",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "cost": {
+        "funds": 10,
+        "level": 1,
+        "space": 5
+      },
+      "flavorText": "NOTICE: Stop playing VR Minesweeper as it interfeers with our revenue stream!",
+      "image": "computer-case.jpg",
+      "mechanicsText": "Can contain CPU-s and Graphics Cards.",
+      "rarityScore": "900",
+      "title": "Computer Case",
+      "type": "Container",
+      "unique": false,
+      "values": {
+        "space": 2
+      }
+    },
+    {
+      "ID": "7",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "cost": {
+        "funds": 1000,
+        "level": 3,
+        "space": 15
+      },
+      "flavorText": "How this thing is holding together is anybody's guess...",
+      "image": "mining-rig.jpg",
+      "mechanicsText": "Can contain Graphics Cards.",
+      "rarityScore": "900",
+      "title": "Mining Rig",
+      "type": "Container",
+      "unique": false,
+      "values": {
+        "space": 4
+      }
+    },
+    {
+      "ID": "8",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "cost": {
+        "funds": 10000,
+        "level": 6,
+        "space": 25
+      },
+      "flavorText": "It's basically a glorified fridge. But it has shiny buttons.",
+      "image": "asic-mount.jpg",
+      "mechanicsText": "Can contain ASIC miners.",
+      "rarityScore": "900",
+      "title": "ASIC Mount",
+      "type": "Container",
+      "unique": false,
+      "values": {
+        "space": 4
+      }
+    },
+    {
+      "ID": "9",
+      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
+      "bonus": {
+        "funds": 1
+      },
+      "cost": {
+        "funds": 40,
+        "level": 1,
+        "power": 1,
+        "space": 1
+      },
+      "flavorText": "I remember when we started off, we didn't have two cycles to rub together...",
+      "image": "cpu.jpg",
+      "mechanicsText": "",
+      "rarityScore": "900",
+      "title": "CPU",
+      "type": "Mining",
+      "unique": false
+    }]
+}
