@@ -6,6 +6,7 @@ import texttable as tt
 with open('config.json') as data_file:
         config = json.load(data_file)
 
+command = sys.argv[1]
 
 web3 = Web3(HTTPProvider('https://kovan.decenter.com'))
 card_abi = config['cardContract']['abi']
@@ -13,6 +14,11 @@ card_address = config['cardContract']['address']
 card_contract = web3.eth.contract(card_address, abi=card_abi)
 
 numOfCards = card_contract.call().totalSupply()
+
+if command == "min":
+	print("Num of cards: {}".format(numOfCards))
+	print("Num of boosters: {}".format(numOfCards/5))
+	sys.exit()
 
 mapping = {}
 for i in range(0, numOfCards):
