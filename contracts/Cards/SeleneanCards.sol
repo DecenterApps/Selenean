@@ -5,7 +5,7 @@ import "./Cards.sol";
 import "./Booster.sol";
 
 /// @title Contract derived from Cards contract with custom implementation on Booster and Metadata
-contract DecenterCards is Cards {
+contract SeleneanCards is Cards {
     
     CardMetadata metadataContract;
     Booster boosterContract;

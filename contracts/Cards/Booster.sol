@@ -1,18 +1,18 @@
 pragma solidity ^0.4.18;
 
-import "./DecenterCards.sol";
+import "./SeleneanCards.sol";
 import "./CardMetadata.sol";
 import "../Utils/Ownable.sol";
 import "../GiftToken/GiftToken.sol";
 
 contract Booster is Ownable {
-    
+
     modifier onlyGiftToken {
         require(msg.sender == address(giftToken));
         _;
     }
 
-    DecenterCards public decenterCards;
+    SeleneanCards public seleneanCards;
     CardMetadata public metadataContract;
 
 
@@ -42,9 +42,9 @@ contract Booster is Ownable {
 
 
     function Booster(address _cardAddress) public {
-        decenterCards = DecenterCards(_cardAddress);
+        seleneanCards = SeleneanCards(_cardAddress);
     }
-    
+
     /// @notice buy booster for BOOSTER_PRICE
     function buyBooster() public payable {
         require(msg.value >= BOOSTER_PRICE);
@@ -52,10 +52,10 @@ contract Booster is Ownable {
         uint boosterId = numOfBoosters;
 
         boosterOwners[boosterId] = msg.sender;
-        blockNumbers[boosterId] = block.number;        
+        blockNumbers[boosterId] = block.number;
 
         unrevealedBoosters[msg.sender].push(boosterId);
-        
+
         numOfBoosters++;
 
         BoosterBought(msg.sender, boosterId);
@@ -76,7 +76,7 @@ contract Booster is Ownable {
         blockNumbers[boosterId] = block.number;
 
         unrevealedBoosters[_to].push(boosterId);
-        
+
         numOfBoosters++;
 
         BoosterBought(_to, boosterId);
@@ -97,11 +97,11 @@ contract Booster is Ownable {
         // hash(random hash), n(size of array we need), maxNum(max number that can be in array)
         uint blockhashNum = uint(block.blockhash(blockNumbers[_boosterId]));
         uint[] memory randomNumbers = _random(blockhashNum, numberOfCardsInBooster);
-        
+
         uint[] memory cardIds = new uint[](randomNumbers.length);
 
         for (uint i = 0; i<randomNumbers.length; i++) {
-            cardIds[i] = decenterCards.createCard(msg.sender, randomNumbers[i]);
+            cardIds[i] = seleneanCards.createCard(msg.sender, randomNumbers[i]);
 
             if (!boughtWithToken[_boosterId]){
                 address artist = metadataContract.getArtist(randomNumbers[i]);
@@ -121,19 +121,19 @@ contract Booster is Ownable {
         BoosterRevealed(_boosterId);
     }
 
-    /// @notice return unrevealed boosters for user 
+    /// @notice return unrevealed boosters for user
     /// @return array of boosterIds
     function getMyBoosters() public view returns(uint[]) {
         return unrevealedBoosters[msg.sender];
     }
-    
+
     /// @notice return cardIds from boosters
     /// @param _boosterId id of booster
     /// @return array of cardIds
     function getCardFromBooster(uint _boosterId) public view returns(uint[]) {
         return boosters[_boosterId];
     }
-    
+
 
     /// @notice adds metadata address to contract only if it doesn't exist
     /// @param _metadataContract address of metadata contract
@@ -157,11 +157,11 @@ contract Booster is Ownable {
     function withdraw() public {
         uint balance = withdrawBalance[msg.sender];
         withdrawBalance[msg.sender] = 0;
-        msg.sender.transfer(balance);   
+        msg.sender.transfer(balance);
     }
 
     function _removeBooster(address _user, uint _boosterId) private {
-        uint boostersLength = unrevealedBoosters[_user].length; 
+        uint boostersLength = unrevealedBoosters[_user].length;
 
         delete boosterOwners[_boosterId];
 
@@ -180,15 +180,15 @@ contract Booster is Ownable {
     function _random(uint _hash, uint _n) private view returns (uint[]) {
         uint[] memory randomNums = new uint[](_n);
         uint _maxNum = metadataContract.getMaxRandom() + 1;
-        
+
 
         for (uint i=0; i<_n; i++) {
             // balanceOf is used because you would get same cards if buyBooster called at same block
-            _hash = uint(keccak256(_hash, i, numOfBoosters, decenterCards.balanceOf(msg.sender), msg.sender));
+            _hash = uint(keccak256(_hash, i, numOfBoosters, seleneanCards.balanceOf(msg.sender), msg.sender));
             uint rand = _hash % _maxNum;
             randomNums[i] = metadataContract.getCardByRarity(rand);
         }
-        
+
         return randomNums;
     }
 
