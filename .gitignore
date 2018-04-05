@@ -2,7 +2,7 @@
 node_modules
 build
 .DS_STORE
-
+.idea
 scripts/node_modules
 scripts/.env
 scripts/__pycache__
