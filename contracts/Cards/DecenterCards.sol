@@ -49,7 +49,8 @@ contract DecenterCards is Cards {
     /// @notice adds booster address to contract only if it doesn't exist
     /// @param _boosterContract address of booster contract
     function addBoosterContract(address _boosterContract) public onlyOwner {
-        require(address(boosterContract) == 0x0);
+        // not required while on testnet
+        // require(address(boosterContract) == 0x0);
 
         boosterContract = Booster(_boosterContract);
     }
@@ -57,7 +58,8 @@ contract DecenterCards is Cards {
     /// @notice adds metadata address to contract only if it doesn't exist
     /// @param _metadataContract address of metadata contract
     function addMetadataContract(address _metadataContract) public onlyOwner {
-        require(address(metadataContract) == 0x0);
+        // not required while on testnet
+        // require(address(metadataContract) == 0x0);
 
         metadataContract = CardMetadata(_metadataContract);
     }

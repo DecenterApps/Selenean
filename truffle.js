@@ -8,7 +8,7 @@ module.exports = {
     networks: {
         kovan: {
             provider: function() {
-                return new HDWalletProvider(mnemonic, `https://kovan.infura.io/`);
+                return new HDWalletProvider(mnemonic, `https://kovan.decenter.com/`);
             },
             network_id: '42'
         }

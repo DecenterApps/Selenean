@@ -17,14 +17,14 @@ contract Booster is Ownable {
 
 
     uint public BOOSTER_PRICE = 10 ** 15; // 0.001 ether
-    uint public OWNER_PERCENTAGE = 15;
-    uint public CARD_ARTIST_PERCENTAGE = 15;
+    uint public OWNER_PERCENTAGE = 60;
+    uint public CARD_ARTIST_PERCENTAGE = 3;
+    uint public REVEALER_PERCENTAGE = 25;
     uint ONE_GIFT_TOKEN = 10 ** 8;
 
     uint public numberOfCardsInBooster = 5;
-    uint public ownerBalance;
 
-
+    mapping(address => uint) public withdrawBalance;
     mapping(uint => address) public boosterOwners;
     mapping(uint => uint) public blockNumbers;
     mapping(address => uint[]) public unrevealedBoosters;
@@ -58,8 +58,6 @@ contract Booster is Ownable {
         
         numOfBoosters++;
 
-        ownerBalance += msg.value * OWNER_PERCENTAGE / 100;
-
         BoosterBought(msg.sender, boosterId);
     }
 
@@ -90,14 +88,9 @@ contract Booster is Ownable {
         require(blockNumbers[_boosterId] > block.number - 255);
         require(boosterOwners[_boosterId] == msg.sender || blockNumbers[_boosterId] < block.number - 100);
 
-        //this is amount for every card artist
-        uint amountForArtists = (BOOSTER_PRICE*CARD_ARTIST_PERCENTAGE/100) / numberOfCardsInBooster;
-
         uint numOfCardTypes = metadataContract.getNumberOfCards();
 
         assert(numOfCardTypes >= numberOfCardsInBooster);
-
-        boosterOwners[_boosterId] = 0x0;
 
         _removeBooster(msg.sender, _boosterId);
 
@@ -112,11 +105,7 @@ contract Booster is Ownable {
 
             if (!boughtWithToken[_boosterId]){
                 address artist = metadataContract.getArtist(randomNumbers[i]);
-            }
-
-            //If address of artist is contract we won't send him ether
-            if (!isContract(artist)) {
-                artist.transfer(amountForArtists);
+                withdrawBalance[artist] += BOOSTER_PRICE * CARD_ARTIST_PERCENTAGE / 100;
             }
         }
 
@@ -125,7 +114,8 @@ contract Booster is Ownable {
         if (boughtWithToken[_boosterId] == true) {
             giftToken.transfer(msg.sender, ONE_GIFT_TOKEN / 10);
         } else {
-            msg.sender.transfer(BOOSTER_PRICE * 15 / 100);
+            withdrawBalance[msg.sender] += BOOSTER_PRICE * REVEALER_PERCENTAGE / 100;
+            withdrawBalance[owner] += BOOSTER_PRICE * OWNER_PERCENTAGE / 100;
         }
 
         BoosterRevealed(_boosterId);
@@ -148,7 +138,8 @@ contract Booster is Ownable {
     /// @notice adds metadata address to contract only if it doesn't exist
     /// @param _metadataContract address of metadata contract
     function addMetadataContract(address _metadataContract) public onlyOwner {
-        require(address(metadataContract) == 0x0);
+        // not required while on testnet
+        // require(address(metadataContract) == 0x0);
 
         metadataContract = CardMetadata(_metadataContract);
     }
@@ -156,25 +147,27 @@ contract Booster is Ownable {
     /// @notice adds GiftToken address only if it doesn't exist
     /// @param _giftTokenAddress address of GiftToken contract
     function addGiftToken(address _giftTokenAddress) public onlyOwner {
-        require(address(giftToken) == 0x0);
+        // not required while on testnet
+        // require(address(giftToken) == 0x0);
 
         giftToken = GiftToken(_giftTokenAddress);
     }
 
-    /// @notice withdraw method for owner to pull ether
-    /// @param _amount amount to be withdrawn
-    function withdraw(uint _amount) public onlyOwner {
-        owner.transfer(_amount);   
+    /// @notice withdraw method for anyone who owns money on contract
+    function withdraw() public {
+        uint balance = withdrawBalance[msg.sender];
+        withdrawBalance[msg.sender] = 0;
+        msg.sender.transfer(balance);   
     }
 
     function _removeBooster(address _user, uint _boosterId) private {
         uint boostersLength = unrevealedBoosters[_user].length; 
 
+        delete boosterOwners[_boosterId];
+
         for (uint i = 0; i<boostersLength; i++) {
             if (unrevealedBoosters[_user][i] == _boosterId) {
-                uint booster = unrevealedBoosters[_user][boostersLength-1];
-                unrevealedBoosters[_user][boostersLength-1] = unrevealedBoosters[_user][i];
-                unrevealedBoosters[_user][i] = booster; 
+                unrevealedBoosters[_user][i] = unrevealedBoosters[_user][boostersLength-1];
 
                 delete unrevealedBoosters[_user][boostersLength-1];
                 unrevealedBoosters[_user].length--;

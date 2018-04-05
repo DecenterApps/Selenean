@@ -46,7 +46,7 @@ contract CardMetadata is Ownable{
     }
 
     /// @dev only for testing purposes
-    function setNewRarities(uint[] _rarities) public {
+    function setNewRarities(uint[] _rarities) public onlyOwner {
         require (_rarities.length == rarities.length);
         
 

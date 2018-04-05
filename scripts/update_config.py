@@ -1,7 +1,18 @@
 import os
 import json
-import pprint
 
+
+"""
+==============
+This script is going to fill config.dist.json file with addresses and abi's from last build. 
+This means whenever you do "truffle migrate", you need to run this script and update config file.
+==============
+
+==============
+To run: $ python update_config.py
+==============
+
+"""
 directory = "../build/contracts"
 dict = {}
 abi = {}
