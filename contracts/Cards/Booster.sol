@@ -51,6 +51,7 @@ contract Booster is Ownable {
         require(!BUY_WITH_REVEAL);      
         require(!isContract(msg.sender));
 
+        uint boosterId = numOfBoosters;
         numOfBoosters++;
         
         uint numOfCardTypes = metadataContract.getNumberOfCards();
@@ -69,7 +70,7 @@ contract Booster is Ownable {
             withdrawBalance[artist] += BOOSTER_PRICE * CARD_ARTIST_PERCENTAGE / 100;
         }
 
-        boosters[_boosterId] = cardIds;
+        boosters[boosterId] = cardIds;
         // all money from buy and reveal goes to owner (leaving reveal percentage if we decide to change process)
         withdrawBalance[owner] += BOOSTER_PRICE * OWNER_PERCENTAGE / 100 + BOOSTER_PRICE * REVEALER_PERCENTAGE / 100;
         
