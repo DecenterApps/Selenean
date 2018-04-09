@@ -46,6 +46,17 @@ contract SeleneanCards is Cards {
         return cardId;
     }
 
+    /// @notice get how many cards of specific type user has
+    /// @param _user address of user
+    /// @param _metadataId metadataId of card
+    function numberOfCardsWithType(address _user, uint _metadataId) public view returns(uint _num) {
+        uint len = tokensOwned[_user].length;
+        for(uint i=0; i<len; i++) {
+            _num += (metadata[tokensOwned[_user][i]].id == _metadataId) ? 1 : 0;
+        }
+    }
+    
+
     /// @notice adds booster address to contract only if it doesn't exist
     /// @param _boosterContract address of booster contract
     function addBoosterContract(address _boosterContract) public onlyOwner {
