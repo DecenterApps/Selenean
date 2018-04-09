@@ -46,6 +46,7 @@ contract Booster is Ownable {
         seleneanCards = SeleneanCards(_cardAddress);
     }
 
+    /// @notice buy booster for BOOSTER_PRICE with automatic reveal
     function buyInstantBooster() public payable {
         require(msg.value >= BOOSTER_PRICE);
         require(!BUY_WITH_REVEAL);      
@@ -77,6 +78,38 @@ contract Booster is Ownable {
         BoosterInstantBought(msg.sender, boosterId);
     }
 
+    /// @notice buy booster for one GiftToken with automatic reveal
+    /// @param _to Address that will receive a booster
+    function buyInstantBoosterWithToken(address _to) public payable {
+        require(!BUY_WITH_REVEAL);
+        require(!isContract(_to));
+
+        uint boosterId = numOfBoosters;
+
+        giftToken.transferFrom(_to, this, ONE_GIFT_TOKEN);
+        boughtWithToken[boosterId] = true;
+
+        numOfBoosters++;
+        
+        uint numOfCardTypes = metadataContract.getNumberOfCards();
+
+        assert(numOfCardTypes >= numberOfCardsInBooster);
+
+        uint blockhashNum = uint(block.blockhash(block.number-1));
+        // hash(random hash), n(size of array we need)
+        uint[] memory metadataIds = _random(blockhashNum, numberOfCardsInBooster);
+        uint[] memory cardIds = new uint[](metadataIds.length);
+
+        for (uint i = 0; i<metadataIds.length; i++) {
+            cardIds[i] = seleneanCards.createCard(_to, metadataIds[i]);
+        }
+
+        boosters[boosterId] = cardIds;
+        
+        BoosterInstantBought(_to, boosterId);
+    }
+    
+
     /// @notice buy booster for BOOSTER_PRICE
     function buyBooster() public payable {
         require(msg.value >= BOOSTER_PRICE);
@@ -101,6 +134,7 @@ contract Booster is Ownable {
     /// @param _to Address that will receive a booster
     function buyBoosterWithToken(address _to) public onlyGiftToken {
         require(BUY_WITH_REVEAL);
+        require(!isContract(msg.sender));
 
         uint boosterId = numOfBoosters;
 

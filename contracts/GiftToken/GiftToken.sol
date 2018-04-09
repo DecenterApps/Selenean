@@ -47,7 +47,7 @@ contract GiftToken is StandardToken, Ownable {
 
         approve(address(booster), ONE_GIFT_TOKEN);
 
-        booster.buyBoosterWithToken(msg.sender);
+        booster.buyInstantBoosterWithToken(msg.sender);
 
     }
 
