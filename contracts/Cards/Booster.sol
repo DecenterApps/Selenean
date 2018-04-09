@@ -24,6 +24,8 @@ contract Booster is Ownable {
 
     uint public numberOfCardsInBooster = 5;
 
+    bool public BUY_WITH_REVEAL = false;
+
     mapping(address => uint) public withdrawBalance;
     mapping(uint => address) public boosterOwners;
     mapping(uint => uint) public blockNumbers;
@@ -36,18 +38,47 @@ contract Booster is Ownable {
 
     event BoosterBought(address user, uint boosterId);
     event BoosterRevealed(uint boosterId);
+    event BoosterInstantBought(address user, uint boosterId);
 
     GiftToken public giftToken;
-
-
 
     function Booster(address _cardAddress) public {
         seleneanCards = SeleneanCards(_cardAddress);
     }
 
+    function buyInstantBooster() public payable {
+        require(msg.value >= BOOSTER_PRICE);
+        require(!BUY_WITH_REVEAL);      
+
+        numOfBoosters++;
+        
+        uint numOfCardTypes = metadataContract.getNumberOfCards();
+
+        assert(numOfCardTypes >= numberOfCardsInBooster);
+
+        uint blockhashNum = uint(block.blockhash(block.number-1));
+        // hash(random hash), n(size of array we need)
+        uint[] memory metadataIds = _random(blockhashNum, numberOfCardsInBooster);
+        uint[] memory cardIds = new uint[](metadataIds.length);
+
+        for (uint i = 0; i<metadataIds.length; i++) {
+            cardIds[i] = seleneanCards.createCard(msg.sender, metadataIds[i]);
+
+            address artist = metadataContract.getArtist(metadataIds[i]);
+            withdrawBalance[artist] += BOOSTER_PRICE * CARD_ARTIST_PERCENTAGE / 100;
+        }
+
+        boosters[_boosterId] = cardIds;
+        // all money from buy and reveal goes to owner (leaving reveal percentage if we decide to change process)
+        withdrawBalance[owner] += BOOSTER_PRICE * OWNER_PERCENTAGE / 100 + BOOSTER_PRICE * REVEALER_PERCENTAGE / 100;
+        
+        BoosterInstantBought(msg.sender, boosterId);
+    }
+
     /// @notice buy booster for BOOSTER_PRICE
     function buyBooster() public payable {
         require(msg.value >= BOOSTER_PRICE);
+        require(BUY_WITH_REVEAL);
 
         uint boosterId = numOfBoosters;
 
@@ -66,6 +97,8 @@ contract Booster is Ownable {
     /// @notice Buying a booster with a GiftToken
     /// @param _to Address that will receive a booster
     function buyBoosterWithToken(address _to) public onlyGiftToken {
+        require(BUY_WITH_REVEAL);
+
         uint boosterId = numOfBoosters;
 
         giftToken.transferFrom(_to, this, ONE_GIFT_TOKEN);
@@ -94,17 +127,17 @@ contract Booster is Ownable {
 
         _removeBooster(msg.sender, _boosterId);
 
-        // hash(random hash), n(size of array we need), maxNum(max number that can be in array)
         uint blockhashNum = uint(block.blockhash(blockNumbers[_boosterId]));
-        uint[] memory randomNumbers = _random(blockhashNum, numberOfCardsInBooster);
+        // hash(random hash), n(size of array we need)
+        uint[] memory metadataIds = _random(blockhashNum, numberOfCardsInBooster);
 
-        uint[] memory cardIds = new uint[](randomNumbers.length);
+        uint[] memory cardIds = new uint[](metadataIds.length);
 
-        for (uint i = 0; i<randomNumbers.length; i++) {
-            cardIds[i] = seleneanCards.createCard(msg.sender, randomNumbers[i]);
+        for (uint i = 0; i<metadataIds.length; i++) {
+            cardIds[i] = seleneanCards.createCard(msg.sender, metadataIds[i]);
 
             if (!boughtWithToken[_boosterId]){
-                address artist = metadataContract.getArtist(randomNumbers[i]);
+                address artist = metadataContract.getArtist(metadataIds[i]);
                 withdrawBalance[artist] += BOOSTER_PRICE * CARD_ARTIST_PERCENTAGE / 100;
             }
         }
@@ -177,8 +210,11 @@ contract Booster is Ownable {
         }
     }
 
+    /// @notice method that gets N random metadataIds
+    /// @param _hash random hash used for random method
+    /// @param _n size of array that we need
     function _random(uint _hash, uint _n) private view returns (uint[]) {
-        uint[] memory randomNums = new uint[](_n);
+        uint[] memory metadataIds = new uint[](_n);
         uint _maxNum = metadataContract.getMaxRandom() + 1;
 
 
@@ -186,13 +222,18 @@ contract Booster is Ownable {
             // balanceOf is used because you would get same cards if buyBooster called at same block
             _hash = uint(keccak256(_hash, i, numOfBoosters, seleneanCards.balanceOf(msg.sender), msg.sender));
             uint rand = _hash % _maxNum;
-            randomNums[i] = metadataContract.getCardByRarity(rand);
+            metadataIds[i] = metadataContract.getCardByRarity(rand);
         }
 
-        return randomNums;
+        return metadataIds;
     }
 
-
+    /// @notice owner is able to change if we are buying booster with reveal or without it
+    /// @param _buyWithReveal bool that says should we buy with reveal or not
+    function setBytWithReveal(bool _buyWithReveal) public onlyOwner {
+        BUY_WITH_REVEAL = _buyWithReveal;
+    }
+    
     function isContract(address addr) private view returns (bool) {
         uint size;
         assembly { size := extcodesize(addr) }
