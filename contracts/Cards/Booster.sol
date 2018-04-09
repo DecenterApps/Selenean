@@ -49,6 +49,7 @@ contract Booster is Ownable {
     function buyInstantBooster() public payable {
         require(msg.value >= BOOSTER_PRICE);
         require(!BUY_WITH_REVEAL);      
+        require(!isContract(msg.sender));
 
         numOfBoosters++;
         
@@ -79,6 +80,7 @@ contract Booster is Ownable {
     function buyBooster() public payable {
         require(msg.value >= BOOSTER_PRICE);
         require(BUY_WITH_REVEAL);
+        require(!isContract(msg.sender));
 
         uint boosterId = numOfBoosters;
 
