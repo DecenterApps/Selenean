@@ -31,8 +31,15 @@ Call methods "addMetadataContract" inside "DecenterCards.sol and Booster.sol" wi
 ```sh
 Call method "addBoosterContract" in "DecenterCards.sol" with address of previously deployed "Booster.sol"
 ```
-
-
+### Deployment using truffle
+Kovan testnet
+```
+$ truffle migrate --network=kovan
+```
+Local testnet
+```
+$ truffle migrate
+```
 
 
 
