@@ -9,7 +9,7 @@ const bs58 = require('bs58');
 
 const fs = require('fs');
 
-const conf = require('./config.dist.json');
+const conf = require('./config.json');
 const bigJson = require('./big.json');
 const testContractAddress = conf.metadataContract.address;
 
@@ -72,8 +72,6 @@ async function ipfs() {
 
         const rarity = bigJson.cards.map(c => c.rarityScore);
 
-        console.log(rarity);
-
         const artist = bigJson.cards.map(c => c.artist);
     
         await sendTxInBatch(ipfsHashes, rarity, artist);
@@ -84,16 +82,17 @@ async function ipfs() {
 async function sendTxInBatch(arr, rarity, artist) {
     let i = 0;
 
+    console.log(rarity[0]);
+    
     for (const key in arr) {
         const hash = arr[key];
 
         const {hashFunction, size, ipfsHash} = deconstructIpfsHash(hash);
 
         if (rarity[i] != undefined) {
-            console.log(hash, rarity[i], ipfsHash);
 
-            // await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size, artist[i]], gasPrice, web3.toHex(nonce));
-            // nonce++;
+            await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size, artist[i]], gasPrice, web3.toHex(nonce));
+            nonce++;
             i++;
         }
     }

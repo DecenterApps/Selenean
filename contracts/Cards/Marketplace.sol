@@ -59,11 +59,13 @@ contract Marketplace is Ownable{
         numOfAds++;
         cardsOnSale.push(_cardId);
         positionOfCard[_cardId] = cardsOnSale.length - 1;
-
-        
-        //seleneanCards.transferFrom(msg.sender,this,_cardId);
+        seleneanCards.transferFrom(msg.sender,this,_cardId);
         //SellAd(msg.sender, _cardId, _acceptableExchange, _amount);
     }
+
+    
+
+
     /// @notice Function to buy card from Marketplace with Ether
     /// @param _cardId is id of card we want to buy
     function buyWithEther(uint _cardId) public payable {

@@ -55,8 +55,8 @@ contract SeleneanCards is Cards {
             _num += (metadata[tokensOwned[_user][i]].id == _metadataId) ? 1 : 0;
         }
     }
-    
 
+    
     /// @notice adds booster address to contract only if it doesn't exist
     /// @param _boosterContract address of booster contract
     function addBoosterContract(address _boosterContract) public onlyOwner {
