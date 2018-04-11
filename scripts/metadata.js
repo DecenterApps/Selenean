@@ -176,9 +176,9 @@ function hexToBase58(hex) {
 }
 
 (async () => {
-    //await ipfs();
+    await ipfs();
 
-    console.log(constructIpfsHash(18, 32, '5e896d13a472bcc493b2ea5d74cf12e1fe4c0ca6c122d7b25809ec52a44043c5'));
+    // console.log(constructIpfsHash(18, 32, '5e896d13a472bcc493b2ea5d74cf12e1fe4c0ca6c122d7b25809ec52a44043c5'));
 
     // const ipfsBase58 = bs58.encode(Buffer.from("1220cc4e84e88983588834fbebc707dc6c7c89bc8275f8e0b337f6ea002ffacb755c", "hex"));
 
