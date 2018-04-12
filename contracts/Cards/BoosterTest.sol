@@ -30,6 +30,7 @@ contract BoosterTest is Ownable {
         hash = uint(block.blockhash(block.number - 1));
     }
 
+    /// @dev think is it ok to buy cards to contract (not sure why not)
     function buyBoosterTo(address _user) public payable returns(bool) {
         require(msg.value > BOOSTER_PRICE);
         require(gameCards[msg.sender].length > 20);
@@ -60,6 +61,8 @@ contract BoosterTest is Ownable {
         BoosterBought(msg.sender, boosterId);
     }
 
+    /// @dev cards should be sorted (its easier for us to determine if there is duplicates if they are sorted)
+    /// TODO: implement check for duplicates
     function verifyCards(uint[] metadataIds) public returns(bool) {
         require(metadataIds.length > 20);
 
