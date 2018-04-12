@@ -3,12 +3,14 @@ pragma solidity ^0.4.18;
 import "./CardMetadata.sol";
 import "./Cards.sol";
 import "./Booster.sol";
+import "./Marketplace.sol";
 
 /// @title Contract derived from Cards contract with custom implementation on Booster and Metadata
 contract SeleneanCards is Cards {
     
     CardMetadata metadataContract;
     Booster boosterContract;
+    Marketplace marketplaceContract;
 
     mapping(uint => CardMetadata.CardProperties) public metadata;
 
@@ -51,7 +53,7 @@ contract SeleneanCards is Cards {
     /// @param _metadataId metadataId of card
     function numberOfCardsWithType(address _user, uint _metadataId) public view returns(uint _num) {
         uint len = tokensOwned[_user].length;
-        for(uint i=0; i<len; i++) {
+        for(uint i = 0; i<len; i++) {
             _num += (metadata[tokensOwned[_user][i]].id == _metadataId) ? 1 : 0;
         }
     }
@@ -74,4 +76,23 @@ contract SeleneanCards is Cards {
 
         metadataContract = CardMetadata(_metadataContract);
     }
+    
+    /// @notice adds marketplace address to contract only if it doesn't already exist
+    /// @param _marketplaceContract address of marketplace contract
+    function addMarketplaceContract(address _marketplaceContract) public onlyOwner {
+        // not required while on testnet
+        // require(address(marketplaceContract) == 0x0);
+        marketplaceContract = Marketplace(_marketplaceContract);
+    }
+    /// @notice approves Marketplace to take card ownership and transfers it (2 trsansactions)
+    /// @param _cardId is id of card we are going to sell
+    /// @param _price is price of card we are going to sell
+    /// @param _acceptableExchange is array of card acceptable for exchange 
+    function _approveAndTransfer(uint _cardId, uint _price, uint16[] _acceptableExchange) public {
+        require(msg.sender == ownerOf(_cardId));
+        approve(address(marketplaceContract), _cardId);
+        marketplaceContract.sell(msg.sender, _cardId, _price, _acceptableExchange);
+    }
+
+
 }

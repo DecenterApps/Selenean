@@ -8,3 +8,4 @@ scripts/.env
 scripts/__pycache__
 dev-scripts
 contracts/.env
+test_config

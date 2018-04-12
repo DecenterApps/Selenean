@@ -15,6 +15,12 @@ contract Marketplace is Ownable{
         bool exists;
     }
 
+
+    modifier onlySeleneanCards() {
+        require(msg.sender == address(seleneanCards));
+        _;
+    }
+
     ///Number of active ads
     uint public numOfAds;
 
@@ -43,15 +49,15 @@ contract Marketplace is Ownable{
     /// @param _cardId is id of card
     /// @param _price is price for which we are going to sell card
     /// @param _acceptableExchange is array of cards where every card we'd accept in exchange for ours
-    function sell(uint _cardId, uint _price, uint16[] _acceptableExchange) public{
-        require(msg.sender == seleneanCards.ownerOf(_cardId));
+    function sell(address _owner, uint _cardId, uint _price, uint16[] _acceptableExchange) public{
+        require(msg.sender == address(seleneanCards));
         require(sellAds[_cardId].exists == false);
         
         sellAds[_cardId] = Ad({
             cardId : _cardId,
             price : _price,
             acceptableExchange : _acceptableExchange,
-            exchanger : msg.sender,
+            exchanger : _owner,
             timestamp : block.timestamp,
             exists : true
         });
@@ -59,7 +65,7 @@ contract Marketplace is Ownable{
         numOfAds++;
         cardsOnSale.push(_cardId);
         positionOfCard[_cardId] = cardsOnSale.length - 1;
-        seleneanCards.transferFrom(msg.sender,this,_cardId);
+        seleneanCards.transferFrom(_owner,this,_cardId);
         //SellAd(msg.sender, _cardId, _acceptableExchange, _amount);
     }
 
@@ -74,8 +80,8 @@ contract Marketplace is Ownable{
         sellAds[_cardId].exists = false;
         numOfAds--;
         removeOrder(_cardId);
-        //seleneanCards.transfer(msg.sender, _cardId);
-        //sellAds[_cardId].exchanger.transfer(sellAds[_cardId].price);
+        seleneanCards.transfer(msg.sender, _cardId);
+        sellAds[_cardId].exchanger.transfer(sellAds[_cardId].price);
     }
     /// @notice Function to exchange card from Marketplace with one we own
     /// @param _cardId is id of card on Marketplace
@@ -91,26 +97,24 @@ contract Marketplace is Ownable{
     }
 
 
-
+    /// @notice Function to cancel ad on marketplace
+    /// @param _cardId is id of card you've posted and want to remove from Marketplace
     function cancel(uint _cardId) public {
         require(sellAds[_cardId].exists == true);
         require(sellAds[_cardId].exchanger == msg.sender);
 
         sellAds[_cardId].exists = false;
-        numOfAds;
+        numOfAds--;
 
         removeOrder(_cardId);
-        //seleneanCards.transfer... 
+        seleneanCards.transfer(msg.sender,_cardId);
         
     }
+
     function getCardsOnSale() public view returns (uint[]){
         return cardsOnSale;
     }
     
-    
-    // function getAcceptableExchangeForCard(uint _cardId) public view returns (uint16[]){
-    //     return sellAds[_cardId].acceptableExchange;
-    // }
 
     /// @notice Removes card from cardsOnSale list
     /// @param _cardId is id of card we want to remove
