@@ -2,13 +2,13 @@ pragma solidity ^0.4.18;
 
 import "./CardMetadata.sol";
 import "./Cards.sol";
-import "./Booster.sol";
+import "./BoosterTest.sol";
 
 /// @title Contract derived from Cards contract with custom implementation on Booster and Metadata
 contract SeleneanCards is Cards {
     
     CardMetadata metadataContract;
-    Booster boosterContract;
+    BoosterTest boosterContract;
 
     mapping(uint => CardMetadata.CardProperties) public metadata;
 
@@ -63,7 +63,7 @@ contract SeleneanCards is Cards {
         // not required while on testnet
         // require(address(boosterContract) == 0x0);
 
-        boosterContract = Booster(_boosterContract);
+        boosterContract = BoosterTest(_boosterContract);
     }
 
     /// @notice adds metadata address to contract only if it doesn't exist
