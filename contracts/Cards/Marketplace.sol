@@ -5,6 +5,7 @@ import "./SeleneanCards.sol";
 
 ///Marketplace contract
 contract Marketplace is Ownable{
+    
     ///Struct that keeps info about one card on marketplace
     struct Ad {
         uint cardId;
@@ -83,17 +84,20 @@ contract Marketplace is Ownable{
         seleneanCards.transfer(msg.sender, _cardId);
         sellAds[_cardId].exchanger.transfer(sellAds[_cardId].price);
     }
+
     /// @notice Function to exchange card from Marketplace with one we own
-    /// @param _cardId is id of card on Marketplace
-    /// @param _exchangerCardId is id of card we'd like to give in exchange
-    function exchangeCard(uint _cardId, uint _exchangerCardId) public {
-        require(sellAds[_cardId].exists == true);
-        require(msg.sender == seleneanCards.ownerOf(_exchangerCardId));
-        require(canCardsBeExchanged(_cardId, _exchangerCardId) == true);
-        sellAds[_cardId].exists = false;
+    /// @param _cardIdOnMarketplace is id of card on Marketplace
+    /// @param _buyerCardId is id of card we'd like to give in exchange
+    function exchangeCard(address _owner, uint _cardIdOnMarketplace, uint _buyerCardId) public onlySeleneanCards {
+        require(sellAds[_cardIdOnMarketplace].exists == true);
+        require(canCardsBeExchanged(_cardIdOnMarketplace, _buyerCardId) == true);
+        sellAds[_cardIdOnMarketplace].exists = false;
         numOfAds--;
-        removeOrder(_cardId);
+        removeOrder(_cardIdOnMarketplace);
+
         //transfer methods
+        seleneanCards.transfer(_owner, _cardIdOnMarketplace);
+        seleneanCards.transferFrom(_owner,sellAds[_cardIdOnMarketplace].exchanger, _buyerCardId);
     }
 
 
@@ -134,7 +138,7 @@ contract Marketplace is Ownable{
     /// @notice Function to check if two cards can be exchanged
     /// @param _cardId1 is id of card on marketplace
     /// @param _cardId2 is id of card we would like to give in exchange for card on Marketplace
-    function canCardsBeExchanged(uint _cardId1,uint _cardId2) internal returns (bool){
+    function canCardsBeExchanged(uint _cardId1,uint _cardId2) public view returns (bool){
         uint metadataId = getCardMetadata(_cardId2);
         for(uint i=0; i<sellAds[_cardId1].acceptableExchange.length; i++){
             if(sellAds[_cardId1].acceptableExchange[i] == metadataId){

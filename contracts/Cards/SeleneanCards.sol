@@ -93,6 +93,13 @@ contract SeleneanCards is Cards {
         approve(address(marketplaceContract), _cardId);
         marketplaceContract.sell(msg.sender, _cardId, _price, _acceptableExchange);
     }
-
-
+    
+    /// @notice function approves owner of card on marketplace
+    /// @param _cardIdOnMarketplace is id of card on marketplace
+    /// @param _myCardId is cardId I'm owner of
+    function _approveAndExchange(uint _cardIdOnMarketplace, uint _myCardId) public {
+        require(msg.sender == ownerOf(_myCardId));
+        approve(address(marketplaceContract), _myCardId);
+        marketplaceContract.exchangeCard(msg.sender, _cardIdOnMarketplace, _myCardId);
+    }
 }
