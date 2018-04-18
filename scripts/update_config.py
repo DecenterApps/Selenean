@@ -22,9 +22,9 @@ for contract in os.listdir(directory):
 			dictdump = json.loads(json_contract.read())
 			if(dictdump["abi"] <> None):
 				abi[contract] = dictdump["abi"]
-			if(dictdump["networks"].get("4447") <> None ):
+			if(dictdump["networks"].get("42") <> None ):
 				#print (contract,dictdump["networks"]["4447"]["address"])
-				dict[contract] = dictdump["networks"]["4447"]["address"]
+				dict[contract] = dictdump["networks"]["42"]["address"]
 
 
 
@@ -41,8 +41,8 @@ with open("config.json","r+") as jsonFile:
 	data["metadataContract"]["abi"] = abi["CardMetadata.json"]
 	data["metadataContract"]["address"] = dict["CardMetadata.json"]
 
-	data["cardContract"]["abi"] = abi["DecenterCards.json"]
-	data["cardContract"]["address"] = dict["DecenterCards.json"]
+	data["cardContract"]["abi"] = abi["SeleneanCards.json"]
+	data["cardContract"]["address"] = dict["SeleneanCards.json"]
 
 	data["boosterContract"]["abi"] = abi["Booster.json"]
 	data["boosterContract"]["address"] = dict["Booster.json"]

@@ -12,9 +12,8 @@ module.exports = function(deployer) {
 	.then(() => Booster.deployed())
 	.then((booster) => booster.addMetadataContract(CardMetadata.address))
 	.then(() => SeleneanCards.deployed())
-	.then((cards) => {
-		cards.addBoosterContract(Booster.address);
-		cards.addMetadataContract(CardMetadata.address);
-		return true;
-	});
+	.then((cards) => cards.addBoosterContract(Booster.address))
+	.then(() => SeleneanCards.deployed())
+	.then((cards) => cards.addMetadataContract(CardMetadata.address))
+	.then(() => true);
 };
