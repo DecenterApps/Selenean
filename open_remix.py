@@ -6,7 +6,7 @@ import re
 
 
 def open_remix(params):
-    starting_url = 'https://remix.ethereum.org/#optimize=false&version=soljson-v0.4.21+commit.dfe3193c.js'
+    starting_url = 'https://remix.ethereum.org/#optimize=false&version=soljson-v0.4.22+commit.4cb486ee.js'
 
     # MacOS
     chrome_path = 'open -a /Applications/Google\ Chrome.app %s'
