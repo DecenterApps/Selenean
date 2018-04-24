@@ -43,26 +43,55 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	} else {
 		db := dbConn()
 		if r.Method == "POST" {
+			// Getting and validating email format
 			email := r.FormValue("email")
 			err := emailx.Validate(email)
-			token := tokenGenerator()
+
+			//If email's valid, --> we are generating Token
+
 			if err == nil {
 				address := r.FormValue("address")
+
+				//validating address
 				if len(address) != 42 {
 					defer db.Close()
 					return
 				}
+				var sent bool
 				query := "SELECT sent FROM User WHERE email =" + "\""+ email + "\""
-				sent, err := db.Query(query)
-				insForm, err := db.Prepare("INSERT INTO User(email, address, sent, token) VALUES(?,?,?,?)")
-				if err != nil {
-					panic(err.Error())
+				selDb, _ := db.Query(query)
+				//If there's already registered user with this email
+				if selDb.Next() {
+					selDb.Scan(&sent)
+					//if sent flag is true means we have already sent ethers - otherwise we will send him again the same token
+					if(sent) {
+						res = "We have already sent you ethers!"
+					} else {
+						res = "We will send you confirmation link again!"
+						query1 := "SELECT token FROM User WHERE email =" + "\""+ email + "\""
+						var token string
+						selDb1, _ := db.Query(query1)
+						if selDb1.Next(){
+							selDb1.Scan(&token)
+							url := "localhost:8080/sendEther?token=" + token
+							fmt.Println("URL to get tokens : " + url)
+						}
+					}
 				} else {
-					insForm.Exec(email, address, sent, token)
-					url := "localhost:8080/sendEther?token=" + token
-					fmt.Println("URL to get tokens : " + url)
-					res = "We have sent confirmation link for kEthers to : " + email
+					token := tokenGenerator()
+					//If this is new user, we will send him new
+					insForm, err := db.Prepare("INSERT INTO User(email, address, sent, token) VALUES(?,?,?,?)")
+					res = "We will send you confirmation link to" + email
+					if err != nil {
+						panic(err.Error())
+					} else {
+						insForm.Exec(email, address, sent, token)
+						url := "localhost:8080/sendEther?token=" + token
+						fmt.Println("URL to get tokens : " + url)
+						res = "We have sent confirmation link for kEthers to : " + email
+					}
 				}
+
 			} else if err == emailx.ErrInvalidFormat {
 				fmt.Println("Wrong format.")
 			} else {
