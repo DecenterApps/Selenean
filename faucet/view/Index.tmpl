@@ -1,22 +1,27 @@
 {{ define "Index" }}
 
 <style>
-    /*dark background to support form theme*/
     body {
         background: url(http://subtlepatterns2015.subtlepatterns.netdna-cdn.com/patterns/dark_wall.png);
     }
-
-    /*sass variables used*/
-    /*site container*/
     .wrapper {
         width: 420px;
         margin: 0 auto;
     }
 
-    h1 {
+    h1{
         text-align: center;
         padding: 30px 0px 0px 0px;
         font: 25px Oswald;
+        color: #FFF;
+        text-transform: uppercase;
+        text-shadow: #000 0px 1px 5px;
+        margin: 0px;
+    }
+    h2 {
+        text-align: center;
+        padding: 30px 0px 0px 0px;
+        font: 20px Oswald;
         color: #FFF;
         text-transform: uppercase;
         text-shadow: #000 0px 1px 5px;
@@ -103,77 +108,54 @@
 <!DOCTYPE html>
 <html lang="en" >
 
-<head>
-  <meta charset="UTF-8">
-  <title>ACCOUNT REGISTRATION FORM</title>
+    <head>
+         <meta charset="UTF-8">
+         <title>Selenean Faucet</title>
+    </head>
 
-  
-</head>
+    <body>
 
-<body>
+        <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <div class="wrapper">
+            <h1>Selenean faucet for kEth</h1>
 
-  <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
-<div class="wrapper">
-  <h1>Selenean faucet for kEth</h1>
-  <p>To get free kEth please provide us with some basic information using
-  the contact form below. Please use valid credentials.</p>
-  <form class="form" method="POST" action="insert">
-    <input type="text" class="name" name="address" placeholder="Address">
-    <div>
-      <p class="name-help">Please enter your eth address.</p>
-    </div>
-    <input type="email" class="email" name="email" placeholder="Email">
-     <div>
-      <p class="email-help">Please enter your current email address.</p>
-    </div>
-    <input type="submit" class="submit" value="Get test ether">
-  </form>
-</div>
+            <p>To get free kEth please provide us with some basic information using
+                the contact form below. Please use valid credentials.</p>
+            <form class="form" method="POST" action="/">
+                <input type="text" class="name" name="address" placeholder="Ethereum address" required>
+                <div>
+                    <p class="name-help">Please enter your eth address.</p>
+                </div>
+                <input type="email" class="email" name="email" placeholder="Email address" required>
+                <div>
+                    <p class="email-help">Please enter your current email address.</p>
+                </div>
+                <input type="submit" class="submit" value="Get test ether">
+            </form>
+            <h2 style="color: white">{{ . }}</h2>
+        </div>
 
-  {{/*<table border="1">*/}}
-      {{/*<thead>*/}}
-      {{/*<tr>*/}}
-          {{/*<td>ID</td>*/}}
-          {{/*<td>Email</td>*/}}
-          {{/*<td>Address</td>*/}}
-          {{/*<td>Sent ether</td>*/}}
-      {{/*</tr>*/}}
-      {{/*</thead>*/}}
-      {{/*<tbody>*/}}
-      {{/*{{ range . }}*/}}
-      {{/*<tr>*/}}
-          {{/*<td>{{ .Id }}</td>*/}}
-          {{/*<td> {{ .Email }} </td>*/}}
-          {{/*<td>{{ .Address }} </td>*/}}
-          {{/*<td>{{ .Sent }}</td>*/}}
-      {{/*</tr>*/}}
-      {{/*{{ end }}*/}}
-      {{/*</tbody>*/}}
-  {{/*</table>*/}}
 
-  <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-
-  
-
-    <script>
-        $(".name").focus(function(){
-            $(".name-help").slideDown(500);
-        }).blur(function(){
-            $(".name-help").slideUp(500);
-        });
-
-        $(".email").focus(function(){
-            $(".email-help").slideDown(500);
-        }).blur(function(){
-            $(".email-help").slideUp(500);
-        });
-    </script>
+        <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 
 
 
+        <script>
+            $(".name").focus(function(){
+                $(".name-help").slideDown(500);
+            }).blur(function(){
+                $(".name-help").slideUp(500);
+            });
 
-</body>
+            $(".email").focus(function(){
+                $(".email-help").slideDown(500);
+            }).blur(function(){
+                $(".email-help").slideUp(500);
+            });
+        </script>
+
+    </body>
 
 </html>
 

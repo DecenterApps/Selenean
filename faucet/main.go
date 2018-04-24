@@ -9,14 +9,16 @@ import (
 	"github.com/goware/emailx"
 	"fmt"
 )
-
+//User entity
 type User struct {
 	Id    int
 	Email  string
 	Address string
 	Sent bool
+	Token string
 }
 
+//Connection to database
 func dbConn() (db *sql.DB) {
 	dbDriver := "mysql"
 	dbUser := "root"
@@ -29,74 +31,87 @@ func dbConn() (db *sql.DB) {
 	return db
 }
 
+//parsing templates
 var tmpl = template.Must(template.ParseGlob("view/*"))
 
+
+//index - home page
 func Index(w http.ResponseWriter, r *http.Request) {
-	db := dbConn()
-	selDB, err := db.Query("SELECT * FROM User ORDER BY id DESC")
-	if err != nil {
-		panic(err.Error())
+	var res string = ""
+	if r.Method == "GET" {
+		tmpl.ExecuteTemplate(w, "Index", res)
+	} else {
+		db := dbConn()
+		if r.Method == "POST" {
+			email := r.FormValue("email")
+			err := emailx.Validate(email)
+			token := tokenGenerator()
+			if err == nil {
+				address := r.FormValue("address")
+				if len(address) != 42 {
+					defer db.Close()
+					return
+				}
+				query := "SELECT sent FROM User WHERE email =" + "\""+ email + "\""
+				sent, err := db.Query(query)
+				insForm, err := db.Prepare("INSERT INTO User(email, address, sent, token) VALUES(?,?,?,?)")
+				if err != nil {
+					panic(err.Error())
+				} else {
+					insForm.Exec(email, address, sent, token)
+					url := "localhost:8080/sendEther?token=" + token
+					fmt.Println("URL to get tokens : " + url)
+					res = "We have sent confirmation link for kEthers to : " + email
+				}
+			} else if err == emailx.ErrInvalidFormat {
+				fmt.Println("Wrong format.")
+			} else {
+				fmt.Println("Unresolvable host.")
+			}
+			tmpl.ExecuteTemplate(w, "Index", res)
+		}
+		defer db.Close()
 	}
-	emp := User{}
-	res := []User{}
-	for selDB.Next() {
+}
+
+func sendEth(w http.ResponseWriter, r *http.Request)  {
+	token := r.FormValue("token")
+	db := dbConn()
+	query := "SELECT * FROM User WHERE token =" + "\""+ token + "\""
+	selDB, err := db.Query(query)
+	var res string
+	if selDB.Next() {
 		var id int
 		var email, address string
 		var sent bool
-		err = selDB.Scan(&id, &email, &address, &sent)
-		if err != nil {
-			panic(err.Error())
-		}
-		emp.Id = id
-		emp.Email = email
-		emp.Address = address
-		emp.Sent = sent
-		res = append(res, emp)
-	}
-	tmpl.ExecuteTemplate(w, "Index", res)
-
-	defer db.Close()
-}
-
-
-func New(w http.ResponseWriter, r *http.Request) {
-	tmpl.ExecuteTemplate(w, "New", nil)
-}
-
-func Insert(w http.ResponseWriter, r *http.Request) {
-	db := dbConn()
-	if r.Method == "POST" {
-		email := r.FormValue("email")
-		err := emailx.Validate(email)
-		if err == nil {
-			address := r.FormValue("address")
-			if len(address) != 42 {
-				defer db.Close()
-				http.Redirect(w, r, "/", 301)
-				return
-			}
-			sent := true
-			insForm, err := db.Prepare("INSERT INTO User(email, address, sent) VALUES(?,?,?)")
-			if err != nil {
+		err = selDB.Scan(&id, &email, &address, &sent, &token)
+		if sent == false {
+			sendEther(address) // we are sending ether and update-ing it as a true
+			update, err := db.Prepare("UPDATE USER SET sent=1 WHERE token =" + "\""+ token + "\" ")
+			if(err != nil){
 				panic(err.Error())
+			} else {
+				update.Exec()
 			}
-			insForm.Exec(email, address, sent)
-			log.Println(sent)
-			log.Println("INSERT: User email: " + email + " | Address: " + address + " ")
-		} else if err == emailx.ErrInvalidFormat {
-			fmt.Println("Wrong format.")
+			res = "Hello! kEthers are sent to address : "+ address
 		} else {
-			fmt.Println("Unresolvable host.")
+			res = "You have already recieved ethers!"
 		}
+		fmt.Println(address)
+		fmt.Println(token)
+	} else {
+		res = "Token doesn't exist!"
 	}
-	defer db.Close()
-	http.Redirect(w, r, "/", 301)
+	if err != nil {
+		panic(err.Error())
+	}
+	fmt.Println(res)
+	tmpl.ExecuteTemplate(w, "Index", res)
 }
 
 func main() {
 	log.Println("Server started on: http://localhost:8080")
+	http.HandleFunc("/sendEther",sendEth)
 	http.HandleFunc("/", Index)
-	http.HandleFunc("/new", New)
-	http.HandleFunc("/insert", Insert)
 	http.ListenAndServe(":8080", nil)
 }
