@@ -10,6 +10,7 @@ import (
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/goware/emailx"
 	m "github.com/keighl/mandrill"
+	"github.com/joho/godotenv"
 )
 //User entity
 type User struct {
@@ -116,8 +117,13 @@ func Index(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func sendMail(email string, token string) (response []*m.Response, err error){
-	client := m.ClientWithKey(os.Getenv("PRIV_KEY"))
+func sendMail(email string, token string) (response []*m.Response, err error) {
+	err = godotenv.Load()
+	if err != nil {
+		log.Fatal("Error loading .env file")
+	}
+
+	client := m.ClientWithKey(os.Getenv("API_KEY"))
 
 	message := &m.Message{}
 	message.AddRecipient(email, "name", "to")
