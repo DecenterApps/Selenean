@@ -78,20 +78,23 @@ func Index(w http.ResponseWriter, r *http.Request) {
 							fmt.Println("URL to get tokens : " + url)
 						}
 
-						responses, err := sendMail(email, token)
+						_, err := sendMail(email, token)
 						if err != nil {
 							panic(err.Error())
 						}
 
-						res = "We will send you confirmation link again!" + responses[0].Email + "\n" + responses[0].Status
+						res = "We will send you confirmation link again!"
 					}
 				} else {
 					token := tokenGenerator()
 					//If this is new user, we will send him new
 					insForm, err := db.Prepare("INSERT INTO user(email, address, sent, token) VALUES(?,?,?,?)")
-					responses, err := sendMail(email, token)
+					_, err = sendMail(email, token)
+					if err != nil {
+						panic(err.Error())
+					}
 
-					res = "We will send you confirmation link to" + responses[0].Email + "\n" + responses[0].Status
+					res = "We will send you confirmation link to"
 					if err != nil {
 						panic(err.Error())
 					} else {
