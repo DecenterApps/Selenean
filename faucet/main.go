@@ -73,7 +73,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 						selDb1, _ := db.Query(query1)
 						if selDb1.Next(){
 							selDb1.Scan(&token)
-							url := "localhost:8080/sendEther?token=" + token
+							url := "faucet.selenean.com/sendEther?token=" + token
 							fmt.Println("URL to get tokens : " + url)
 						}
 					}
@@ -126,15 +126,15 @@ func sendEth(w http.ResponseWriter, r *http.Request)  {
 		} else {
 			res = "You have already recieved ethers!"
 		}
-		fmt.Println(address)
-		fmt.Println("Token : " + token)
+		//fmt.Println(address)
+		//fmt.Println("Token : " + token)
 	} else {
 		res = "Token doesn't exist!"
 	}
 	if err != nil {
 		panic(err.Error())
 	}
-	fmt.Println(res)
+	//fmt.Println(res)
 	tmpl.ExecuteTemplate(w, "Index", res)
 }
 

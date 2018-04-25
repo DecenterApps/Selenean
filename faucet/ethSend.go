@@ -27,8 +27,8 @@ func dotEnv() (string, string){
 }
 
 func sendEther(reciever string) {
-	address, privkey := dotEnv()
-	fmt.Println(address + "  " + privkey)
+	address, _ := dotEnv()
+	//fmt.Println(address + "  " + privkey)
 	client, err := ethclient.Dial("https://kovan.decenter.com")
 	//fmt.Println(client)
 	if err != nil {
