@@ -58,7 +58,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 					return
 				}
 				var sent bool
-				query := "SELECT sent FROM User WHERE email =" + "\""+ email + "\""
+				query := "SELECT sent FROM user WHERE email =" + "\""+ email + "\""
 				selDb, _ := db.Query(query)
 				//If there's already registered user with this email
 				if selDb.Next() {
@@ -68,7 +68,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 						res = "We have already sent you ethers!"
 					} else {
 						res = "We will send you confirmation link again!"
-						query1 := "SELECT token FROM User WHERE email =" + "\""+ email + "\""
+						query1 := "SELECT token FROM user WHERE email =" + "\""+ email + "\""
 						var token string
 						selDb1, _ := db.Query(query1)
 						if selDb1.Next(){
@@ -80,7 +80,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 				} else {
 					token := tokenGenerator()
 					//If this is new user, we will send him new
-					insForm, err := db.Prepare("INSERT INTO User(email, address, sent, token) VALUES(?,?,?,?)")
+					insForm, err := db.Prepare("INSERT INTO user(email, address, sent, token) VALUES(?,?,?,?)")
 					res = "We will send you confirmation link to" + email
 					if err != nil {
 						panic(err.Error())
@@ -106,7 +106,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 func sendEth(w http.ResponseWriter, r *http.Request)  {
 	token := r.FormValue("token")
 	db := dbConn()
-	query := "SELECT * FROM User WHERE token =" + "\""+ token + "\""
+	query := "SELECT * FROM user WHERE token =" + "\""+ token + "\""
 	selDB, err := db.Query(query)
 	var res string
 	if selDB.Next() {
@@ -116,7 +116,7 @@ func sendEth(w http.ResponseWriter, r *http.Request)  {
 		err = selDB.Scan(&id, &email, &address, &sent, &token)
 		if sent == false {
 			sendEther(address) // we are sending ether and update-ing it as a true
-			update, err := db.Prepare("UPDATE USER SET sent=1 WHERE token =" + "\""+ token + "\" ")
+			update, err := db.Prepare("UPDATE user SET sent=1 WHERE token =" + "\""+ token + "\" ")
 			if(err != nil){
 				panic(err.Error())
 			} else {
