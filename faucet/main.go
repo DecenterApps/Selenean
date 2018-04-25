@@ -1,13 +1,15 @@
 package main
 
 import (
+	"os"
+	"fmt"
 	"database/sql"
 	"log"
 	"net/http"
 	"text/template"
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/goware/emailx"
-	"fmt"
+	m "github.com/keighl/mandrill"
 )
 //User entity
 type User struct {
@@ -67,7 +69,6 @@ func Index(w http.ResponseWriter, r *http.Request) {
 					if(sent) {
 						res = "We have already sent you ethers!"
 					} else {
-						res = "We will send you confirmation link again!"
 						query1 := "SELECT token FROM user WHERE email =" + "\""+ email + "\""
 						var token string
 						selDb1, _ := db.Query(query1)
@@ -76,12 +77,21 @@ func Index(w http.ResponseWriter, r *http.Request) {
 							url := "faucet.selenean.com/sendEther?token=" + token
 							fmt.Println("URL to get tokens : " + url)
 						}
+
+						responses, err := sendMail(email, token)
+						if err != nil {
+							panic(err.Error())
+						}
+
+						res = "We will send you confirmation link again!" + responses[0].Email + "\n" + responses[0].Status
 					}
 				} else {
 					token := tokenGenerator()
 					//If this is new user, we will send him new
 					insForm, err := db.Prepare("INSERT INTO user(email, address, sent, token) VALUES(?,?,?,?)")
-					res = "We will send you confirmation link to" + email
+					responses, err := sendMail(email, token)
+
+					res = "We will send you confirmation link to" + responses[0].Email + "\n" + responses[0].Status
 					if err != nil {
 						panic(err.Error())
 					} else {
@@ -101,6 +111,20 @@ func Index(w http.ResponseWriter, r *http.Request) {
 		}
 		defer db.Close()
 	}
+}
+
+func sendMail(email string, token string) (response []*m.Response, err error){
+	client := m.ClientWithKey(os.Getenv("PRIV_KEY"))
+
+	message := &m.Message{}
+	message.AddRecipient(email, "name", "to")
+	message.FromEmail = "faucet@selenean.com"
+	message.FromName = "Faucet"
+	message.Subject = "Keth"
+	message.HTML = "<h1>faucet.selenean.com/sendEther?token=" + token + "</h1>"
+	message.Text = "faucet.selenean.com/sendEther?token=" + token
+
+	return client.MessagesSend(message)
 }
 
 func sendEth(w http.ResponseWriter, r *http.Request)  {
