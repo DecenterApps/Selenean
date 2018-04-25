@@ -127,7 +127,7 @@ func sendEth(w http.ResponseWriter, r *http.Request)  {
 			res = "You have already recieved ethers!"
 		}
 		fmt.Println(address)
-		fmt.Println(token)
+		fmt.Println("Token : " + token)
 	} else {
 		res = "Token doesn't exist!"
 	}
