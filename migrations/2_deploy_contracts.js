@@ -1,7 +1,7 @@
 const SeleneanCards = artifacts.require("./SeleneanCards.sol");
 const Booster = artifacts.require("./Booster.sol");
 const CardMetadata = artifacts.require("./CardMetadata.sol");
-const GiftToken = artifacts.require('./GiftToken');
+const CardPackToken = artifacts.require('./CardPackToken');
 const Marketplace = artifacts.require("./Marketplace.sol");
 
 module.exports = function(deployer) {

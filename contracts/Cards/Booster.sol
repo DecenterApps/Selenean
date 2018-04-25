@@ -3,12 +3,12 @@ pragma solidity ^0.4.18;
 import "./SeleneanCards.sol";
 import "./CardMetadata.sol";
 import "../Utils/Ownable.sol";
-import "../GiftToken/GiftToken.sol";
+import "../CardPackToken/CardPackToken.sol";
 
 contract Booster is Ownable {
 
-    modifier onlyGiftToken {
-        require(msg.sender == address(giftToken));
+    modifier onlyCardPackToken {
+        require(msg.sender == address(cardPackToken));
         _;
     }
 
@@ -20,7 +20,7 @@ contract Booster is Ownable {
     uint public OWNER_PERCENTAGE = 60;
     uint public CARD_ARTIST_PERCENTAGE = 3;
     uint public REVEALER_PERCENTAGE = 25;
-    uint ONE_GIFT_TOKEN = 10 ** 8;
+    uint ONE_CARD_PACK_TOKEN = 10 ** 8;
 
     uint public numberOfCardsInBooster = 5;
 
@@ -40,7 +40,7 @@ contract Booster is Ownable {
     event BoosterRevealed(uint boosterId);
     event BoosterInstantBought(address user, uint boosterId);
 
-    GiftToken public giftToken;
+    CardPackToken public cardPackToken;
 
     function Booster(address _cardAddress) public {
         seleneanCards = SeleneanCards(_cardAddress);
@@ -78,7 +78,7 @@ contract Booster is Ownable {
         BoosterInstantBought(msg.sender, boosterId);
     }
 
-    /// @notice buy booster for one GiftToken with automatic reveal
+    /// @notice buy booster for one CardPackToken with automatic reveal
     /// @param _to Address that will receive a booster
     function buyInstantBoosterWithToken(address _to) public payable {
         require(!BUY_WITH_REVEAL);
@@ -86,7 +86,7 @@ contract Booster is Ownable {
 
         uint boosterId = numOfBoosters;
 
-        giftToken.transferFrom(_to, this, ONE_GIFT_TOKEN);
+        cardPackToken.transferFrom(_to, this, ONE_CARD_PACK_TOKEN);
         boughtWithToken[boosterId] = true;
 
         numOfBoosters++;
@@ -130,15 +130,15 @@ contract Booster is Ownable {
 
 
 
-    /// @notice Buying a booster with a GiftToken
+    /// @notice Buying a booster with a CardPackToken
     /// @param _to Address that will receive a booster
-    function buyBoosterWithToken(address _to) public onlyGiftToken {
+    function buyBoosterWithToken(address _to) public onlyCardPackToken {
         require(BUY_WITH_REVEAL);
         require(!isContract(msg.sender));
 
         uint boosterId = numOfBoosters;
 
-        giftToken.transferFrom(_to, this, ONE_GIFT_TOKEN);
+        cardPackToken.transferFrom(_to, this, ONE_CARD_PACK_TOKEN);
 
         boughtWithToken[boosterId] = true;
 
@@ -182,7 +182,7 @@ contract Booster is Ownable {
         boosters[_boosterId] = cardIds;
 
         if (boughtWithToken[_boosterId] == true) {
-            giftToken.transfer(msg.sender, ONE_GIFT_TOKEN / 10);
+            cardPackToken.transfer(msg.sender, ONE_CARD_PACK_TOKEN / 10);
         } else {
             withdrawBalance[msg.sender] += BOOSTER_PRICE * REVEALER_PERCENTAGE / 100;
             withdrawBalance[owner] += BOOSTER_PRICE * OWNER_PERCENTAGE / 100;
@@ -214,13 +214,13 @@ contract Booster is Ownable {
         metadataContract = CardMetadata(_metadataContract);
     }
 
-    /// @notice adds GiftToken address only if it doesn't exist
-    /// @param _giftTokenAddress address of GiftToken contract
-    function addGiftToken(address _giftTokenAddress) public onlyOwner {
+    /// @notice adds CardPackToken address only if it doesn't exist
+    /// @param _cardPackTokenAddress address of CardPackToken contract
+    function addCardPackToken(address _cardPackTokenAddress) public onlyOwner {
         // not required while on testnet
-        // require(address(giftToken) == 0x0);
+        // require(address(cardPackToken) == 0x0);
 
-        giftToken = GiftToken(_giftTokenAddress);
+        cardPackToken = CardPackToken(_cardPackTokenAddress);
     }
 
     /// @notice withdraw method for anyone who owns money on contract

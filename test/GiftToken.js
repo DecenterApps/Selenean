@@ -1,10 +1,10 @@
-const GiftToken = artifacts.require("./Match/GiftToken.sol");
+const CardPackToken = artifacts.require("./Match/CardPackToken.sol");
 const Booster = artifacts.require("./Match/Booster.sol");
 
 
-contract('GiftToken', async (accounts) => {
+contract('CardPackToken', async (accounts) => {
 
-    let booster, giftToken;
+    let booster, cardPackToken;
 
     before(async () => {
         booster = await Booster.deployed();
@@ -14,15 +14,15 @@ contract('GiftToken', async (accounts) => {
     });
 
     it("...should mint a user 1 Gift Token", async () => {
-        const minted = await giftToken.mint(accounts[0], 100000000,  {from: accounts[0]});
+        const minted = await cardPackToken.mint(accounts[0], 100000000,  {from: accounts[0]});
 
         const balance = await giftToken.balanceOf(accounts[0]);
 
         assert.equal(balance.valueOf(), 100000000, "The user should have 1.1 token");
     });
 
-    it("...should buy a booster with GiftToken", async () => {
-        const boosterBought = await giftToken.buyBoosterWithToken();
+    it("...should buy a booster with CardPackToken", async () => {
+        const boosterBought = await cardPackToken.buyBoosterWithToken();
 
         const balance = await booster.numOfBoosters.call();
 
