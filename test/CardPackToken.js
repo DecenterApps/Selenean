@@ -8,15 +8,15 @@ contract('CardPackToken', async (accounts) => {
 
     before(async () => {
         booster = await Booster.deployed();
-        giftToken = await GiftToken.deployed();
+        cardPackToken = await CardPackToken.deployed();
 
-        await booster.addGiftToken(giftToken.address, {from: accounts[0]});
+        await booster.addGiftToken(cardPackToken.address, {from: accounts[0]});
     });
 
-    it("...should mint a user 1 Gift Token", async () => {
+    it("...should mint a user 1 CardPackToken", async () => {
         const minted = await cardPackToken.mint(accounts[0], 100000000,  {from: accounts[0]});
 
-        const balance = await giftToken.balanceOf(accounts[0]);
+        const balance = await cardPackToken.balanceOf(accounts[0]);
 
         assert.equal(balance.valueOf(), 100000000, "The user should have 1.1 token");
     });
@@ -26,7 +26,7 @@ contract('CardPackToken', async (accounts) => {
 
         const balance = await booster.numOfBoosters.call();
 
-        const balanceOfTokens = await giftToken.balanceOf(booster.address);
+        const balanceOfTokens = await cardPackToken.balanceOf(booster.address);
 
         assert.equal(balance.valueOf(), 1, "The user should have bought a booster");
     });
