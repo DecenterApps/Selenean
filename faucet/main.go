@@ -30,7 +30,7 @@ func dbConn() (db *sql.DB) {
 
 	dbDriver := os.Getenv("DB_DRIVER")
 	dbUser := os.Getenv("DB_USER")
-	dbPass := os.Getenv("DP_PASSWORD")
+	dbPass := os.Getenv("DB_PASSWORD")
 	dbName := os.Getenv("DB_NAME")
 
 	db, err = sql.Open(dbDriver, dbUser+":"+dbPass+"@/"+dbName)
