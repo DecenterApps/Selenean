@@ -130,8 +130,9 @@ func sendMail(email string, token string) (response []*m.Response, err error) {
 	message.FromEmail = "faucet@selenean.com"
 	message.FromName = "Selenean Faucet"
 	message.Subject = "Please confirm your email address"
-	message.HTML = "https://faucet.selenean.com/sendEther?token=" + token
-	message.Text = "https://faucet.selenean.com/sendEther?token=" + token
+	url := "https://faucet.selenean.com/sendEther?token=" + token;
+	message.HTML = "Please click on the link below to confirm your email address: <br> <a href=\"" + url + "\">" + url + "</a>"
+	message.Text = "Please paste this URL into browser to confirm your email address: " + url
 
 	return client.MessagesSend(message)
 }
