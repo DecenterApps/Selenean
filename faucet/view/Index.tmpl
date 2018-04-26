@@ -118,20 +118,19 @@
         <link href='https://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
         <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
         <div class="wrapper">
-            <h1>Selenean faucet for kETH</h1>
+            <h1>Selenean kETH faucet</h1>
 
-            <p>To get free kETH please provide us with some basic information using
-                the contact form below. Please use valid credentials.</p>
+            <p>To get free kETH please provide your Kovan ETH address as well as valid email</p>
             <form class="form" method="POST" action="/">
-                <input type="text" class="name" name="address" placeholder="Testnet account address" required>
+                <input type="text" class="name" name="address" placeholder="Kovan ETH address" required>
                 <div>
-                    <p class="name-help">Please enter your testnet account address.</p>
+                    <p class="name-help">Please enter your Kovan account address.</p>
                 </div>
                 <input type="email" class="email" name="email" placeholder="Email address" required>
                 <div>
-                    <p class="email-help">Please enter your email address.</p>
+                    <p class="email-help">Please enter a valid email address.</p>
                 </div>
-                <input type="submit" class="submit" value="Get testnet tokens!">
+                <input type="submit" class="submit" value="Send request">
             </form>
             <h2 style="color: white">{{ . }}</h2>
         </div>
