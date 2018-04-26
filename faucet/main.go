@@ -74,7 +74,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 					selDb.Scan(&sent)
 					//if sent flag is true means we have already sent ethers - otherwise we will send him again the same token
 					if(sent) {
-						res = "We have already sent you ethers!"
+						res = "Sorry, but requests are limited to one per email address"
 					} else {
 						query1 := "SELECT token FROM user WHERE email =" + "\""+ email + "\""
 						var token string
@@ -90,7 +90,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 							panic(err.Error())
 						}
 
-						res = "We will send you confirmation link again!"
+						res = "Confirmation URL has been resent to your email address"
 					}
 				} else {
 					token := tokenGenerator()
@@ -108,7 +108,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 						insForm.Exec(email, address, sent, token)
 						url := "localhost:8080/sendEther?token=" + token
 						fmt.Println("URL to get tokens : " + url)
-						res = "We have sent confirmation link for kEthers to : " + email
+						res = "Confirmation URL has been sent to " + email
 					}
 				}
 
@@ -134,10 +134,10 @@ func sendMail(email string, token string) (response []*m.Response, err error) {
 	message := &m.Message{}
 	message.AddRecipient(email, "name", "to")
 	message.FromEmail = "faucet@selenean.com"
-	message.FromName = "Faucet"
-	message.Subject = "Keth"
-	message.HTML = "<h1>faucet.selenean.com/sendEther?token=" + token + "</h1>"
-	message.Text = "faucet.selenean.com/sendEther?token=" + token
+	message.FromName = "Selenean Faucet"
+	message.Subject = "Please confirm your email address"
+	message.HTML = "https://faucet.selenean.com/sendEther?token=" + token
+	message.Text = "https://faucet.selenean.com/sendEther?token=" + token
 
 	return client.MessagesSend(message)
 }
@@ -161,9 +161,9 @@ func sendEth(w http.ResponseWriter, r *http.Request)  {
 			} else {
 				update.Exec()
 			}
-			res = "Hello! kEthers are sent to address : "+ address
+			res = "0.1 Kovan ETH has been sent to address "+ address
 		} else {
-			res = "You have already recieved ethers!"
+			res = "Sorry, but requests are limited to one per email address"
 		}
 		//fmt.Println(address)
 		//fmt.Println("Token : " + token)
