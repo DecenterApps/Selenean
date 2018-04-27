@@ -2,22 +2,28 @@ pragma solidity ^0.4.18;
 
 import "./StandardToken.sol";
 import "../Utils/Ownable.sol";
-import "../Cards/Booster.sol";
+
+contract Booster {
+    function buyInstantBoosterWithToken(address _user) public;
+}
 
 contract CardPackToken is StandardToken, Ownable {
 
-    event Burn(address indexed burner, uint256 value);
     event Mint(address indexed to, uint256 amount);
     event MintFinished();
 
     bool public mintingFinished = false;
+    uint contractCreationDate;
 
     modifier canMint() {
+        /// its impossible to have more than 1000 CardPackTokens
         require(totalSupply_ <= 1000);
+        /// minting can be finished at any time
         require(!mintingFinished);
+        /// minting is possible only in first 3 months
+        require(contractCreationDate - block.timestamp < (12 weeks));
         _;
     }
-
 
     string public name = "CardPackToken";
     string public symbol = "CPT";
@@ -27,20 +33,19 @@ contract CardPackToken is StandardToken, Ownable {
 
     uint ONE_CARD_PACK_TOKEN = 100000000;
 
-    function CardPackToken(address _booster) public {
+    constructor(address _booster) public {
         booster = Booster(_booster);
-
+        contractCreationDate = block.timestamp;
     }
-
 
     /// @notice A owner function for minting new tokens
     /// @param _to Address which will get the tokens
     /// @param _amount Amount of tokens the address will get
-    function mint(address _to, uint256 _amount) onlyOwner  canMint public returns (bool) {
+    function mint(address _to, uint256 _amount) onlyOwner canMint public returns (bool) {
         totalSupply_ = totalSupply_.add(_amount);
         balances[_to] = balances[_to].add(_amount);
-        Mint(_to, _amount);
-        Transfer(address(0), _to, _amount);
+        emit Mint(_to, _amount);
+        emit Transfer(address(0), _to, _amount);
         return true;
     }
 
@@ -52,24 +57,12 @@ contract CardPackToken is StandardToken, Ownable {
         approve(address(booster), ONE_CARD_PACK_TOKEN);
 
         booster.buyInstantBoosterWithToken(msg.sender);
-
     }
 
     /// @notice A function a owner can call to stop minting of tokens
     function finishMinting() onlyOwner canMint public returns (bool) {
         mintingFinished = true;
-        MintFinished();
+        emit MintFinished();
         return true;
-    }
-
-    /// @notice Private method to destroy the tokens
-    /// @param _value The amount of tokens to burn
-    function burn(uint256 _value) public {
-        require(_value <= balances[msg.sender]);
-
-        address burner = msg.sender;
-        balances[burner] = balances[burner].sub(_value);
-        totalSupply_ = totalSupply_.sub(_value);
-        Burn(burner, _value);
     }
 }
