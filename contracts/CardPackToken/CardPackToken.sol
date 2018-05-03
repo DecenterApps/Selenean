@@ -1,11 +1,8 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.22;
 
 import "./StandardToken.sol";
 import "../Utils/Ownable.sol";
-
-contract Booster {
-    function buyInstantBoosterWithToken(address _user) public;
-}
+import "../Cards/Booster.sol";
 
 contract CardPackToken is StandardToken, Ownable {
 
