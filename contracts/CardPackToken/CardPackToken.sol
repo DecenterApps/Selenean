@@ -21,17 +21,17 @@ contract CardPackToken is StandardToken, Ownable {
         /// minting can be finished at any time
         require(!mintingFinished);
         /// minting is possible only in first 3 months
-        require(contractCreationDate - block.timestamp < (12 weeks));
+        require(block.timestamp - contractCreationDate < (12 weeks));
         _;
     }
 
     string public name = "CardPackToken";
     string public symbol = "CPT";
-    uint public decimals = 0;
+    uint public decimals = 8;
 
     Booster public booster;
 
-    uint ONE_CARD_PACK_TOKEN = 100000000;
+    uint ONE_CARD_PACK_TOKEN = 10 ** 8;
 
     constructor(address _booster) public {
         booster = Booster(_booster);
