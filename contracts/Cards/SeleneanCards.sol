@@ -18,7 +18,10 @@ contract SeleneanCards is Cards {
         require(msg.sender == address(boosterContract));
         _;
     }
-
+    modifier onlyMarketplaceContract() {
+        require(msg.sender == address(marketplaceContract));
+        _;
+    }
     /// @notice create card with specific type and index 
     /// @param _owner address of new owner
     /// @param _metadataId id of metadata we are using
@@ -84,22 +87,16 @@ contract SeleneanCards is Cards {
         // require(address(marketplaceContract) == 0x0);
         marketplaceContract = Marketplace(_marketplaceContract);
     }
-    /// @notice approves Marketplace to take card ownership and transfers it (2 trsansactions)
-    /// @param _cardId is id of card we are going to sell
-    /// @param _price is price of card we are going to sell
-    /// @param _acceptableExchange is array of card acceptable for exchange 
-    function _approveAndTransfer(uint _cardId, uint _price, uint16[] _acceptableExchange) public {
-        require(msg.sender == ownerOf(_cardId));
-        approve(address(marketplaceContract), _cardId);
-        marketplaceContract.sell(msg.sender, _cardId, _price, _acceptableExchange);
+    
+    /// @notice approving card to be taken from specific address
+    /// @param _to address that we give permission to take card
+    /// @param _cardId we are willing to give
+    function _approveByMarketplace(address _to, uint256 _cardId) public onlyMarketplaceContract {
+        require(tokensForOwner[_cardId] != 0x0);
+        if (_getApproved(_cardId) != 0x0 || _to != 0x0) {
+            tokensForApproved[_cardId] = _to;
+            emit Approval(msg.sender, _to, _cardId);
+        }
     }
     
-    /// @notice function approves owner of card on marketplace
-    /// @param _cardIdOnMarketplace is id of card on marketplace
-    /// @param _myCardId is cardId I'm owner of
-    function _approveAndExchange(uint _cardIdOnMarketplace, uint _myCardId) public {
-        require(msg.sender == ownerOf(_myCardId));
-        approve(address(marketplaceContract), _myCardId);
-        marketplaceContract.exchangeCard(msg.sender, _cardIdOnMarketplace, _myCardId);
-    }
 }
