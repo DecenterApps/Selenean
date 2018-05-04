@@ -27,22 +27,22 @@ const gasPrice = 1502509001;
 
 async function parseBigJson(cb) {
 
-    const numCards = bigJson.cards.length - 1;
+    const numCards = 42;
 
     let i = 0;
 
-    let cards = bigJson.cards.sort((a,b) => parseInt(a.ID) - parseInt(b.ID));
+    let cards = bigJson.cards.sort((a,b) => parseInt(a['1'].ID) - parseInt(b['1'].ID));
 
     for(let card of cards) {
-        const { stdout, stderr } = await exec('ipfs add -q ./images/' + card.image);
+        const { stdout, stderr } = await exec('ipfs add -q ./images/' + card['1'].image);
 
         const ipfsHashes  = stdout.split('\n');
 
         const imgHash = ipfsHashes[0];
 
-        card.img = imgHash;
+        card['1'].img = imgHash;
 
-        fs.writeFile(`./cards/card_${i}`, JSON.stringify(card), (err) => {
+        fs.writeFile(`./cards/card_${i}`, JSON.stringify(card['1']), (err) => {
             if (err) console.log(err);
 
             console.log(numCards, i);
@@ -60,7 +60,7 @@ async function parseBigJson(cb) {
 async function ipfs() {
 
     parseBigJson(async () => {
-        const cards = ['card_0', 'card_1', 'card_2', 'card_3', 'card_4', 'card_5', 'card_6', 'card_7', 'card_8', 'card_9', 'card_10', 'card_11', 'card_12', 'card_13', 'card_14', 'card_15', 'card_16', 'card_17', 'card_18', 'card_19', 'card_20', 'card_21', 'card_22', 'card_23', 'card_24', 'card_25', 'card_26', 'card_27', 'card_28', 'card_29']
+        const cards = ['card_0', 'card_1', 'card_2', 'card_3', 'card_4', 'card_5', 'card_6', 'card_7', 'card_8', 'card_9', 'card_10', 'card_11', 'card_12', 'card_13', 'card_14', 'card_15', 'card_16', 'card_17', 'card_18', 'card_19', 'card_20', 'card_21', 'card_22', 'card_23', 'card_24', 'card_25', 'card_26', 'card_27', 'card_28', 'card_29', 'card_30', 'card_31', 'card_32', 'card_33', 'card_34', 'card_35','card_36', 'card_37', 'card_38', 'card_39', 'card_40', 'card_41','card_42'];
 
         let ipfsHashes = [];
 
@@ -70,9 +70,22 @@ async function ipfs() {
             ipfsHashes.push(stdout.split('\n')[0]);
         }
 
-        const rarity = bigJson.cards.map(c => c.rarityScore);
+        let cc = bigJson.cards.sort((a,b) => parseInt(a['1'].ID) - parseInt(b['1'].ID));
 
-        const artist = bigJson.cards.map(c => c.artist);
+        const rarity = cc.map(c => c['1'].rarityScore);
+
+        console.log(rarity);
+
+        const artist = [];
+
+        // test artists addresses 
+        const artistsAddr = ['0xae0aFD6a330D6CA572441f29F6ef0dc4372d8ee4', '0x54b44C6B18fc0b4A1010B21d524c338D1f8065F6', '0xd07C572DF544C2C6BD31f3ea413BbEF839B00eB1'];
+
+        for (let i = 0; i < 43; ++i) {
+            artist.push(artistsAddr[i % 3]);
+        }
+
+        console.log(ipfsHashes.length);
     
         await sendTxInBatch(ipfsHashes, rarity, artist);
     });
@@ -81,8 +94,6 @@ async function ipfs() {
 
 async function sendTxInBatch(arr, rarity, artist) {
     let i = 0;
-
-    console.log(rarity[0]);
     
     for (const key in arr) {
         const hash = arr[key];
@@ -90,9 +101,9 @@ async function sendTxInBatch(arr, rarity, artist) {
         const {hashFunction, size, ipfsHash} = deconstructIpfsHash(hash);
 
         if (rarity[i] != undefined) {
-
+            //console.log(rarity[i], ipfsHash, hashFunction, size, artist[i]);
             await sendTransaction(web3, testContract.addCardMetadata, ourAddress, [rarity[i], ipfsHash, hashFunction, size, artist[i]], gasPrice, web3.toHex(nonce));
-            nonce++;
+           nonce++;
             i++;
         }
     }
