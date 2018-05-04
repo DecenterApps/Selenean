@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.22;
 
 /// @title Contract holding all metadata about token(card)
 import "../Utils/Ownable.sol";

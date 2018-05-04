@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.22;
 
 import "../Utils/Ownable.sol";
 import "./SeleneanCards.sol";
@@ -40,8 +40,7 @@ contract Marketplace is Ownable{
     
     SeleneanCards public seleneanCards;
 
-
-    function Marketplace(address _seleneanCards) public{
+    constructor(address _seleneanCards) public{
         seleneanCards = SeleneanCards(_seleneanCards);
         numOfAds = 0;
     }

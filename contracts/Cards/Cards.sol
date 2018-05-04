@@ -1,4 +1,4 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.22;
 
 import "../Utils/Ownable.sol";
 import "./ERC721.sol";
@@ -19,7 +19,7 @@ contract Cards is Ownable, ERC721 {
     event Approval(address indexed owner, address indexed approved, uint256 indexed tokenId);
     event Mint(address indexed _to, uint256 indexed _tokenId);
     
-    function Cards() public {
+    constructor() public {
         name = "SeleneanCardToken";
         symbol = "SEL";
     }
@@ -35,7 +35,7 @@ contract Cards is Ownable, ERC721 {
 
         numOfCards++;
 
-        Mint(_owner, cardId);
+        emit Mint(_owner, cardId);
 
         return cardId;
     }
@@ -52,8 +52,8 @@ contract Cards is Ownable, ERC721 {
         removeCard(msg.sender, _cardId);
         addCard(_to, _cardId);
         
-        Approval(msg.sender, 0, _cardId);
-        Transfer(msg.sender, _to, _cardId);
+        emit Approval(msg.sender, 0, _cardId);
+        emit Transfer(msg.sender, _to, _cardId);
     }
     
     /// @notice approving card to be taken from specific address
@@ -66,7 +66,7 @@ contract Cards is Ownable, ERC721 {
         
         if (_getApproved(_cardId) != 0x0 || _to != 0x0) {
             tokensForApproved[_cardId] = _to;
-            Approval(msg.sender, _to, _cardId);
+            emit Approval(msg.sender, _to, _cardId);
         }
     }
     
@@ -85,8 +85,8 @@ contract Cards is Ownable, ERC721 {
         removeCard(_from, _cardId);
         addCard(_to, _cardId);
         
-        Approval(_from, 0, _cardId);
-        Transfer(_from, _to, _cardId);        
+        emit Approval(_from, 0, _cardId);
+        emit Transfer(_from, _to, _cardId);        
     }
     
     function implementsERC721() public pure returns (bool) {

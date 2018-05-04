@@ -1,8 +1,7 @@
-pragma solidity ^0.4.18;
+pragma solidity ^0.4.22;
 
 import "./SeleneanCards.sol";
 import "./CardMetadata.sol";
-import "../Utils/Ownable.sol";
 import "../CardPackToken/CardPackToken.sol";
 
 contract Booster is Ownable {
@@ -42,7 +41,7 @@ contract Booster is Ownable {
 
     CardPackToken public cardPackToken;
 
-    function Booster(address _cardAddress) public {
+    constructor(address _cardAddress) public {
         seleneanCards = SeleneanCards(_cardAddress);
     }
 
@@ -59,7 +58,7 @@ contract Booster is Ownable {
 
         assert(numOfCardTypes >= numberOfCardsInBooster);
 
-        uint blockhashNum = uint(block.blockhash(block.number-1));
+        uint blockhashNum = uint(blockhash(block.number-1));
         // hash(random hash), n(size of array we need)
         uint[] memory metadataIds = _random(blockhashNum, numberOfCardsInBooster);
         uint[] memory cardIds = new uint[](metadataIds.length);
@@ -75,7 +74,7 @@ contract Booster is Ownable {
         // all money from buy and reveal goes to owner (leaving reveal percentage if we decide to change process)
         withdrawBalance[owner] += BOOSTER_PRICE * OWNER_PERCENTAGE / 100 + BOOSTER_PRICE * REVEALER_PERCENTAGE / 100;
         
-        BoosterInstantBought(msg.sender, boosterId);
+        emit BoosterInstantBought(msg.sender, boosterId);
     }
 
     /// @notice buy booster for one CardPackToken with automatic reveal
@@ -95,7 +94,7 @@ contract Booster is Ownable {
 
         assert(numOfCardTypes >= numberOfCardsInBooster);
 
-        uint blockhashNum = uint(block.blockhash(block.number-1));
+        uint blockhashNum = uint(blockhash(block.number-1));
         // hash(random hash), n(size of array we need)
         uint[] memory metadataIds = _random(blockhashNum, numberOfCardsInBooster);
         uint[] memory cardIds = new uint[](metadataIds.length);
@@ -106,7 +105,7 @@ contract Booster is Ownable {
 
         boosters[boosterId] = cardIds;
         
-        BoosterInstantBought(_to, boosterId);
+        emit BoosterInstantBought(_to, boosterId);
     }
     
 
@@ -125,7 +124,7 @@ contract Booster is Ownable {
 
         numOfBoosters++;
 
-        BoosterBought(msg.sender, boosterId);
+        emit BoosterBought(msg.sender, boosterId);
     }
 
 
@@ -149,7 +148,7 @@ contract Booster is Ownable {
 
         numOfBoosters++;
 
-        BoosterBought(_to, boosterId);
+        emit BoosterBought(_to, boosterId);
     }
 
     /// @notice reveal booster you just bought, if you don't reveal it in first 100 blocks since buying, anyone can reveal it before 255 blocks pass
@@ -164,7 +163,7 @@ contract Booster is Ownable {
 
         _removeBooster(msg.sender, _boosterId);
 
-        uint blockhashNum = uint(block.blockhash(blockNumbers[_boosterId]));
+        uint blockhashNum = uint(blockhash(blockNumbers[_boosterId]));
         // hash(random hash), n(size of array we need)
         uint[] memory metadataIds = _random(blockhashNum, numberOfCardsInBooster);
 
@@ -188,7 +187,7 @@ contract Booster is Ownable {
             withdrawBalance[owner] += BOOSTER_PRICE * OWNER_PERCENTAGE / 100;
         }
 
-        BoosterRevealed(_boosterId);
+        emit BoosterRevealed(_boosterId);
     }
 
     /// @notice return unrevealed boosters for user

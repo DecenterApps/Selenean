@@ -20,16 +20,16 @@ for contract in os.listdir(directory):
 	if contract.endswith(".json"):
 		with open(os.path.join(directory,contract)) as json_contract:
 			dictdump = json.loads(json_contract.read())
-			if(dictdump["abi"] <> None):
+			if(dictdump["abi"] != None):
 				abi[contract] = dictdump["abi"]
-			if(dictdump["networks"].get("42") <> None ):
+			if(dictdump["networks"].get("42") != None ):
 				#print (contract,dictdump["networks"]["4447"]["address"])
 				dict[contract] = dictdump["networks"]["42"]["address"]
 
 
 
 for key in dict:
-	print (key, dict[key])
+	print(key, dict[key])
 
 with open("config.json","r+") as jsonFile:
 	data = json.load(jsonFile)
