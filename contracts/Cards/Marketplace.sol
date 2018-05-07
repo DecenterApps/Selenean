@@ -50,13 +50,14 @@ contract Marketplace is Ownable{
     /// @param _price is price for which we are going to sell card
     /// @param _acceptableExchange is array of cards where every card we'd accept in exchange for ours
     function sell(uint _cardId, uint _price, uint16[] _acceptableExchange) public{
+        require(seleneanCards.ownerOf(_cardId) == msg.sender);
         require(sellAds[_cardId].exists == false);
-        address _owner = msg.sender;
+
         sellAds[_cardId] = Ad({
             cardId : _cardId,
             price : _price,
             acceptableExchange : _acceptableExchange,
-            exchanger : _owner,
+            exchanger : msg.sender,
             timestamp : block.timestamp,
             exists : true
         });
@@ -64,8 +65,8 @@ contract Marketplace is Ownable{
         numOfAds++;
         cardsOnSale.push(_cardId);
         positionOfCard[_cardId] = cardsOnSale.length - 1;
-        seleneanCards._approveByMarketplace(this,_cardId);
-        seleneanCards.transferFrom(_owner,this,_cardId);
+        seleneanCards._approveByMarketplace(this, _cardId);
+        seleneanCards.transferFrom(msg.sender, this, _cardId);
         //SellAd(msg.sender, _cardId, _acceptableExchange, _amount);
     }
 
@@ -77,8 +78,7 @@ contract Marketplace is Ownable{
     function buyWithEther(uint _cardId) public payable {
         require(sellAds[_cardId].exists == true);
         require(msg.value >= sellAds[_cardId].price);
-        sellAds[_cardId].exists = false;
-        numOfAds--;
+
         removeOrder(_cardId);
         seleneanCards.transfer(msg.sender, _cardId);
         sellAds[_cardId].exchanger.transfer(sellAds[_cardId].price);
@@ -88,18 +88,18 @@ contract Marketplace is Ownable{
     /// @param _cardIdOnMarketplace is id of card on Marketplace
     /// @param _buyerCardId is id of card we'd like to give in exchange
     function exchangeCard(uint _cardIdOnMarketplace, uint _buyerCardId) public  {
+        require(seleneanCards.ownerOf(_buyerCardId) == msg.sender);
         require(sellAds[_cardIdOnMarketplace].exists == true);
         require(canCardsBeExchanged(_cardIdOnMarketplace, _buyerCardId) == true);
         address _owner = msg.sender;
-        sellAds[_cardIdOnMarketplace].exists = false;
-        numOfAds--;
+        
         removeOrder(_cardIdOnMarketplace);
 
         seleneanCards._approveByMarketplace(this, _buyerCardId);
         
         //transfer methods
         seleneanCards.transfer(_owner, _cardIdOnMarketplace);
-        seleneanCards.transferFrom(_owner,sellAds[_cardIdOnMarketplace].exchanger, _buyerCardId);
+        seleneanCards.transferFrom(_owner, sellAds[_cardIdOnMarketplace].exchanger, _buyerCardId);
     }
 
 
@@ -109,11 +109,8 @@ contract Marketplace is Ownable{
         require(sellAds[_cardId].exists == true);
         require(sellAds[_cardId].exchanger == msg.sender);
 
-        sellAds[_cardId].exists = false;
-        numOfAds--;
-
         removeOrder(_cardId);
-        seleneanCards.transfer(msg.sender,_cardId);
+        seleneanCards.transfer(msg.sender, _cardId);
         
     }
 
@@ -129,6 +126,9 @@ contract Marketplace is Ownable{
         uint index = positionOfCard[_cardId];
         uint lastOne = cardsOnSale[length-1];
 
+        sellAds[_cardId].exists = false;
+        numOfAds--;
+
         cardsOnSale[index] = lastOne;
         positionOfCard[lastOne] = index;
 
@@ -141,7 +141,7 @@ contract Marketplace is Ownable{
     /// @param _cardId1 is id of card on marketplace
     /// @param _cardId2 is id of card we would like to give in exchange for card on Marketplace
     function canCardsBeExchanged(uint _cardId1,uint _cardId2) public view returns (bool){
-        if(sellAds[_cardId1].exists == false || sellAds[_cardId2].exists==false){
+        if(sellAds[_cardId1].exists == false){
            return false;
        }
         uint metadataId = getCardMetadata(_cardId2);
