@@ -1,589 +1,5940 @@
 {
   "cards": [
     {
-      "ID": "0",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "cost": {
-        "funds": 100,
-        "level": 1
-      },
-      "flavorText": "Well, you gotta start somewhere...",
-      "image": "garage.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Garage",
-      "type": "Location",
-      "unique": false,
-      "values": {
-        "power": 5,
-        "space": 40
-      }
-    },
-    {
-      "ID": "1",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "cost": {
-        "funds": 500,
-        "level": 2
-      },
-      "flavorText": "",
-      "image": "coworking-space.jpg",
-      "mechanicsText": "",
-      "rarityScore": "576",
-      "title": "Coworking Space",
-      "type": "Location",
-      "unique": false,
-      "values": {
-        "power": 12,
-        "space": 60
-      }
-    },
-    {
-      "ID": "10",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 5
-      },
-      "cost": {
-        "funds": 100,
-        "level": 3,
-        "power": 4,
-        "space": 1
-      },
-      "flavorText": "Legend says that these were used to play the mighty videogames of old...",
-      "image": "gpu.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "GPU",
-      "type": "Mining",
-      "unique": false
-    },
-    {
-      "ID": "11",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 100
-      },
-      "cost": {
-        "funds": 10000,
-        "level": 6,
-        "power": 16,
-        "space": 1
-      },
-      "flavorText": "A truly efficient miner, from a more profitable age.",
-      "image": "asic-miner.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "ASIC Miner",
-      "type": "Mining",
-      "unique": false
-    },
-    {
-      "ID": "12",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "development": 1
-      },
-      "cost": {
-        "funds": 15,
+      "1": {
+        "ID": "0",
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Well, you gotta start somewhere...",
+        "image": "garage.jpg",
         "level": 1,
-        "space": 10
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Garage",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 5,
+          "space": 40,
+          "xp": 0
+        }
       },
-      "flavorText": "I have no idea what I'm doing...",
-      "image": "intern-programmer.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Intern Programmer",
-      "type": "Development",
-      "unique": false
-    },
-    {
-      "ID": "13",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "development": 4
-      },
-      "cost": {
-        "funds": 100,
+      "2": {
+        "ID": "0",
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Well, you gotta start somewhere...",
+        "image": "garage.jpg",
         "level": 2,
-        "space": 10
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Garage",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 5,
+          "space": 50,
+          "xp": 0
+        }
       },
-      "flavorText": "It compiled! That means it's working.",
-      "image": "junior-developer.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Junior Developer",
-      "type": "Development",
-      "unique": false
-    },
-    {
-      "ID": "14",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "development": 10
+      "3": {
+        "ID": "0",
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Well, you gotta start somewhere...",
+        "image": "garage.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Garage",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 10,
+          "space": 50,
+          "xp": 0
+        }
       },
-      "cost": {
-        "funds": 500,
+      "4": {
+        "ID": "0",
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Well, you gotta start somewhere...",
+        "image": "garage.jpg",
         "level": 4,
-        "space": 20
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Garage",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 10,
+          "space": 60,
+          "xp": 0
+        }
       },
-      "flavorText": "You've just hired me for 14.5 seconds. How can I help?",
-      "image": "freelance-consultant.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Freelance Consultant",
-      "type": "Development",
-      "unique": false
-    },
-    {
-      "ID": "15",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "development": 22
-      },
-      "cost": {
-        "funds": 3000,
+      "5": {
+        "ID": "0",
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Well, you gotta start somewhere...",
+        "image": "garage.jpg",
         "level": 5,
-        "space": 20
-      },
-      "flavorText": "I remeber the old days: The DAO hack, Parity bug, optimizing around gas limits... You kids have it easy.",
-      "image": "senior-developer.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Senior Developer",
-      "type": "Development",
-      "unique": false
-    },
-    {
-      "ID": "16",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "development": 46
-      },
-      "cost": {
-        "funds": 10000,
-        "level": 6,
-        "space": 40
-      },
-      "flavorText": "I'm sure you can accomplish ALL these tasks today! Just don't forget to SMILE.",
-      "image": "techical-team-leader.jpg",
-      "mechanicsText": "",
-      "rarityScore": "576",
-      "title": "Techical Team Leader",
-      "type": "Development",
-      "unique": false
-    },
-    {
-      "ID": "17",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "development": 76
-      },
-      "cost": {
-        "funds": 40000,
-        "level": 10,
-        "space": 40
-      },
-      "flavorText": "Silence! Do not disturb my thinking! We have a future to build.",
-      "image": "project-architect.jpg",
-      "mechanicsText": "",
-      "rarityScore": "485",
-      "title": "Project Architect",
-      "type": "Development",
-      "unique": false
-    },
-    {
-      "ID": "18",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "development": 2,
-        "funds": 2
-      },
-      "cost": {
-        "funds": 500,
-        "level": 4,
-        "space": 20
-      },
-      "flavorText": "",
-      "image": "black-hat-hacker.jpg",
-      "mechanicsText": "Gain X funds each block.",
-      "rarityScore": "576",
-      "title": "Black Hat Hacker",
-      "type": "Development",
-      "unique": false
-    },
-    {
-      "ID": "19",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "power": 15
-      },
-      "cost": {
-        "funds": 500,
-        "level": 2,
-        "space": 15
-      },
-      "flavorText": "Free power, free people!",
-      "image": "solar-panels.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Solar Panels",
-      "type": "Power",
-      "unique": false
-    },
-    {
-      "ID": "2",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "cost": {
-        "funds": 2000,
-        "level": 4
-      },
-      "flavorText": "I love the smell of damp mould in the morning...",
-      "image": "shaggy-office.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Shaggy Office",
-      "type": "Location",
-      "unique": false,
-      "values": {
-        "power": 20,
-        "space": 100
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Garage",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 15,
+          "space": 60,
+          "xp": 0
+        }
       }
     },
     {
-      "ID": "20",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "power": 50
-      },
-      "cost": {
-        "funds": 3000,
-        "level": 6,
-        "space": 30
-      },
-      "flavorText": "I know a guy who boosts these bad boys from parked self driving cars at the MegaMall.",
-      "image": "black-market-batteries.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Black Market Batteries",
-      "type": "Power",
-      "unique": false
-    },
-    {
-      "ID": "21",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "power": 500
-      },
-      "cost": {
-        "funds": 10000,
-        "level": 10,
-        "space": 60
-      },
-      "flavorText": "We hacked this together from 3D printed parts and retired Chineese tech. It's only slightly radioactive.",
-      "image": "diy-power-generator.jpg",
-      "mechanicsText": "",
-      "rarityScore": "485",
-      "title": "DIY Power Generator",
-      "type": "Power",
-      "unique": false
-    },
-    {
-      "ID": "22",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 10
-      },
-      "cost": {
-        "funds": 1000,
-        "level": 4,
-        "space": 10
-      },
-      "flavorText": "GRIDCONEEEEEEEEECT",
-      "image": "grid-connector.jpg",
-      "mechanicsText": "Unique. For each unit of unspent POWER at location, gain X FUNDS.",
-      "rarityScore": "250",
-      "title": "GRID Connector",
-      "type": "Misc",
-      "unique": true
-    },
-    {
-      "ID": "23",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 10,
-        "development": 10
-      },
-      "cost": {
-        "funds": 1000,
-        "level": 3,
-        "space": 10
-      },
-      "flavorText": "Make money by grinding sweet sweet coffee... Truly makind's greatest invention. ",
-      "image": "coffee-machine-miner.jpg",
-      "mechanicsText": "Unique. Gain X funds each block. All developers on location gain X% bonus DEV. ",
-      "rarityScore": "576",
-      "title": "Coffee Machine Miner",
-      "type": "Misc",
-      "unique": true
-    },
-    {
-      "ID": "24",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 100,
-        "xp": 8
-      },
-      "cost": {
-        "development": 1,
+      "1": {
+        "ID": "1",
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I better not catch any of you running mining equipement in the kitchen, you hear!",
+        "image": "coworking-space.jpg",
         "level": 1,
-        "time": 70
+        "mechanicsText": "",
+        "rarityScore": "650",
+        "special": false,
+        "title": "Coworking Space",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 60,
+          "xp": 0
+        }
       },
-      "flavorText": "Hey, this isn't what I signed up for!",
-      "image": "outourced-project.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Outourced Project",
-      "type": "Project",
-      "unique": false
-    },
-    {
-      "ID": "25",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 200,
-        "xp": 64
-      },
-      "cost": {
-        "development": 8,
-        "funds": 50,
+      "2": {
+        "ID": "1",
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I better not catch any of you running mining equipement in the kitchen, you hear!",
+        "image": "coworking-space.jpg",
         "level": 2,
-        "time": 210
+        "mechanicsText": "",
+        "rarityScore": "650",
+        "special": false,
+        "title": "Coworking Space",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 70,
+          "xp": 0
+        }
       },
-      "flavorText": "Dude, it's a provably fair system... It is guaranteed to make us money!",
-      "image": "profitable-dapp.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Profitable Đapp",
-      "type": "Project",
-      "unique": false
-    },
-    {
-      "ID": "26",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 4000,
-        "xp": 512
+      "3": {
+        "ID": "1",
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I better not catch any of you running mining equipement in the kitchen, you hear!",
+        "image": "coworking-space.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "650",
+        "special": false,
+        "title": "Coworking Space",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 80,
+          "xp": 0
+        }
       },
-      "cost": {
-        "development": 32,
-        "funds": 1000,
+      "4": {
+        "ID": "1",
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I better not catch any of you running mining equipement in the kitchen, you hear!",
+        "image": "coworking-space.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "650",
+        "special": false,
+        "title": "Coworking Space",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 90,
+          "xp": 0
+        }
+      },
+      "5": {
+        "ID": "1",
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I better not catch any of you running mining equipement in the kitchen, you hear!",
+        "image": "coworking-space.jpg",
         "level": 5,
-        "time": 420
-      },
-      "flavorText": "-We keep pointlessly messing with the hardware, that makes hashing EVEN MORE random!\n -Genius!",
-      "image": "mining-algorithm-optimization.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Mining Algorithm Optimization",
-      "type": "Project",
-      "unique": false
-    },
-    {
-      "ID": "27",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 20000,
-        "xp": 4096
-      },
-      "cost": {
-        "development": 56,
-        "funds": 5000,
-        "level": 7,
-        "time": 2520
-      },
-      "flavorText": "Get your buzzwords here! Get'em while they're hot!",
-      "image": "initial-coin-offering.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Initial Coin Offering",
-      "type": "Project",
-      "unique": false
-    },
-    {
-      "ID": "28",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 100000,
-        "xp": 32796
-      },
-      "cost": {
-        "development": 120,
-        "funds": 20000,
-        "level": 9,
-        "time": 10080
-      },
-      "flavorText": "It's not just a protocol exchange protocol, it's a protocol exchange protocol FRAMEWORK.",
-      "image": "decentralized-protocol-development.jpg",
-      "mechanicsText": "",
-      "rarityScore": "576",
-      "title": "Decentralized Protocol Development",
-      "type": "Project",
-      "unique": false
-    },
-    {
-      "ID": "29",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 500000,
-        "xp": 262144
-      },
-      "cost": {
-        "development": 240,
-        "funds": 100000,
-        "level": 11,
-        "time": 20160
-      },
-      "flavorText": "Just a small contribution to the quadratic sharding merkelized cross-chain token swap fraud proofs.",
-      "image": "consensus-improvement.jpg",
-      "mechanicsText": "",
-      "rarityScore": "485",
-      "title": "Consensus Improvement",
-      "type": "Project",
-      "unique": false
-    },
-    {
-      "ID": "3",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "cost": {
-        "funds": 10000,
-        "level": 6
-      },
-      "flavorText": "The rent is not a problem, we spend all our money on overpriced lattes!",
-      "image": "downtown-office.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Downtown Office",
-      "type": "Location",
-      "unique": false,
-      "values": {
-        "power": 50,
-        "space": 140
+        "mechanicsText": "",
+        "rarityScore": "650",
+        "special": false,
+        "title": "Coworking Space",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 100,
+          "xp": 0
+        }
       }
     },
     {
-      "ID": "4",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "cost": {
-        "funds": 100000,
-        "level": 10
-      },
-      "flavorText": "I swear, one day these things are going to run themselves.",
-      "image": "smart-office.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "Smart Office",
-      "type": "Location",
-      "unique": false,
-      "values": {
-        "power": 110,
-        "space": 200
-      }
-    },
-    {
-      "ID": "5",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "cost": {
-        "funds": 1000000,
-        "level": 20
-      },
-      "flavorText": "Lambo parking? Check. Helipad? Check. We'll take it!",
-      "image": "office-building.jpg",
-      "mechanicsText": "",
-      "rarityScore": "576",
-      "title": "Office Building",
-      "type": "Location",
-      "unique": false,
-      "values": {
-        "power": 230,
-        "space": 240
-      }
-    },
-    {
-      "ID": "6",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "cost": {
-        "funds": 10,
+      "1": {
+        "ID": "10",
+        "bonus": {
+          "development": 0,
+          "funds": 6,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 120,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Legend says that these were used to play the mighty video games of old...",
+        "image": "classic-gpu.jpg",
         "level": 1,
-        "space": 5
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Classic GPU",
+        "type": "Mining",
+        "unique": false
       },
-      "flavorText": "NOTICE: Stop playing VR Minesweeper as it interfeers with our revenue stream!",
-      "image": "computer-case.jpg",
-      "mechanicsText": "Can contain CPU-s and Graphics Cards.",
-      "rarityScore": "900",
-      "title": "Computer Case",
-      "type": "Container",
-      "unique": false,
-      "values": {
-        "space": 2
-      }
-    },
-    {
-      "ID": "7",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "cost": {
-        "funds": 1000,
+      "2": {
+        "ID": "10",
+        "bonus": {
+          "development": 0,
+          "funds": 8,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 120,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Legend says that these were used to play the mighty video games of old...",
+        "image": "classic-gpu.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Classic GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "3": {
+        "ID": "10",
+        "bonus": {
+          "development": 0,
+          "funds": 10,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 120,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Legend says that these were used to play the mighty video games of old...",
+        "image": "classic-gpu.jpg",
         "level": 3,
-        "space": 15
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Classic GPU",
+        "type": "Mining",
+        "unique": false
       },
-      "flavorText": "How this thing is holding together is anybody's guess...",
-      "image": "mining-rig.jpg",
-      "mechanicsText": "Can contain Graphics Cards.",
-      "rarityScore": "900",
-      "title": "Mining Rig",
-      "type": "Container",
-      "unique": false,
-      "values": {
-        "space": 4
+      "4": {
+        "ID": "10",
+        "bonus": {
+          "development": 0,
+          "funds": 12,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 120,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Legend says that these were used to play the mighty video games of old...",
+        "image": "classic-gpu.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Classic GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "5": {
+        "ID": "10",
+        "bonus": {
+          "development": 0,
+          "funds": 14,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 120,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Legend says that these were used to play the mighty video games of old...",
+        "image": "classic-gpu.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Classic GPU",
+        "type": "Mining",
+        "unique": false
       }
     },
     {
-      "ID": "8",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "cost": {
-        "funds": 10000,
-        "level": 6,
-        "space": 25
-      },
-      "flavorText": "It's basically a glorified fridge. But it has shiny buttons.",
-      "image": "asic-mount.jpg",
-      "mechanicsText": "Can contain ASIC miners.",
-      "rarityScore": "900",
-      "title": "ASIC Mount",
-      "type": "Container",
-      "unique": false,
-      "values": {
-        "space": 4
-      }
-    },
-    {
-      "ID": "9",
-      "artist": "0xD3Ca8580620789988eC3A61d5B0BCE7A55b8E5ef",
-      "bonus": {
-        "funds": 1
-      },
-      "cost": {
-        "funds": 40,
+      "1": {
+        "ID": "11",
+        "bonus": {
+          "development": 0,
+          "funds": 20,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2400,
+          "level": 4,
+          "power": 16,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "A truly efficient miner, from a more profitable age.",
+        "image": "asic-miner.jpg",
         "level": 1,
-        "power": 1,
-        "space": 1
+        "mechanicsText": "",
+        "rarityScore": "925",
+        "special": false,
+        "title": "ASIC Miner",
+        "type": "Mining",
+        "unique": false
       },
-      "flavorText": "I remember when we started off, we didn't have two cycles to rub together...",
-      "image": "cpu.jpg",
-      "mechanicsText": "",
-      "rarityScore": "900",
-      "title": "CPU",
-      "type": "Mining",
-      "unique": false
-    }]
+      "2": {
+        "ID": "11",
+        "bonus": {
+          "development": 0,
+          "funds": 30,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2400,
+          "level": 4,
+          "power": 16,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "A truly efficient miner, from a more profitable age.",
+        "image": "asic-miner.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "925",
+        "special": false,
+        "title": "ASIC Miner",
+        "type": "Mining",
+        "unique": false
+      },
+      "3": {
+        "ID": "11",
+        "bonus": {
+          "development": 0,
+          "funds": 40,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2400,
+          "level": 4,
+          "power": 16,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "A truly efficient miner, from a more profitable age.",
+        "image": "asic-miner.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "925",
+        "special": false,
+        "title": "ASIC Miner",
+        "type": "Mining",
+        "unique": false
+      },
+      "4": {
+        "ID": "11",
+        "bonus": {
+          "development": 0,
+          "funds": 50,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2400,
+          "level": 4,
+          "power": 16,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "A truly efficient miner, from a more profitable age.",
+        "image": "asic-miner.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "925",
+        "special": false,
+        "title": "ASIC Miner",
+        "type": "Mining",
+        "unique": false
+      },
+      "5": {
+        "ID": "11",
+        "bonus": {
+          "development": 0,
+          "funds": 60,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2400,
+          "level": 4,
+          "power": 16,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "A truly efficient miner, from a more profitable age.",
+        "image": "asic-miner.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "925",
+        "special": false,
+        "title": "ASIC Miner",
+        "type": "Mining",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "12",
+        "bonus": {
+          "development": 2,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "I have no idea what I'm doing...",
+        "image": "intern-programmer.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "Intern Programmer",
+        "type": "Person",
+        "unique": false
+      },
+      "2": {
+        "ID": "12",
+        "bonus": {
+          "development": 3,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "I have no idea what I'm doing...",
+        "image": "intern-programmer.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "Intern Programmer",
+        "type": "Person",
+        "unique": false
+      },
+      "3": {
+        "ID": "12",
+        "bonus": {
+          "development": 4,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "I have no idea what I'm doing...",
+        "image": "intern-programmer.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "Intern Programmer",
+        "type": "Person",
+        "unique": false
+      },
+      "4": {
+        "ID": "12",
+        "bonus": {
+          "development": 5,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "I have no idea what I'm doing...",
+        "image": "intern-programmer.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "Intern Programmer",
+        "type": "Person",
+        "unique": false
+      },
+      "5": {
+        "ID": "12",
+        "bonus": {
+          "development": 6,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "I have no idea what I'm doing...",
+        "image": "intern-programmer.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "Intern Programmer",
+        "type": "Person",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "13",
+        "bonus": {
+          "development": 4,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "It compiled! That means it's working.",
+        "image": "junior-developer.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "975",
+        "special": false,
+        "title": "Junior Developer",
+        "type": "Person",
+        "unique": false
+      },
+      "2": {
+        "ID": "13",
+        "bonus": {
+          "development": 6,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "It compiled! That means it's working.",
+        "image": "junior-developer.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "975",
+        "special": false,
+        "title": "Junior Developer",
+        "type": "Person",
+        "unique": false
+      },
+      "3": {
+        "ID": "13",
+        "bonus": {
+          "development": 8,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "It compiled! That means it's working.",
+        "image": "junior-developer.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "975",
+        "special": false,
+        "title": "Junior Developer",
+        "type": "Person",
+        "unique": false
+      },
+      "4": {
+        "ID": "13",
+        "bonus": {
+          "development": 10,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "It compiled! That means it's working.",
+        "image": "junior-developer.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "975",
+        "special": false,
+        "title": "Junior Developer",
+        "type": "Person",
+        "unique": false
+      },
+      "5": {
+        "ID": "13",
+        "bonus": {
+          "development": 12,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 100,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "It compiled! That means it's working.",
+        "image": "junior-developer.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "975",
+        "special": false,
+        "title": "Junior Developer",
+        "type": "Person",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "14",
+        "bonus": {
+          "development": 10,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "You've just hired me for exactly 14.5 seconds. How can I help?",
+        "image": "freelance-consultant.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Freelance Consultant",
+        "type": "Person",
+        "unique": false
+      },
+      "2": {
+        "ID": "14",
+        "bonus": {
+          "development": 15,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "You've just hired me for exactly 14.5 seconds. How can I help?",
+        "image": "freelance-consultant.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Freelance Consultant",
+        "type": "Person",
+        "unique": false
+      },
+      "3": {
+        "ID": "14",
+        "bonus": {
+          "development": 20,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "You've just hired me for exactly 14.5 seconds. How can I help?",
+        "image": "freelance-consultant.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Freelance Consultant",
+        "type": "Person",
+        "unique": false
+      },
+      "4": {
+        "ID": "14",
+        "bonus": {
+          "development": 25,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "You've just hired me for exactly 14.5 seconds. How can I help?",
+        "image": "freelance-consultant.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Freelance Consultant",
+        "type": "Person",
+        "unique": false
+      },
+      "5": {
+        "ID": "14",
+        "bonus": {
+          "development": 30,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "You've just hired me for exactly 14.5 seconds. How can I help?",
+        "image": "freelance-consultant.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Freelance Consultant",
+        "type": "Person",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "15",
+        "bonus": {
+          "development": 22,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I remember the old days: The DAO hack, Parity wallet bug, optimizing around gas limits... You kids today have it easy.",
+        "image": "senior-developer.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Senior Developer",
+        "type": "Person",
+        "unique": false
+      },
+      "2": {
+        "ID": "15",
+        "bonus": {
+          "development": 30,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I remember the old days: The DAO hack, Parity wallet bug, optimizing around gas limits... You kids today have it easy.",
+        "image": "senior-developer.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Senior Developer",
+        "type": "Person",
+        "unique": false
+      },
+      "3": {
+        "ID": "15",
+        "bonus": {
+          "development": 38,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I remember the old days: The DAO hack, Parity wallet bug, optimizing around gas limits... You kids today have it easy.",
+        "image": "senior-developer.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Senior Developer",
+        "type": "Person",
+        "unique": false
+      },
+      "4": {
+        "ID": "15",
+        "bonus": {
+          "development": 46,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I remember the old days: The DAO hack, Parity wallet bug, optimizing around gas limits... You kids today have it easy.",
+        "image": "senior-developer.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Senior Developer",
+        "type": "Person",
+        "unique": false
+      },
+      "5": {
+        "ID": "15",
+        "bonus": {
+          "development": 54,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I remember the old days: The DAO hack, Parity wallet bug, optimizing around gas limits... You kids today have it easy.",
+        "image": "senior-developer.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Senior Developer",
+        "type": "Person",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "16",
+        "bonus": {
+          "development": 46,
+          "funds": 0,
+          "multiplierDev": 10,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "The strength of the team is in its members. The strength of each member is in the team.",
+        "image": "technical-team-leader.jpg",
+        "level": 1,
+        "mechanicsText": "Unique. All developers on the same location gain 10% bonus DEV.",
+        "rarityScore": "700",
+        "special": true,
+        "title": "Technical Team Leader",
+        "type": "Person",
+        "unique": true
+      },
+      "2": {
+        "ID": "16",
+        "bonus": {
+          "development": 56,
+          "funds": 0,
+          "multiplierDev": 15,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "The strength of the team is in its members. The strength of each member is in the team.",
+        "image": "technical-team-leader.jpg",
+        "level": 2,
+        "mechanicsText": "Unique. All developers on the same location gain 15% bonus DEV.",
+        "rarityScore": "700",
+        "special": true,
+        "title": "Technical Team Leader",
+        "type": "Person",
+        "unique": true
+      },
+      "3": {
+        "ID": "16",
+        "bonus": {
+          "development": 66,
+          "funds": 0,
+          "multiplierDev": 20,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "The strength of the team is in its members. The strength of each member is in the team.",
+        "image": "technical-team-leader.jpg",
+        "level": 3,
+        "mechanicsText": "Unique. All developers on the same location gain 20% bonus DEV.",
+        "rarityScore": "700",
+        "special": true,
+        "title": "Technical Team Leader",
+        "type": "Person",
+        "unique": true
+      },
+      "4": {
+        "ID": "16",
+        "bonus": {
+          "development": 76,
+          "funds": 0,
+          "multiplierDev": 25,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "The strength of the team is in its members. The strength of each member is in the team.",
+        "image": "technical-team-leader.jpg",
+        "level": 4,
+        "mechanicsText": "Unique. All developers on the same location gain 25% bonus DEV.",
+        "rarityScore": "700",
+        "special": true,
+        "title": "Technical Team Leader",
+        "type": "Person",
+        "unique": true
+      },
+      "5": {
+        "ID": "16",
+        "bonus": {
+          "development": 86,
+          "funds": 0,
+          "multiplierDev": 30,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "The strength of the team is in its members. The strength of each member is in the team.",
+        "image": "technical-team-leader.jpg",
+        "level": 5,
+        "mechanicsText": "Unique. All developers on the same location gain 30% bonus DEV.",
+        "rarityScore": "700",
+        "special": true,
+        "title": "Technical Team Leader",
+        "type": "Person",
+        "unique": true
+      }
+    },
+    {
+      "1": {
+        "ID": "17",
+        "bonus": {
+          "development": 72,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 10,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 50000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "Silence! Do not disturb my thinking! We have a future to build.",
+        "image": "project-architect.jpg",
+        "level": 1,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 10%.",
+        "rarityScore": "325",
+        "special": false,
+        "title": "Project Architect",
+        "type": "Person",
+        "unique": true
+      },
+      "2": {
+        "ID": "17",
+        "bonus": {
+          "development": 82,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 11,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 50000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "Silence! Do not disturb my thinking! We have a future to build.",
+        "image": "project-architect.jpg",
+        "level": 2,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 11%.",
+        "rarityScore": "325",
+        "special": false,
+        "title": "Project Architect",
+        "type": "Person",
+        "unique": true
+      },
+      "3": {
+        "ID": "17",
+        "bonus": {
+          "development": 92,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 12,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 50000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "Silence! Do not disturb my thinking! We have a future to build.",
+        "image": "project-architect.jpg",
+        "level": 3,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 12%.",
+        "rarityScore": "325",
+        "special": false,
+        "title": "Project Architect",
+        "type": "Person",
+        "unique": true
+      },
+      "4": {
+        "ID": "17",
+        "bonus": {
+          "development": 102,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 13,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 50000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "Silence! Do not disturb my thinking! We have a future to build.",
+        "image": "project-architect.jpg",
+        "level": 4,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 13%.",
+        "rarityScore": "325",
+        "special": false,
+        "title": "Project Architect",
+        "type": "Person",
+        "unique": true
+      },
+      "5": {
+        "ID": "17",
+        "bonus": {
+          "development": 112,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 14,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 50000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "Silence! Do not disturb my thinking! We have a future to build.",
+        "image": "project-architect.jpg",
+        "level": 5,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 14%.",
+        "rarityScore": "325",
+        "special": false,
+        "title": "Project Architect",
+        "type": "Person",
+        "unique": true
+      }
+    },
+    {
+      "1": {
+        "ID": "18",
+        "bonus": {
+          "development": 16,
+          "funds": 10,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Code is law. And I break the code.",
+        "image": "black-hat-hacker.jpg",
+        "level": 1,
+        "mechanicsText": "Gain 10 FUNDS each block.",
+        "rarityScore": "725",
+        "special": true,
+        "title": "Black Hat Hacker",
+        "type": "Person",
+        "unique": false
+      },
+      "2": {
+        "ID": "18",
+        "bonus": {
+          "development": 24,
+          "funds": 15,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Code is law. And I break the code.",
+        "image": "black-hat-hacker.jpg",
+        "level": 2,
+        "mechanicsText": "Gain 15 FUNDS each block.",
+        "rarityScore": "725",
+        "special": true,
+        "title": "Black Hat Hacker",
+        "type": "Person",
+        "unique": false
+      },
+      "3": {
+        "ID": "18",
+        "bonus": {
+          "development": 32,
+          "funds": 20,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Code is law. And I break the code.",
+        "image": "black-hat-hacker.jpg",
+        "level": 3,
+        "mechanicsText": "Gain 20 FUNDS each block.",
+        "rarityScore": "725",
+        "special": true,
+        "title": "Black Hat Hacker",
+        "type": "Person",
+        "unique": false
+      },
+      "4": {
+        "ID": "18",
+        "bonus": {
+          "development": 40,
+          "funds": 25,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Code is law. And I break the code.",
+        "image": "black-hat-hacker.jpg",
+        "level": 4,
+        "mechanicsText": "Gain 25 FUNDS each block.",
+        "rarityScore": "725",
+        "special": true,
+        "title": "Black Hat Hacker",
+        "type": "Person",
+        "unique": false
+      },
+      "5": {
+        "ID": "18",
+        "bonus": {
+          "development": 48,
+          "funds": 30,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 4,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Code is law. And I break the code.",
+        "image": "black-hat-hacker.jpg",
+        "level": 5,
+        "mechanicsText": "Gain 30 FUNDS each block.",
+        "rarityScore": "725",
+        "special": true,
+        "title": "Black Hat Hacker",
+        "type": "Person",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "19",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 12,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 0,
+          "space": 5,
+          "time": 0
+        },
+        "flavorText": "Free power, free people!",
+        "image": "solar-panels.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Solar Panels",
+        "type": "Power",
+        "unique": false
+      },
+      "2": {
+        "ID": "19",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 16,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 0,
+          "space": 5,
+          "time": 0
+        },
+        "flavorText": "Free power, free people!",
+        "image": "solar-panels.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Solar Panels",
+        "type": "Power",
+        "unique": false
+      },
+      "3": {
+        "ID": "19",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 20,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 0,
+          "space": 5,
+          "time": 0
+        },
+        "flavorText": "Free power, free people!",
+        "image": "solar-panels.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Solar Panels",
+        "type": "Power",
+        "unique": false
+      },
+      "4": {
+        "ID": "19",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 24,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 0,
+          "space": 5,
+          "time": 0
+        },
+        "flavorText": "Free power, free people!",
+        "image": "solar-panels.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Solar Panels",
+        "type": "Power",
+        "unique": false
+      },
+      "5": {
+        "ID": "19",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 28,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 0,
+          "space": 5,
+          "time": 0
+        },
+        "flavorText": "Free power, free people!",
+        "image": "solar-panels.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Solar Panels",
+        "type": "Power",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "2",
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I love the smell of damp mould in the morning...",
+        "image": "shaggy-office.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Shaggy Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 24,
+          "space": 80,
+          "xp": 0
+        }
+      },
+      "2": {
+        "ID": "2",
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I love the smell of damp mould in the morning...",
+        "image": "shaggy-office.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Shaggy Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 24,
+          "space": 100,
+          "xp": 0
+        }
+      },
+      "3": {
+        "ID": "2",
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I love the smell of damp mould in the morning...",
+        "image": "shaggy-office.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Shaggy Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 30,
+          "space": 100,
+          "xp": 0
+        }
+      },
+      "4": {
+        "ID": "2",
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I love the smell of damp mould in the morning...",
+        "image": "shaggy-office.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Shaggy Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 30,
+          "space": 120,
+          "xp": 0
+        }
+      },
+      "5": {
+        "ID": "2",
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I love the smell of damp mould in the morning...",
+        "image": "shaggy-office.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "950",
+        "special": false,
+        "title": "Shaggy Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 36,
+          "space": 120,
+          "xp": 0
+        }
+      }
+    },
+    {
+      "1": {
+        "ID": "20",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 56,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "This thing gives you so much power for a low price. I guess some would say it is... overpowered.",
+        "image": "black-market-batteries.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Black Market Batteries",
+        "type": "Power",
+        "unique": false
+      },
+      "2": {
+        "ID": "20",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 72,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "This thing gives you so much power for a low price. I guess some would say it is... overpowered.",
+        "image": "black-market-batteries.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Black Market Batteries",
+        "type": "Power",
+        "unique": false
+      },
+      "3": {
+        "ID": "20",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 96,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "This thing gives you so much power for a low price. I guess some would say it is... overpowered.",
+        "image": "black-market-batteries.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Black Market Batteries",
+        "type": "Power",
+        "unique": false
+      },
+      "4": {
+        "ID": "20",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 120,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "This thing gives you so much power for a low price. I guess some would say it is... overpowered.",
+        "image": "black-market-batteries.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Black Market Batteries",
+        "type": "Power",
+        "unique": false
+      },
+      "5": {
+        "ID": "20",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 144,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 2000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "This thing gives you so much power for a low price. I guess some would say it is... overpowered.",
+        "image": "black-market-batteries.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Black Market Batteries",
+        "type": "Power",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "21",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 192,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 6,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "We hacked this together from 3D printed parts and retired Chinese tech. It's only slightly radioactive.",
+        "image": "diy-power-generator.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "700",
+        "special": false,
+        "title": "DIY Power Generator",
+        "type": "Power",
+        "unique": false
+      },
+      "2": {
+        "ID": "21",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 288,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 6,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "We hacked this together from 3D printed parts and retired Chinese tech. It's only slightly radioactive.",
+        "image": "diy-power-generator.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "700",
+        "special": false,
+        "title": "DIY Power Generator",
+        "type": "Power",
+        "unique": false
+      },
+      "3": {
+        "ID": "21",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 384,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 6,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "We hacked this together from 3D printed parts and retired Chinese tech. It's only slightly radioactive.",
+        "image": "diy-power-generator.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "700",
+        "special": false,
+        "title": "DIY Power Generator",
+        "type": "Power",
+        "unique": false
+      },
+      "4": {
+        "ID": "21",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 480,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 6,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "We hacked this together from 3D printed parts and retired Chinese tech. It's only slightly radioactive.",
+        "image": "diy-power-generator.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "700",
+        "special": false,
+        "title": "DIY Power Generator",
+        "type": "Power",
+        "unique": false
+      },
+      "5": {
+        "ID": "21",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 576,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 6,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "We hacked this together from 3D printed parts and retired Chinese tech. It's only slightly radioactive.",
+        "image": "diy-power-generator.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "700",
+        "special": false,
+        "title": "DIY Power Generator",
+        "type": "Power",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "22",
+        "bonus": {
+          "development": 0,
+          "funds": 1,
+          "multiplierDev": 0,
+          "multiplierFunds": 1,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 25000,
+          "level": 8,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "GRIDCONEEEEEEEEECT!",
+        "image": "grid-connector.jpg",
+        "level": 1,
+        "mechanicsText": "Unique. Gain 1 FUND per block for each unit of unspent POWER at location.",
+        "rarityScore": "100",
+        "special": true,
+        "title": "GRID Connector",
+        "type": "Misc",
+        "unique": true
+      }
+    },
+    {
+      "1": {
+        "ID": "23",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 10,
+          "multiplierFunds": 10,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 1,
+          "power": 0,
+          "space": 10,
+          "time": 0
+        },
+        "flavorText": "Make money by grinding sweet sweet coffee... Truly mankind's greatest invention. ",
+        "image": "coffee-machine-miner.jpg",
+        "level": 1,
+        "mechanicsText": "Unique. Gain 10 FPB. All developers at the location gain 10% bonus DEV.",
+        "rarityScore": "625",
+        "special": true,
+        "title": "Coffee Machine Miner",
+        "type": "Misc",
+        "unique": true
+      }
+    },
+    {
+      "1": {
+        "ID": "24",
+        "bonus": {
+          "development": 0,
+          "funds": 1,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 1
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Making money from day trading is easy - just buy high and sell low... Or was it the other way around?",
+        "image": "day-trading.jpg",
+        "level": 1,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "1000",
+        "special": true,
+        "title": "Day Trading",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "24",
+        "bonus": {
+          "development": 0,
+          "funds": 2,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 1
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Making money from day trading is easy - just buy high and sell low... Or was it the other way around?",
+        "image": "day-trading.jpg",
+        "level": 2,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "1000",
+        "special": true,
+        "title": "Day Trading",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "24",
+        "bonus": {
+          "development": 0,
+          "funds": 2,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 2
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Making money from day trading is easy - just buy high and sell low... Or was it the other way around?",
+        "image": "day-trading.jpg",
+        "level": 3,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "1000",
+        "special": true,
+        "title": "Day Trading",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "24",
+        "bonus": {
+          "development": 0,
+          "funds": 3,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 2
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Making money from day trading is easy - just buy high and sell low... Or was it the other way around?",
+        "image": "day-trading.jpg",
+        "level": 4,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "1000",
+        "special": true,
+        "title": "Day Trading",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "24",
+        "bonus": {
+          "development": 0,
+          "funds": 3,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 3
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 1,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Making money from day trading is easy - just buy high and sell low... Or was it the other way around?",
+        "image": "day-trading.jpg",
+        "level": 5,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "1000",
+        "special": true,
+        "title": "Day Trading",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "25",
+        "bonus": {
+          "development": 0,
+          "funds": 50,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 1,
+          "funds": 0,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 10
+        },
+        "flavorText": "Hey, this isn't what I signed up for!",
+        "image": "outsourced-project.jpg",
+        "level": 1,
+        "mechanicsText": "Time to complete: 10 blocks.",
+        "rarityScore": "975",
+        "special": true,
+        "title": "Outsourced Project",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "25",
+        "bonus": {
+          "development": 0,
+          "funds": 60,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 1,
+          "funds": 0,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 10
+        },
+        "flavorText": "Hey, this isn't what I signed up for!",
+        "image": "outsourced-project.jpg",
+        "level": 2,
+        "mechanicsText": "Time to complete: 10 blocks.",
+        "rarityScore": "975",
+        "special": true,
+        "title": "Outsourced Project",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "25",
+        "bonus": {
+          "development": 0,
+          "funds": 70,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 1,
+          "funds": 0,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 10
+        },
+        "flavorText": "Hey, this isn't what I signed up for!",
+        "image": "outsourced-project.jpg",
+        "level": 3,
+        "mechanicsText": "Time to complete: 10 blocks.",
+        "rarityScore": "975",
+        "special": true,
+        "title": "Outsourced Project",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "25",
+        "bonus": {
+          "development": 0,
+          "funds": 80,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 1,
+          "funds": 0,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 10
+        },
+        "flavorText": "Hey, this isn't what I signed up for!",
+        "image": "outsourced-project.jpg",
+        "level": 4,
+        "mechanicsText": "Time to complete: 10 blocks.",
+        "rarityScore": "975",
+        "special": true,
+        "title": "Outsourced Project",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "25",
+        "bonus": {
+          "development": 0,
+          "funds": 90,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 1,
+          "funds": 0,
+          "level": 2,
+          "power": 0,
+          "space": 0,
+          "time": 10
+        },
+        "flavorText": "Hey, this isn't what I signed up for!",
+        "image": "outsourced-project.jpg",
+        "level": 5,
+        "mechanicsText": "Time to complete: 10 blocks.",
+        "rarityScore": "975",
+        "special": true,
+        "title": "Outsourced Project",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "26",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 1,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 16
+        },
+        "cost": {
+          "development": 5,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 40
+        },
+        "flavorText": "Dude, it's a provably fair system... It is guaranteed to make us money!",
+        "image": "profitable-dapp.jpg",
+        "level": 1,
+        "mechanicsText": "Permanently increases FPB by 1. Time to complete: 40 blocks.",
+        "rarityScore": "950",
+        "special": true,
+        "title": "Profitable Dapp",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "26",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 2,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 16
+        },
+        "cost": {
+          "development": 5,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 40
+        },
+        "flavorText": "Dude, it's a provably fair system... It is guaranteed to make us money!",
+        "image": "profitable-dapp.jpg",
+        "level": 2,
+        "mechanicsText": "Permanently increases FPB by 2. Time to complete: 40 blocks.",
+        "rarityScore": "950",
+        "special": true,
+        "title": "Profitable Dapp",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "26",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 3,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 16
+        },
+        "cost": {
+          "development": 5,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 40
+        },
+        "flavorText": "Dude, it's a provably fair system... It is guaranteed to make us money!",
+        "image": "profitable-dapp.jpg",
+        "level": 3,
+        "mechanicsText": "Permanently increases FPB by 3. Time to complete: 40 blocks.",
+        "rarityScore": "950",
+        "special": true,
+        "title": "Profitable Dapp",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "26",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 4,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 16
+        },
+        "cost": {
+          "development": 5,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 40
+        },
+        "flavorText": "Dude, it's a provably fair system... It is guaranteed to make us money!",
+        "image": "profitable-dapp.jpg",
+        "level": 4,
+        "mechanicsText": "Permanently increases FPB by 4. Time to complete: 40 blocks.",
+        "rarityScore": "950",
+        "special": true,
+        "title": "Profitable Dapp",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "26",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 5,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 16
+        },
+        "cost": {
+          "development": 5,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 40
+        },
+        "flavorText": "Dude, it's a provably fair system... It is guaranteed to make us money!",
+        "image": "profitable-dapp.jpg",
+        "level": 5,
+        "mechanicsText": "Permanently increases FPB by 5. Time to complete: 40 blocks.",
+        "rarityScore": "950",
+        "special": true,
+        "title": "Profitable Dapp",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "27",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 5,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 32
+        },
+        "cost": {
+          "development": 32,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 100
+        },
+        "flavorText": "We keep pointlessly messing with the hardware, that makes hashing EVEN MORE random!",
+        "image": "mining-algorithm-optimization.jpg",
+        "level": 1,
+        "mechanicsText": "Boosts all mining efficiency by 5%. Time to complete: 100 blocks.",
+        "rarityScore": "925",
+        "special": true,
+        "title": "Mining Algorithm Optimization",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "27",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 6,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 32
+        },
+        "cost": {
+          "development": 32,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 100
+        },
+        "flavorText": "We keep pointlessly messing with the hardware, that makes hashing EVEN MORE random!",
+        "image": "mining-algorithm-optimization.jpg",
+        "level": 2,
+        "mechanicsText": "Boosts all mining efficiency by 6%. Time to complete: 100 blocks.",
+        "rarityScore": "925",
+        "special": true,
+        "title": "Mining Algorithm Optimization",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "27",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 7,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 32
+        },
+        "cost": {
+          "development": 32,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 100
+        },
+        "flavorText": "We keep pointlessly messing with the hardware, that makes hashing EVEN MORE random!",
+        "image": "mining-algorithm-optimization.jpg",
+        "level": 3,
+        "mechanicsText": "Boosts all mining efficiency by 7%. Time to complete: 100 blocks.",
+        "rarityScore": "925",
+        "special": true,
+        "title": "Mining Algorithm Optimization",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "27",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 8,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 32
+        },
+        "cost": {
+          "development": 32,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 100
+        },
+        "flavorText": "We keep pointlessly messing with the hardware, that makes hashing EVEN MORE random!",
+        "image": "mining-algorithm-optimization.jpg",
+        "level": 4,
+        "mechanicsText": "Boosts all mining efficiency by 8%. Time to complete: 100 blocks.",
+        "rarityScore": "925",
+        "special": true,
+        "title": "Mining Algorithm Optimization",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "27",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 9,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 32
+        },
+        "cost": {
+          "development": 32,
+          "funds": 0,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 100
+        },
+        "flavorText": "We keep pointlessly messing with the hardware, that makes hashing EVEN MORE random!",
+        "image": "mining-algorithm-optimization.jpg",
+        "level": 5,
+        "mechanicsText": "Boosts all mining efficiency by 9%. Time to complete: 100 blocks.",
+        "rarityScore": "925",
+        "special": true,
+        "title": "Mining Algorithm Optimization",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "28",
+        "bonus": {
+          "development": 0,
+          "funds": 32000,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 256
+        },
+        "cost": {
+          "development": 100,
+          "funds": 8000,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 200
+        },
+        "flavorText": "Get your buzzwords here! Get'em while they're hot!",
+        "image": "initial-coin-offering.jpg",
+        "level": 1,
+        "mechanicsText": "Time to complete: 200 blocks.",
+        "rarityScore": "875",
+        "special": true,
+        "title": "Initial Coin Offering",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "28",
+        "bonus": {
+          "development": 0,
+          "funds": 34000,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 256
+        },
+        "cost": {
+          "development": 100,
+          "funds": 8000,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 200
+        },
+        "flavorText": "Get your buzzwords here! Get'em while they're hot!",
+        "image": "initial-coin-offering.jpg",
+        "level": 2,
+        "mechanicsText": "Time to complete: 200 blocks.",
+        "rarityScore": "875",
+        "special": true,
+        "title": "Initial Coin Offering",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "28",
+        "bonus": {
+          "development": 0,
+          "funds": 36000,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 256
+        },
+        "cost": {
+          "development": 100,
+          "funds": 8000,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 200
+        },
+        "flavorText": "Get your buzzwords here! Get'em while they're hot!",
+        "image": "initial-coin-offering.jpg",
+        "level": 3,
+        "mechanicsText": "Time to complete: 200 blocks.",
+        "rarityScore": "875",
+        "special": true,
+        "title": "Initial Coin Offering",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "28",
+        "bonus": {
+          "development": 0,
+          "funds": 38000,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 256
+        },
+        "cost": {
+          "development": 100,
+          "funds": 8000,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 200
+        },
+        "flavorText": "Get your buzzwords here! Get'em while they're hot!",
+        "image": "initial-coin-offering.jpg",
+        "level": 4,
+        "mechanicsText": "Time to complete: 200 blocks.",
+        "rarityScore": "875",
+        "special": true,
+        "title": "Initial Coin Offering",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "28",
+        "bonus": {
+          "development": 0,
+          "funds": 40000,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 256
+        },
+        "cost": {
+          "development": 100,
+          "funds": 8000,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 200
+        },
+        "flavorText": "Get your buzzwords here! Get'em while they're hot!",
+        "image": "initial-coin-offering.jpg",
+        "level": 5,
+        "mechanicsText": "Time to complete: 200 blocks.",
+        "rarityScore": "875",
+        "special": true,
+        "title": "Initial Coin Offering",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "29",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 450,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 1000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 1000
+        },
+        "flavorText": "What was the name of the company that used to do this... I can't remember it's a little cloudy.",
+        "image": "rent-computing-power.jpg",
+        "level": 1,
+        "mechanicsText": "Gains 150 FUNDS per CPU and 450 FUNDS per GPU played. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Rent Computing Power",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "29",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 510,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 1000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 1000
+        },
+        "flavorText": "What was the name of the company that used to do this... I can't remember it's a little cloudy.",
+        "image": "rent-computing-power.jpg",
+        "level": 2,
+        "mechanicsText": "Gains 170 FUNDS per CPU and 510 FUNDS per GPU played. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Rent Computing Power",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "29",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 570,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 1000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 1000
+        },
+        "flavorText": "What was the name of the company that used to do this... I can't remember it's a little cloudy.",
+        "image": "rent-computing-power.jpg",
+        "level": 3,
+        "mechanicsText": "Gains 190 FUNDS per CPU and 570 FUNDS per GPU played. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Rent Computing Power",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "29",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 630,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 1000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 1000
+        },
+        "flavorText": "What was the name of the company that used to do this... I can't remember it's a little cloudy.",
+        "image": "rent-computing-power.jpg",
+        "level": 4,
+        "mechanicsText": "Gains 210 FUNDS per CPU and 630 FUNDS per GPU played. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Rent Computing Power",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "29",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 690,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 1000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 1000
+        },
+        "flavorText": "What was the name of the company that used to do this... I can't remember it's a little cloudy.",
+        "image": "rent-computing-power.jpg",
+        "level": 5,
+        "mechanicsText": "Gains 230 FUNDS per CPU and 690 FUNDS per GPU played. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Rent Computing Power",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "3",
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "The rent is not a problem, we spend all our money on overpriced lattes!",
+        "image": "downtown-office.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Downtown Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 48,
+          "space": 120,
+          "xp": 0
+        }
+      },
+      "2": {
+        "ID": "3",
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "The rent is not a problem, we spend all our money on overpriced lattes!",
+        "image": "downtown-office.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Downtown Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 48,
+          "space": 140,
+          "xp": 0
+        }
+      },
+      "3": {
+        "ID": "3",
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "The rent is not a problem, we spend all our money on overpriced lattes!",
+        "image": "downtown-office.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Downtown Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 70,
+          "space": 140,
+          "xp": 0
+        }
+      },
+      "4": {
+        "ID": "3",
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "The rent is not a problem, we spend all our money on overpriced lattes!",
+        "image": "downtown-office.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Downtown Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 70,
+          "space": 160,
+          "xp": 0
+        }
+      },
+      "5": {
+        "ID": "3",
+        "cost": {
+          "development": 0,
+          "funds": 10000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "The rent is not a problem, we spend all our money on overpriced lattes!",
+        "image": "downtown-office.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": false,
+        "title": "Downtown Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 92,
+          "space": 160,
+          "xp": 0
+        }
+      }
+    },
+    {
+      "1": {
+        "ID": "30",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 2,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 2000
+        },
+        "flavorText": "Just HODL it.",
+        "image": "coin-staking.jpg",
+        "level": 1,
+        "mechanicsText": "Gains 2% of total FUNDS. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Coin Staking",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "30",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 4,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 2000
+        },
+        "flavorText": "Just HODL it.",
+        "image": "coin-staking.jpg",
+        "level": 2,
+        "mechanicsText": "Gains 4% of total FUNDS. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Coin Staking",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "30",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 6,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 2000
+        },
+        "flavorText": "Just HODL it.",
+        "image": "coin-staking.jpg",
+        "level": 3,
+        "mechanicsText": "Gains 6% of total FUNDS. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Coin Staking",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "30",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 8,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 2000
+        },
+        "flavorText": "Just HODL it.",
+        "image": "coin-staking.jpg",
+        "level": 4,
+        "mechanicsText": "Gains 8% of total FUNDS. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Coin Staking",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "30",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 10,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4000
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 2000
+        },
+        "flavorText": "Just HODL it.",
+        "image": "coin-staking.jpg",
+        "level": 5,
+        "mechanicsText": "Gains 10% of total FUNDS. Time to complete: 2000 blocks.",
+        "rarityScore": "850",
+        "special": true,
+        "title": "Coin Staking",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "31",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 2,
+          "power": 0,
+          "space": 0,
+          "xp": 8000
+        },
+        "cost": {
+          "development": 120,
+          "funds": 64000,
+          "level": 10,
+          "power": 0,
+          "space": 0,
+          "time": 3000
+        },
+        "flavorText": "It's not just a protocol exchange platform, it's a protocol exchange platform FRAMEWORK!",
+        "image": "decentralized-protocol-development.jpg",
+        "level": 1,
+        "mechanicsText": "Decreases time needed to complete other projects by 2%. Time to complete: 3000 blocks.",
+        "rarityScore": "625",
+        "special": true,
+        "title": "Decentralized Protocol Development",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "31",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 4,
+          "power": 0,
+          "space": 0,
+          "xp": 12000
+        },
+        "cost": {
+          "development": 120,
+          "funds": 64000,
+          "level": 10,
+          "power": 0,
+          "space": 0,
+          "time": 3000
+        },
+        "flavorText": "It's not just a protocol exchange platform, it's a protocol exchange platform FRAMEWORK!",
+        "image": "decentralized-protocol-development.jpg",
+        "level": 2,
+        "mechanicsText": "Decreases time needed to complete other projects by 4%. Time to complete: 3000 blocks.",
+        "rarityScore": "625",
+        "special": true,
+        "title": "Decentralized Protocol Development",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "31",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 6,
+          "power": 0,
+          "space": 0,
+          "xp": 16000
+        },
+        "cost": {
+          "development": 120,
+          "funds": 64000,
+          "level": 10,
+          "power": 0,
+          "space": 0,
+          "time": 3000
+        },
+        "flavorText": "It's not just a protocol exchange platform, it's a protocol exchange platform FRAMEWORK!",
+        "image": "decentralized-protocol-development.jpg",
+        "level": 3,
+        "mechanicsText": "Decreases time needed to complete other projects by 6%. Time to complete: 3000 blocks.",
+        "rarityScore": "625",
+        "special": true,
+        "title": "Decentralized Protocol Development",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "31",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 8,
+          "power": 0,
+          "space": 0,
+          "xp": 20000
+        },
+        "cost": {
+          "development": 120,
+          "funds": 64000,
+          "level": 10,
+          "power": 0,
+          "space": 0,
+          "time": 3000
+        },
+        "flavorText": "It's not just a protocol exchange platform, it's a protocol exchange platform FRAMEWORK!",
+        "image": "decentralized-protocol-development.jpg",
+        "level": 4,
+        "mechanicsText": "Decreases time needed to complete other projects by 8%. Time to complete: 3000 blocks.",
+        "rarityScore": "625",
+        "special": true,
+        "title": "Decentralized Protocol Development",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "31",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 10,
+          "power": 0,
+          "space": 0,
+          "xp": 24000
+        },
+        "cost": {
+          "development": 120,
+          "funds": 64000,
+          "level": 10,
+          "power": 0,
+          "space": 0,
+          "time": 3000
+        },
+        "flavorText": "It's not just a protocol exchange platform, it's a protocol exchange platform FRAMEWORK!",
+        "image": "decentralized-protocol-development.jpg",
+        "level": 5,
+        "mechanicsText": "Decreases time needed to complete other projects by 10%. Time to complete: 3000 blocks.",
+        "rarityScore": "625",
+        "special": true,
+        "title": "Decentralized Protocol Development",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "32",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 16000
+        },
+        "cost": {
+          "development": 240,
+          "funds": 100000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 300000
+        },
+        "flavorText": "Just a small contribution to the quadratic sharding merkelized cross-chain token swap fraud proofs.",
+        "image": "consensus-improvement.jpg",
+        "level": 1,
+        "mechanicsText": "Time to complete: Two weeks™",
+        "rarityScore": "375",
+        "special": true,
+        "title": "Consensus Improvement",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "32",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 24000
+        },
+        "cost": {
+          "development": 240,
+          "funds": 100000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 300000
+        },
+        "flavorText": "Just a small contribution to the quadratic sharding merkelized cross-chain token swap fraud proofs.",
+        "image": "consensus-improvement.jpg",
+        "level": 2,
+        "mechanicsText": "Time to complete: Two weeks™",
+        "rarityScore": "375",
+        "special": true,
+        "title": "Consensus Improvement",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "32",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 32000
+        },
+        "cost": {
+          "development": 240,
+          "funds": 100000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 300000
+        },
+        "flavorText": "Just a small contribution to the quadratic sharding merkelized cross-chain token swap fraud proofs.",
+        "image": "consensus-improvement.jpg",
+        "level": 3,
+        "mechanicsText": "Time to complete: Two weeks™",
+        "rarityScore": "375",
+        "special": true,
+        "title": "Consensus Improvement",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "32",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 40000
+        },
+        "cost": {
+          "development": 240,
+          "funds": 100000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 300000
+        },
+        "flavorText": "Just a small contribution to the quadratic sharding merkelized cross-chain token swap fraud proofs.",
+        "image": "consensus-improvement.jpg",
+        "level": 4,
+        "mechanicsText": "Time to complete: Two weeks™",
+        "rarityScore": "375",
+        "special": true,
+        "title": "Consensus Improvement",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "32",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 48000
+        },
+        "cost": {
+          "development": 240,
+          "funds": 100000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 300000
+        },
+        "flavorText": "Just a small contribution to the quadratic sharding merkelized cross-chain token swap fraud proofs.",
+        "image": "consensus-improvement.jpg",
+        "level": 5,
+        "mechanicsText": "Time to complete: Two weeks™",
+        "rarityScore": "375",
+        "special": true,
+        "title": "Consensus Improvement",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "33",
+        "bonus": {
+          "development": 0,
+          "funds": 6,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 1,
+          "power": 3,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Foundation holo-tech. Shiny!",
+        "image": "holographic-gpu.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Holographic GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "2": {
+        "ID": "33",
+        "bonus": {
+          "development": 0,
+          "funds": 7,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 1,
+          "power": 3,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Foundation holo-tech. Shiny!",
+        "image": "holographic-gpu.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Holographic GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "3": {
+        "ID": "33",
+        "bonus": {
+          "development": 0,
+          "funds": 8,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 1,
+          "power": 3,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Foundation holo-tech. Shiny!",
+        "image": "holographic-gpu.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Holographic GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "4": {
+        "ID": "33",
+        "bonus": {
+          "development": 0,
+          "funds": 9,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 1,
+          "power": 3,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Foundation holo-tech. Shiny!",
+        "image": "holographic-gpu.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Holographic GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "5": {
+        "ID": "33",
+        "bonus": {
+          "development": 0,
+          "funds": 10,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 250,
+          "level": 1,
+          "power": 3,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Foundation holo-tech. Shiny!",
+        "image": "holographic-gpu.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Holographic GPU",
+        "type": "Mining",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "34",
+        "bonus": {
+          "development": 0,
+          "funds": 6,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 2,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "The Corporates use these to render new VR advertising - we use it to make money.",
+        "image": "corporate-grade-gpu.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Corporate-grade GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "2": {
+        "ID": "34",
+        "bonus": {
+          "development": 0,
+          "funds": 7,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 2,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "The Corporates use these to render new VR advertising - we use it to make money.",
+        "image": "corporate-grade-gpu.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Corporate-grade GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "3": {
+        "ID": "34",
+        "bonus": {
+          "development": 0,
+          "funds": 8,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 2,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "The Corporates use these to render new VR advertising - we use it to make money.",
+        "image": "corporate-grade-gpu.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Corporate-grade GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "4": {
+        "ID": "34",
+        "bonus": {
+          "development": 0,
+          "funds": 9,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 2,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "The Corporates use these to render new VR advertising - we use it to make money.",
+        "image": "corporate-grade-gpu.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Corporate-grade GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "5": {
+        "ID": "34",
+        "bonus": {
+          "development": 0,
+          "funds": 10,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 500,
+          "level": 1,
+          "power": 2,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "The Corporates use these to render new VR advertising - we use it to make money.",
+        "image": "corporate-grade-gpu.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Corporate-grade GPU",
+        "type": "Mining",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "35",
+        "bonus": {
+          "development": 0,
+          "funds": 4,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 80,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Home made. It MOSTLY works.",
+        "image": "3d-printed-gpu.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "3D Printed GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "2": {
+        "ID": "35",
+        "bonus": {
+          "development": 0,
+          "funds": 5,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 80,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Home made. It MOSTLY works.",
+        "image": "3d-printed-gpu.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "3D Printed GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "3": {
+        "ID": "35",
+        "bonus": {
+          "development": 0,
+          "funds": 6,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 80,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Home made. It MOSTLY works.",
+        "image": "3d-printed-gpu.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "3D Printed GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "4": {
+        "ID": "35",
+        "bonus": {
+          "development": 0,
+          "funds": 7,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 80,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Home made. It MOSTLY works.",
+        "image": "3d-printed-gpu.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "3D Printed GPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "5": {
+        "ID": "35",
+        "bonus": {
+          "development": 0,
+          "funds": 8,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 80,
+          "level": 1,
+          "power": 4,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "Home made. It MOSTLY works.",
+        "image": "3d-printed-gpu.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "3D Printed GPU",
+        "type": "Mining",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "36",
+        "bonus": {
+          "development": 4,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I look for security holes and plug them. Guess you could say I put the EX in exploit.",
+        "image": "white-hat-hacker.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": true,
+        "title": "White Hat Hacker",
+        "type": "Person",
+        "unique": false
+      },
+      "2": {
+        "ID": "36",
+        "bonus": {
+          "development": 6,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I look for security holes and plug them. Guess you could say I put the EX in exploit.",
+        "image": "white-hat-hacker.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": true,
+        "title": "White Hat Hacker",
+        "type": "Person",
+        "unique": false
+      },
+      "3": {
+        "ID": "36",
+        "bonus": {
+          "development": 8,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I look for security holes and plug them. Guess you could say I put the EX in exploit.",
+        "image": "white-hat-hacker.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": true,
+        "title": "White Hat Hacker",
+        "type": "Person",
+        "unique": false
+      },
+      "4": {
+        "ID": "36",
+        "bonus": {
+          "development": 10,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I look for security holes and plug them. Guess you could say I put the EX in exploit.",
+        "image": "white-hat-hacker.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": true,
+        "title": "White Hat Hacker",
+        "type": "Person",
+        "unique": false
+      },
+      "5": {
+        "ID": "36",
+        "bonus": {
+          "development": 12,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 1000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I look for security holes and plug them. Guess you could say I put the EX in exploit.",
+        "image": "white-hat-hacker.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "900",
+        "special": true,
+        "title": "White Hat Hacker",
+        "type": "Person",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "37",
+        "bonus": {
+          "development": 0,
+          "funds": 4,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Nobody could have predicted the rise of prediction markets.",
+        "image": "prediction-market-participation.jpg",
+        "level": 1,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "900",
+        "special": true,
+        "title": "Prediction Market Participation",
+        "type": "Project",
+        "unique": false
+      },
+      "2": {
+        "ID": "37",
+        "bonus": {
+          "development": 0,
+          "funds": 6,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Nobody could have predicted the rise of prediction markets.",
+        "image": "prediction-market-participation.jpg",
+        "level": 2,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "900",
+        "special": true,
+        "title": "Prediction Market Participation",
+        "type": "Project",
+        "unique": false
+      },
+      "3": {
+        "ID": "37",
+        "bonus": {
+          "development": 0,
+          "funds": 8,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Nobody could have predicted the rise of prediction markets.",
+        "image": "prediction-market-participation.jpg",
+        "level": 3,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "900",
+        "special": true,
+        "title": "Prediction Market Participation",
+        "type": "Project",
+        "unique": false
+      },
+      "4": {
+        "ID": "37",
+        "bonus": {
+          "development": 0,
+          "funds": 10,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Nobody could have predicted the rise of prediction markets.",
+        "image": "prediction-market-participation.jpg",
+        "level": 4,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "900",
+        "special": true,
+        "title": "Prediction Market Participation",
+        "type": "Project",
+        "unique": false
+      },
+      "5": {
+        "ID": "37",
+        "bonus": {
+          "development": 0,
+          "funds": 12,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 4
+        },
+        "cost": {
+          "development": 0,
+          "funds": 0,
+          "level": 6,
+          "power": 0,
+          "space": 0,
+          "time": 1
+        },
+        "flavorText": "Nobody could have predicted the rise of prediction markets.",
+        "image": "prediction-market-participation.jpg",
+        "level": 5,
+        "mechanicsText": "Time to complete: 1 block.",
+        "rarityScore": "900",
+        "special": true,
+        "title": "Prediction Market Participation",
+        "type": "Project",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "38",
+        "cost": {
+          "development": 0,
+          "funds": 800000,
+          "level": 16,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Lambo parking? Check. Helipad? Check. We'll take it!",
+        "image": "corporate-tower.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "350",
+        "special": false,
+        "title": "Corporate Tower",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 120,
+          "space": 320,
+          "xp": 0
+        }
+      },
+      "2": {
+        "ID": "38",
+        "cost": {
+          "development": 0,
+          "funds": 800000,
+          "level": 16,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Lambo parking? Check. Helipad? Check. We'll take it!",
+        "image": "corporate-tower.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "350",
+        "special": false,
+        "title": "Corporate Tower",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 120,
+          "space": 360,
+          "xp": 0
+        }
+      },
+      "3": {
+        "ID": "38",
+        "cost": {
+          "development": 0,
+          "funds": 800000,
+          "level": 16,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Lambo parking? Check. Helipad? Check. We'll take it!",
+        "image": "corporate-tower.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "350",
+        "special": false,
+        "title": "Corporate Tower",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 144,
+          "space": 360,
+          "xp": 0
+        }
+      },
+      "4": {
+        "ID": "38",
+        "cost": {
+          "development": 0,
+          "funds": 800000,
+          "level": 16,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Lambo parking? Check. Helipad? Check. We'll take it!",
+        "image": "corporate-tower.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "350",
+        "special": false,
+        "title": "Corporate Tower",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 144,
+          "space": 400,
+          "xp": 0
+        }
+      },
+      "5": {
+        "ID": "38",
+        "cost": {
+          "development": 0,
+          "funds": 800000,
+          "level": 16,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "Lambo parking? Check. Helipad? Check. We'll take it!",
+        "image": "corporate-tower.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "350",
+        "special": false,
+        "title": "Corporate Tower",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 168,
+          "space": 400,
+          "xp": 0
+        }
+      }
+    },
+    {
+      "1": {
+        "ID": "39",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 20,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15000,
+          "level": 6,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I detected a .62% decrease in productivity today - but it's nothing a little unpaid overtime can't fix.",
+        "image": "corporate-efficiency-officer.jpg",
+        "level": 1,
+        "mechanicsText": "Unique. All developers on the same location gain 20% bonus DEV.",
+        "rarityScore": "650",
+        "special": true,
+        "title": "Corporate Efficiency Officer",
+        "type": "Person",
+        "unique": true
+      },
+      "2": {
+        "ID": "39",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 25,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15000,
+          "level": 6,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I detected a .62% decrease in productivity today - but it's nothing a little unpaid overtime can't fix.",
+        "image": "corporate-efficiency-officer.jpg",
+        "level": 2,
+        "mechanicsText": "Unique. All developers on the same location gain 25% bonus DEV.",
+        "rarityScore": "650",
+        "special": true,
+        "title": "Corporate Efficiency Officer",
+        "type": "Person",
+        "unique": true
+      },
+      "3": {
+        "ID": "39",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 30,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15000,
+          "level": 6,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I detected a .62% decrease in productivity today - but it's nothing a little unpaid overtime can't fix.",
+        "image": "corporate-efficiency-officer.jpg",
+        "level": 3,
+        "mechanicsText": "Unique. All developers on the same location gain 30% bonus DEV.",
+        "rarityScore": "650",
+        "special": true,
+        "title": "Corporate Efficiency Officer",
+        "type": "Person",
+        "unique": true
+      },
+      "4": {
+        "ID": "39",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 35,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15000,
+          "level": 6,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I detected a .62% decrease in productivity today - but it's nothing a little unpaid overtime can't fix.",
+        "image": "corporate-efficiency-officer.jpg",
+        "level": 4,
+        "mechanicsText": "Unique. All developers on the same location gain 35% bonus DEV.",
+        "rarityScore": "650",
+        "special": true,
+        "title": "Corporate Efficiency Officer",
+        "type": "Person",
+        "unique": true
+      },
+      "5": {
+        "ID": "39",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 40,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 15000,
+          "level": 6,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "I detected a .62% decrease in productivity today - but it's nothing a little unpaid overtime can't fix.",
+        "image": "corporate-efficiency-officer.jpg",
+        "level": 5,
+        "mechanicsText": "Unique. All developers on the same location gain 40% bonus DEV.",
+        "rarityScore": "650",
+        "special": true,
+        "title": "Corporate Efficiency Officer",
+        "type": "Person",
+        "unique": true
+      }
+    },
+    {
+      "1": {
+        "ID": "4",
+        "cost": {
+          "development": 0,
+          "funds": 200000,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I swear, one day these things are going to run themselves.",
+        "image": "smart-office.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Smart Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 72,
+          "space": 160,
+          "xp": 0
+        }
+      },
+      "2": {
+        "ID": "4",
+        "cost": {
+          "development": 0,
+          "funds": 20000,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I swear, one day these things are going to run themselves.",
+        "image": "smart-office.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Smart Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 72,
+          "space": 200,
+          "xp": 0
+        }
+      },
+      "3": {
+        "ID": "4",
+        "cost": {
+          "development": 0,
+          "funds": 20000,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I swear, one day these things are going to run themselves.",
+        "image": "smart-office.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Smart Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 96,
+          "space": 200,
+          "xp": 0
+        }
+      },
+      "4": {
+        "ID": "4",
+        "cost": {
+          "development": 0,
+          "funds": 20000,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I swear, one day these things are going to run themselves.",
+        "image": "smart-office.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Smart Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 96,
+          "space": 240,
+          "xp": 0
+        }
+      },
+      "5": {
+        "ID": "4",
+        "cost": {
+          "development": 0,
+          "funds": 20000,
+          "level": 8,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I swear, one day these things are going to run themselves.",
+        "image": "smart-office.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "850",
+        "special": false,
+        "title": "Smart Office",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 120,
+          "space": 240,
+          "xp": 0
+        }
+      }
+    },
+    {
+      "1": {
+        "ID": "40",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 5,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "You may call our conduct unethical. I call it effective.",
+        "image": "corporate-executive.jpg",
+        "level": 1,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 5%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Corporate Executive",
+        "type": "Person",
+        "unique": true
+      },
+      "2": {
+        "ID": "40",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 6,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "You may call our conduct unethical. I call it effective.",
+        "image": "corporate-executive.jpg",
+        "level": 2,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 6%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Corporate Executive",
+        "type": "Person",
+        "unique": true
+      },
+      "3": {
+        "ID": "40",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 7,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "You may call our conduct unethical. I call it effective.",
+        "image": "corporate-executive.jpg",
+        "level": 3,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 7%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Corporate Executive",
+        "type": "Person",
+        "unique": true
+      },
+      "4": {
+        "ID": "40",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 8,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "You may call our conduct unethical. I call it effective.",
+        "image": "corporate-executive.jpg",
+        "level": 4,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 8%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Corporate Executive",
+        "type": "Person",
+        "unique": true
+      },
+      "5": {
+        "ID": "40",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 9,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "You may call our conduct unethical. I call it effective.",
+        "image": "corporate-executive.jpg",
+        "level": 5,
+        "mechanicsText": "Unique. Decreases time needed to complete projects by 9%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Corporate Executive",
+        "type": "Person",
+        "unique": true
+      }
+    },
+    {
+      "1": {
+        "ID": "41",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 1,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Ah, a classic reverse wedge double dip testing the support line with a bullish triangle following. The market may go up or down.",
+        "image": "day-trader.jpg",
+        "level": 1,
+        "mechanicsText": "Day Trading project gains 1 additional FUND per execution.",
+        "rarityScore": "750",
+        "special": true,
+        "title": "Day Trader",
+        "type": "Person",
+        "unique": false
+      },
+      "2": {
+        "ID": "41",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 2,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Ah, a classic reverse wedge double dip testing the support line with a bullish triangle following. The market may go up or down.",
+        "image": "day-trader.jpg",
+        "level": 2,
+        "mechanicsText": "Day Trading project gains 2 additional FUNDS per execution.",
+        "rarityScore": "750",
+        "special": true,
+        "title": "Day Trader",
+        "type": "Person",
+        "unique": false
+      },
+      "3": {
+        "ID": "41",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 3,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Ah, a classic reverse wedge double dip testing the support line with a bullish triangle following. The market may go up or down.",
+        "image": "day-trader.jpg",
+        "level": 3,
+        "mechanicsText": "Day Trading project gains 3 additional FUNDS per execution.",
+        "rarityScore": "750",
+        "special": true,
+        "title": "Day Trader",
+        "type": "Person",
+        "unique": false
+      },
+      "4": {
+        "ID": "41",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 4,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Ah, a classic reverse wedge double dip testing the support line with a bullish triangle following. The market may go up or down.",
+        "image": "day-trader.jpg",
+        "level": 4,
+        "mechanicsText": "Day Trading project gains 4 additional FUNDS per execution.",
+        "rarityScore": "750",
+        "special": true,
+        "title": "Day Trader",
+        "type": "Person",
+        "unique": false
+      },
+      "5": {
+        "ID": "41",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 5,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "Ah, a classic reverse wedge double dip testing the support line with a bullish triangle following. The market may go up or down.",
+        "image": "day-trader.jpg",
+        "level": 5,
+        "mechanicsText": "Day Trading project gains 5 additional FUNDS per execution.",
+        "rarityScore": "750",
+        "special": true,
+        "title": "Day Trader",
+        "type": "Person",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "42",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 2,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I give rumors out for free. It's the facts that I sell.",
+        "image": "information-dealer.jpg",
+        "level": 1,
+        "mechanicsText": "Prediction Market Participation project gains 2 additional FUNDS per execution.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Information Dealer",
+        "type": "Person",
+        "unique": false
+      },
+      "2": {
+        "ID": "42",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 4,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I give rumors out for free. It's the facts that I sell.",
+        "image": "information-dealer.jpg",
+        "level": 2,
+        "mechanicsText": "Prediction Market Participation project gains 4 additional FUNDS per execution.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Information Dealer",
+        "type": "Person",
+        "unique": false
+      },
+      "3": {
+        "ID": "42",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 6,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I give rumors out for free. It's the facts that I sell.",
+        "image": "information-dealer.jpg",
+        "level": 3,
+        "mechanicsText": "Prediction Market Participation project gains 6 additional FUNDS per execution.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Information Dealer",
+        "type": "Person",
+        "unique": false
+      },
+      "4": {
+        "ID": "42",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 8,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I give rumors out for free. It's the facts that I sell.",
+        "image": "information-dealer.jpg",
+        "level": 4,
+        "mechanicsText": "Prediction Market Participation project gains 8 additional FUNDS per execution.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Information Dealer",
+        "type": "Person",
+        "unique": false
+      },
+      "5": {
+        "ID": "42",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 10,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 4,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "I give rumors out for free. It's the facts that I sell.",
+        "image": "information-dealer.jpg",
+        "level": 5,
+        "mechanicsText": "Prediction Market Participation project gains 10 additional FUNDS per execution.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Information Dealer",
+        "type": "Person",
+        "unique": false
+      }
+    },
+    {
+      "1": {
+        "ID": "5",
+        "cost": {
+          "development": 0,
+          "funds": 400000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "This used to be a bank HQ. But times have changed.",
+        "image": "office-building.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "625",
+        "special": false,
+        "title": "Office Building",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 96,
+          "space": 240,
+          "xp": 0
+        }
+      },
+      "2": {
+        "ID": "5",
+        "cost": {
+          "development": 0,
+          "funds": 40000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "This used to be a bank HQ. But times have changed.",
+        "image": "office-building.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "625",
+        "special": false,
+        "title": "Office Building",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 96,
+          "space": 280,
+          "xp": 0
+        }
+      },
+      "3": {
+        "ID": "5",
+        "cost": {
+          "development": 0,
+          "funds": 40000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "This used to be a bank HQ. But times have changed.",
+        "image": "office-building.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "625",
+        "special": false,
+        "title": "Office Building",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 120,
+          "space": 280,
+          "xp": 0
+        }
+      },
+      "4": {
+        "ID": "5",
+        "cost": {
+          "development": 0,
+          "funds": 40000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "This used to be a bank HQ. But times have changed.",
+        "image": "office-building.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "625",
+        "special": false,
+        "title": "Office Building",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 120,
+          "space": 320,
+          "xp": 0
+        }
+      },
+      "5": {
+        "ID": "5",
+        "cost": {
+          "development": 0,
+          "funds": 40000,
+          "level": 12,
+          "power": 0,
+          "space": 0,
+          "time": 0
+        },
+        "flavorText": "This used to be a bank HQ. But times have changed.",
+        "image": "office-building.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "625",
+        "special": false,
+        "title": "Office Building",
+        "type": "Location",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 144,
+          "space": 320,
+          "xp": 0
+        }
+      }
+    },
+    {
+      "1": {
+        "ID": "6",
+        "cost": {
+          "development": 0,
+          "funds": 10,
+          "level": 1,
+          "power": 0,
+          "space": 5,
+          "time": 0
+        },
+        "flavorText": "A non-transparent PC. How quaint.",
+        "image": "computer-case.jpg",
+        "level": 1,
+        "mechanicsText": "Can contain up to 2 CPUs or GPUs.",
+        "rarityScore": "875",
+        "special": false,
+        "title": "Computer Case",
+        "type": "Container",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 2,
+          "xp": 0
+        }
+      }
+    },
+    {
+      "1": {
+        "ID": "7",
+        "cost": {
+          "development": 0,
+          "funds": 360,
+          "level": 1,
+          "power": 0,
+          "space": 15,
+          "time": 0
+        },
+        "flavorText": "How this thing is holding together is anybody's guess...",
+        "image": "mining-rig.jpg",
+        "level": 1,
+        "mechanicsText": "Can contain up to 6 GPUs.",
+        "rarityScore": "875",
+        "special": false,
+        "title": "Mining Rig",
+        "type": "Container",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 6,
+          "xp": 0
+        }
+      }
+    },
+    {
+      "1": {
+        "ID": "8",
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 4,
+          "power": 0,
+          "space": 25,
+          "time": 0
+        },
+        "flavorText": "It's basically a glorified fridge. With shiny buttons.",
+        "image": "asic-mount.jpg",
+        "level": 1,
+        "mechanicsText": "Can contain up to 6 ASIC miners.",
+        "rarityScore": "850",
+        "special": false,
+        "title": "ASIC Mount",
+        "type": "Container",
+        "unique": false,
+        "values": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 6,
+          "xp": 0
+        }
+      }
+    },
+    {
+      "1": {
+        "ID": "9",
+        "bonus": {
+          "development": 0,
+          "funds": 2,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40,
+          "level": 1,
+          "power": 1,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "I remember when we started off, we didn't have two cycles to rub together...",
+        "image": "cpu.jpg",
+        "level": 1,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "CPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "2": {
+        "ID": "9",
+        "bonus": {
+          "development": 0,
+          "funds": 3,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40,
+          "level": 1,
+          "power": 1,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "I remember when we started off, we didn't have two cycles to rub together...",
+        "image": "cpu.jpg",
+        "level": 2,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "CPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "3": {
+        "ID": "9",
+        "bonus": {
+          "development": 0,
+          "funds": 4,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40,
+          "level": 1,
+          "power": 1,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "I remember when we started off, we didn't have two cycles to rub together...",
+        "image": "cpu.jpg",
+        "level": 3,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "CPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "4": {
+        "ID": "9",
+        "bonus": {
+          "development": 0,
+          "funds": 5,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40,
+          "level": 1,
+          "power": 1,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "I remember when we started off, we didn't have two cycles to rub together...",
+        "image": "cpu.jpg",
+        "level": 4,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "CPU",
+        "type": "Mining",
+        "unique": false
+      },
+      "5": {
+        "ID": "9",
+        "bonus": {
+          "development": 0,
+          "funds": 6,
+          "multiplierDev": 0,
+          "multiplierFunds": 0,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 40,
+          "level": 1,
+          "power": 1,
+          "space": 1,
+          "time": 0
+        },
+        "flavorText": "I remember when we started off, we didn't have two cycles to rub together...",
+        "image": "cpu.jpg",
+        "level": 5,
+        "mechanicsText": "",
+        "rarityScore": "1000",
+        "special": false,
+        "title": "CPU",
+        "type": "Mining",
+        "unique": false
+      }
+    }
+  ]
 }

@@ -49,10 +49,9 @@ contract Marketplace is Ownable{
     /// @param _cardId is id of card
     /// @param _price is price for which we are going to sell card
     /// @param _acceptableExchange is array of cards where every card we'd accept in exchange for ours
-    function sell(address _owner, uint _cardId, uint _price, uint16[] _acceptableExchange) public{
-        require(msg.sender == address(seleneanCards));
+    function sell(uint _cardId, uint _price, uint16[] _acceptableExchange) public{
         require(sellAds[_cardId].exists == false);
-        
+        address _owner = msg.sender;
         sellAds[_cardId] = Ad({
             cardId : _cardId,
             price : _price,
@@ -65,6 +64,7 @@ contract Marketplace is Ownable{
         numOfAds++;
         cardsOnSale.push(_cardId);
         positionOfCard[_cardId] = cardsOnSale.length - 1;
+        seleneanCards._approveByMarketplace(this,_cardId);
         seleneanCards.transferFrom(_owner,this,_cardId);
         //SellAd(msg.sender, _cardId, _acceptableExchange, _amount);
     }
@@ -87,13 +87,16 @@ contract Marketplace is Ownable{
     /// @notice Function to exchange card from Marketplace with one we own
     /// @param _cardIdOnMarketplace is id of card on Marketplace
     /// @param _buyerCardId is id of card we'd like to give in exchange
-    function exchangeCard(address _owner, uint _cardIdOnMarketplace, uint _buyerCardId) public onlySeleneanCards {
+    function exchangeCard(uint _cardIdOnMarketplace, uint _buyerCardId) public  {
         require(sellAds[_cardIdOnMarketplace].exists == true);
         require(canCardsBeExchanged(_cardIdOnMarketplace, _buyerCardId) == true);
+        address _owner = msg.sender;
         sellAds[_cardIdOnMarketplace].exists = false;
         numOfAds--;
         removeOrder(_cardIdOnMarketplace);
 
+        seleneanCards._approveByMarketplace(this, _buyerCardId);
+        
         //transfer methods
         seleneanCards.transfer(_owner, _cardIdOnMarketplace);
         seleneanCards.transferFrom(_owner,sellAds[_cardIdOnMarketplace].exchanger, _buyerCardId);
@@ -138,6 +141,9 @@ contract Marketplace is Ownable{
     /// @param _cardId1 is id of card on marketplace
     /// @param _cardId2 is id of card we would like to give in exchange for card on Marketplace
     function canCardsBeExchanged(uint _cardId1,uint _cardId2) public view returns (bool){
+        if(sellAds[_cardId1].exists == false || sellAds[_cardId2].exists==false){
+           return false;
+       }
         uint metadataId = getCardMetadata(_cardId2);
         for(uint i=0; i<sellAds[_cardId1].acceptableExchange.length; i++){
             if(sellAds[_cardId1].acceptableExchange[i] == metadataId){

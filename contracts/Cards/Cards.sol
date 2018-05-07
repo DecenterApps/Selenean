@@ -139,7 +139,7 @@ contract Cards is Ownable, ERC721 {
         tokensOwned[_owner].length--;
     }
     
-    function _getApproved(uint _cardId) private view returns (address) {
+    function _getApproved(uint _cardId) internal view returns (address) {
         return tokensForApproved[_cardId];
     }
 }
