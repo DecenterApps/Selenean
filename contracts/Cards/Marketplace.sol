@@ -10,12 +10,10 @@ contract Marketplace is Ownable{
     struct Ad {
         uint cardId;
         uint price;
-        uint16[] acceptableExchange;
+        uint[] acceptableExchange;
         address exchanger;
-        uint timestamp;
         bool exists;
     }
-
 
     modifier onlySeleneanCards() {
         require(msg.sender == address(seleneanCards));
@@ -24,20 +22,19 @@ contract Marketplace is Ownable{
 
     ///Number of active ads
     uint public numOfAds;
-
     ///Array that keeps cards on sale
     uint[] public cardsOnSale;
 
-    event SellAd(address owner, uint cardId, uint16[] acceptableExchange, uint price);
+    event SellAd(address owner, uint cardId, uint[] acceptableExchange, uint price);
     event Bought(uint cardId, address buyer, uint price);
     event Canceled(address owner, uint cardId);
 
     ///Mapping cardId -> card position in cardsOnSale array
     mapping(uint => uint) public positionOfCard;
-    
     ///Mapping for cardId->Ad
     mapping(uint => Ad) public sellAds;
     
+
     SeleneanCards public seleneanCards;
 
     constructor(address _seleneanCards) public{
@@ -49,7 +46,7 @@ contract Marketplace is Ownable{
     /// @param _cardId is id of card
     /// @param _price is price for which we are going to sell card
     /// @param _acceptableExchange is array of cards where every card we'd accept in exchange for ours
-    function sell(uint _cardId, uint _price, uint16[] _acceptableExchange) public{
+    function sell(uint _cardId, uint _price, uint[] _acceptableExchange) public {
         require(seleneanCards.ownerOf(_cardId) == msg.sender);
         require(sellAds[_cardId].exists == false);
 
@@ -58,7 +55,6 @@ contract Marketplace is Ownable{
             price : _price,
             acceptableExchange : _acceptableExchange,
             exchanger : msg.sender,
-            timestamp : block.timestamp,
             exists : true
         });
         
@@ -70,6 +66,19 @@ contract Marketplace is Ownable{
         //SellAd(msg.sender, _cardId, _acceptableExchange, _amount);
     }
 
+    /// @notice Function to edit your Ad which is already on Marketplace
+    /// @param _cardId is id of card you've put on Marketplace 
+    /// @param _price is going to be new(updated) price
+    /// @param _acceptableExchange is new (updated) array of cards where every card we'd accept in exchange for ours
+    function edit(uint _cardId, uint _price, uint[] _acceptableExchange) public {
+        require(sellAds[_cardId].exists == true);
+        require(sellAds[_cardId].exchanger == msg.sender);
+
+        Ad storage ad = sellAds[_cardId];
+        ad.price = _price;
+        ad.acceptableExchange = _acceptableExchange;
+        
+    }
     
 
 
@@ -81,7 +90,7 @@ contract Marketplace is Ownable{
 
         removeOrder(_cardId);
         seleneanCards.transfer(msg.sender, _cardId);
-        sellAds[_cardId].exchanger.transfer(sellAds[_cardId].price);
+        sellAds[_cardId].exchanger.transfer(msg.value);
     }
 
     /// @notice Function to exchange card from Marketplace with one we own
@@ -113,7 +122,7 @@ contract Marketplace is Ownable{
         seleneanCards.transfer(msg.sender, _cardId);
         
     }
-
+    /// @notice function to return ids of all cards currently on sale
     function getCardsOnSale() public view returns (uint[]){
         return cardsOnSale;
     }
@@ -121,7 +130,7 @@ contract Marketplace is Ownable{
 
     /// @notice Removes card from cardsOnSale list
     /// @param _cardId is id of card we want to remove
-    function removeOrder(uint _cardId) internal {
+    function removeOrder(uint _cardId) private {
         uint length = cardsOnSale.length;
         uint index = positionOfCard[_cardId];
         uint lastOne = cardsOnSale[length-1];
@@ -154,7 +163,7 @@ contract Marketplace is Ownable{
     }
     /// @notice Function returns metadataId for card
     /// @param _cardId is card which metadataId we'd like to get
-    function getCardMetadata(uint _cardId) public view returns (uint){
+    function getCardMetadata(uint _cardId) private view returns (uint){
         uint metadataId;
         (metadataId,,,,,) = seleneanCards.metadata(_cardId);
         return metadataId;
