@@ -7,6 +7,7 @@ First run `npm install` or `yarn install` in the /scripts directory.
 Create a `.env` file containing the following:
 
 PRIV_KEY=OWNER_PRIV_KEY
+
 ADDRESS=OWNER_ADDRESS
 
 The script has 2 modes: `mock` and `add` where mock is used when we just want to add an empty rarity card for testing and `add` is used when we're adding an actual card with data.
