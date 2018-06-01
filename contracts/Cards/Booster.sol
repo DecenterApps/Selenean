@@ -48,12 +48,12 @@ contract Booster is Ownable {
     /// @notice buy booster for BOOSTER_PRICE with automatic reveal
     function buyInstantBooster() public payable {
         require(msg.value >= BOOSTER_PRICE);
-        require(!BUY_WITH_REVEAL);      
+        require(!BUY_WITH_REVEAL);
         require(!isContract(msg.sender));
 
-        uint boosterId = numOfBoosters;
-        numOfBoosters++;
-        
+//        uint boosterId = numOfBoosters;
+//        numOfBoosters++;
+
         uint numOfCardTypes = metadataContract.getNumberOfCards();
 
         assert(numOfCardTypes >= numberOfCardsInBooster);
@@ -70,11 +70,12 @@ contract Booster is Ownable {
             withdrawBalance[artist] += BOOSTER_PRICE * CARD_ARTIST_PERCENTAGE / 100;
         }
 
-        boosters[boosterId] = cardIds;
+        boosters[numOfBoosters] = cardIds;
+        numOfBoosters++;
         // all money from buy and reveal goes to owner (leaving reveal percentage if we decide to change process)
         withdrawBalance[owner] += BOOSTER_PRICE * OWNER_PERCENTAGE / 100 + BOOSTER_PRICE * REVEALER_PERCENTAGE / 100;
-        
-        emit BoosterInstantBought(msg.sender, boosterId);
+
+        emit BoosterInstantBought(msg.sender, numOfBoosters-1);
     }
 
     /// @notice buy booster for one CardPackToken with automatic reveal
@@ -89,7 +90,7 @@ contract Booster is Ownable {
         boughtWithToken[boosterId] = true;
 
         numOfBoosters++;
-        
+
         uint numOfCardTypes = metadataContract.getNumberOfCards();
 
         assert(numOfCardTypes >= numberOfCardsInBooster);
@@ -104,10 +105,10 @@ contract Booster is Ownable {
         }
 
         boosters[boosterId] = cardIds;
-        
+
         emit BoosterInstantBought(_to, boosterId);
     }
-    
+
 
     /// @notice buy booster for BOOSTER_PRICE
     function buyBooster() public payable {
@@ -269,7 +270,7 @@ contract Booster is Ownable {
     function setBytWithReveal(bool _buyWithReveal) public onlyOwner {
         BUY_WITH_REVEAL = _buyWithReveal;
     }
-    
+
     function isContract(address addr) private view returns (bool) {
         uint size;
         assembly { size := extcodesize(addr) }

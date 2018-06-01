@@ -16,7 +16,7 @@ contract CardMetadata is Ownable{
 
     CardProperties[] public properties;  
     uint[] public rarities;
-     
+
     /// @notice method to add metadata types
     /// @dev needs to use three params for ipfs hash due to Solidity limitations for sending string from contract to contract
     /// @param _rarity of card

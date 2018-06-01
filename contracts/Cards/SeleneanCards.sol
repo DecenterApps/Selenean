@@ -7,12 +7,12 @@ import "./Marketplace.sol";
 
 /// @title Contract derived from Cards contract with custom implementation on Booster and Metadata
 contract SeleneanCards is Cards {
-    
+
     CardMetadata metadataContract;
     Booster boosterContract;
     Marketplace marketplaceContract;
 
-    mapping(uint => CardMetadata.CardProperties) public metadata;
+    mapping(uint => uint) _metadata;
 
     modifier onlyBoosterContract() {
         require(msg.sender == address(boosterContract));
@@ -22,31 +22,23 @@ contract SeleneanCards is Cards {
         require(msg.sender == address(marketplaceContract));
         _;
     }
-    /// @notice create card with specific type and index 
+    /// @notice create card with specific type and index
     /// @param _owner address of new owner
     /// @param _metadataId id of metadata we are using
     function createCard(address _owner, uint _metadataId) public onlyBoosterContract returns(uint) {
         require(_metadataId < metadataContract.getNumberOfCards());
 
         uint cardId = createCard(_owner);
-        
-        uint id;
-        uint rarity;
-        bytes32 ipfsHash;
-        uint8 ipfsHashFunction;
-        uint8 ipfsSize;
-        address artist;
 
-        (id, rarity, ipfsHash, ipfsHashFunction, ipfsSize, artist) = metadataContract.properties(_metadataId);
-        
-        metadata[cardId] = CardMetadata.CardProperties({
-                id: id,
-                rarity: rarity,
-                ipfsHash: ipfsHash,
-                ipfsHashFunction: ipfsHashFunction,
-                ipfsSize: ipfsSize,
-                artist: artist
-            });
+        uint id;
+//        uint rarity;
+//        bytes32 ipfsHash;
+//        uint8 ipfsHashFunction;
+//        uint8 ipfsSize;
+//        address artist;
+        (id, , , , , ) = metadataContract.properties(_metadataId);
+
+        _metadata[cardId] = id;
 
         return cardId;
     }
@@ -57,11 +49,14 @@ contract SeleneanCards is Cards {
     function numberOfCardsWithType(address _user, uint _metadataId) public view returns(uint _num) {
         uint len = tokensOwned[_user].length;
         for(uint i = 0; i<len; i++) {
-            _num += (metadata[tokensOwned[_user][i]].id == _metadataId) ? 1 : 0;
+            _num += (_metadata[tokensOwned[_user][i]] == _metadataId) ? 1 : 0;
         }
     }
 
-    
+    function metadata(uint _cardId) public view returns (uint, uint, bytes32, uint8, uint8, address){
+        return metadataContract.properties(_cardId);
+    }
+
     /// @notice adds booster address to contract only if it doesn't exist
     /// @param _boosterContract address of booster contract
     function addBoosterContract(address _boosterContract) public onlyOwner {
@@ -79,7 +74,7 @@ contract SeleneanCards is Cards {
 
         metadataContract = CardMetadata(_metadataContract);
     }
-    
+
     /// @notice adds marketplace address to contract only if it doesn't already exist
     /// @param _marketplaceContract address of marketplace contract
     function addMarketplaceContract(address _marketplaceContract) public onlyOwner {
@@ -87,7 +82,7 @@ contract SeleneanCards is Cards {
         // require(address(marketplaceContract) == 0x0);
         marketplaceContract = Marketplace(_marketplaceContract);
     }
-    
+
     /// @notice approving card to be taken from specific address
     /// @param _to address that we give permission to take card
     /// @param _cardId we are willing to give
@@ -98,5 +93,5 @@ contract SeleneanCards is Cards {
             emit Approval(msg.sender, _to, _cardId);
         }
     }
-    
+
 }
