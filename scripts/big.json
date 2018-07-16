@@ -1,6 +1,6 @@
 {
-  "cards": [
-    {
+  "cards": {
+    "0": {
       "1": {
         "ID": "0",
         "cost": {
@@ -152,7 +152,7 @@
         }
       }
     },
-    {
+    "1": {
       "1": {
         "ID": "1",
         "cost": {
@@ -304,7 +304,7 @@
         }
       }
     },
-    {
+    "10": {
       "1": {
         "ID": "10",
         "bonus": {
@@ -456,7 +456,7 @@
         "unique": false
       }
     },
-    {
+    "11": {
       "1": {
         "ID": "11",
         "bonus": {
@@ -608,7 +608,7 @@
         "unique": false
       }
     },
-    {
+    "12": {
       "1": {
         "ID": "12",
         "bonus": {
@@ -760,7 +760,7 @@
         "unique": false
       }
     },
-    {
+    "13": {
       "1": {
         "ID": "13",
         "bonus": {
@@ -912,7 +912,7 @@
         "unique": false
       }
     },
-    {
+    "14": {
       "1": {
         "ID": "14",
         "bonus": {
@@ -1064,7 +1064,7 @@
         "unique": false
       }
     },
-    {
+    "15": {
       "1": {
         "ID": "15",
         "bonus": {
@@ -1216,7 +1216,7 @@
         "unique": false
       }
     },
-    {
+    "16": {
       "1": {
         "ID": "16",
         "bonus": {
@@ -1368,7 +1368,7 @@
         "unique": true
       }
     },
-    {
+    "17": {
       "1": {
         "ID": "17",
         "bonus": {
@@ -1520,7 +1520,7 @@
         "unique": true
       }
     },
-    {
+    "18": {
       "1": {
         "ID": "18",
         "bonus": {
@@ -1672,7 +1672,7 @@
         "unique": false
       }
     },
-    {
+    "19": {
       "1": {
         "ID": "19",
         "bonus": {
@@ -1824,7 +1824,7 @@
         "unique": false
       }
     },
-    {
+    "2": {
       "1": {
         "ID": "2",
         "cost": {
@@ -1976,7 +1976,7 @@
         }
       }
     },
-    {
+    "20": {
       "1": {
         "ID": "20",
         "bonus": {
@@ -2128,7 +2128,7 @@
         "unique": false
       }
     },
-    {
+    "21": {
       "1": {
         "ID": "21",
         "bonus": {
@@ -2280,7 +2280,7 @@
         "unique": false
       }
     },
-    {
+    "22": {
       "1": {
         "ID": "22",
         "bonus": {
@@ -2312,7 +2312,7 @@
         "unique": true
       }
     },
-    {
+    "23": {
       "1": {
         "ID": "23",
         "bonus": {
@@ -2344,7 +2344,7 @@
         "unique": true
       }
     },
-    {
+    "24": {
       "1": {
         "ID": "24",
         "bonus": {
@@ -2496,7 +2496,7 @@
         "unique": false
       }
     },
-    {
+    "25": {
       "1": {
         "ID": "25",
         "bonus": {
@@ -2648,7 +2648,7 @@
         "unique": false
       }
     },
-    {
+    "26": {
       "1": {
         "ID": "26",
         "bonus": {
@@ -2800,7 +2800,7 @@
         "unique": false
       }
     },
-    {
+    "27": {
       "1": {
         "ID": "27",
         "bonus": {
@@ -2952,7 +2952,7 @@
         "unique": false
       }
     },
-    {
+    "28": {
       "1": {
         "ID": "28",
         "bonus": {
@@ -3104,7 +3104,7 @@
         "unique": false
       }
     },
-    {
+    "29": {
       "1": {
         "ID": "29",
         "bonus": {
@@ -3256,7 +3256,7 @@
         "unique": false
       }
     },
-    {
+    "3": {
       "1": {
         "ID": "3",
         "cost": {
@@ -3408,7 +3408,7 @@
         }
       }
     },
-    {
+    "30": {
       "1": {
         "ID": "30",
         "bonus": {
@@ -3560,7 +3560,7 @@
         "unique": false
       }
     },
-    {
+    "31": {
       "1": {
         "ID": "31",
         "bonus": {
@@ -3712,7 +3712,7 @@
         "unique": false
       }
     },
-    {
+    "32": {
       "1": {
         "ID": "32",
         "bonus": {
@@ -3864,7 +3864,7 @@
         "unique": false
       }
     },
-    {
+    "33": {
       "1": {
         "ID": "33",
         "bonus": {
@@ -4016,7 +4016,7 @@
         "unique": false
       }
     },
-    {
+    "34": {
       "1": {
         "ID": "34",
         "bonus": {
@@ -4168,7 +4168,7 @@
         "unique": false
       }
     },
-    {
+    "35": {
       "1": {
         "ID": "35",
         "bonus": {
@@ -4320,7 +4320,7 @@
         "unique": false
       }
     },
-    {
+    "36": {
       "1": {
         "ID": "36",
         "bonus": {
@@ -4472,7 +4472,7 @@
         "unique": false
       }
     },
-    {
+    "37": {
       "1": {
         "ID": "37",
         "bonus": {
@@ -4624,7 +4624,7 @@
         "unique": false
       }
     },
-    {
+    "38": {
       "1": {
         "ID": "38",
         "cost": {
@@ -4776,7 +4776,7 @@
         }
       }
     },
-    {
+    "39": {
       "1": {
         "ID": "39",
         "bonus": {
@@ -4928,7 +4928,7 @@
         "unique": true
       }
     },
-    {
+    "4": {
       "1": {
         "ID": "4",
         "cost": {
@@ -5080,7 +5080,7 @@
         }
       }
     },
-    {
+    "40": {
       "1": {
         "ID": "40",
         "bonus": {
@@ -5232,7 +5232,7 @@
         "unique": true
       }
     },
-    {
+    "41": {
       "1": {
         "ID": "41",
         "bonus": {
@@ -5384,7 +5384,7 @@
         "unique": false
       }
     },
-    {
+    "42": {
       "1": {
         "ID": "42",
         "bonus": {
@@ -5536,7 +5536,191 @@
         "unique": false
       }
     },
-    {
+    "43": {
+      "1": {
+        "ID": "43",
+        "bonus": {
+          "development": 0,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 1,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 5000,
+          "level": 8,
+          "power": 0,
+          "space": 40,
+          "time": 0
+        },
+        "flavorText": "Gee, whatever happened to the company that came up with this idea?",
+        "image": "blockchain-smartlock.jpg",
+        "level": 1,
+        "mechanicsText": "Unique. Gain 1 FUND per block for each unit of unspent SPACE at location.",
+        "rarityScore": "325",
+        "special": true,
+        "title": "Blockchain Smartlock",
+        "type": "Misc",
+        "unique": true
+      }
+    },
+    "44": {
+      "1": {
+        "ID": "44",
+        "bonus": {
+          "development": 4,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 5,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "He's a great guy - just don't let him near the coffee machine again...",
+        "image": "hardware-tinkerer.jpg",
+        "level": 1,
+        "mechanicsText": "Boosts mining efficiency for all mining equipement at the current location by 5%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Hardware Tinkerer",
+        "type": "Person",
+        "unique": false
+      },
+      "2": {
+        "ID": "44",
+        "bonus": {
+          "development": 6,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 6,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "He's a great guy - just don't let him near the coffee machine again...",
+        "image": "hardware-tinkerer.jpg",
+        "level": 2,
+        "mechanicsText": "Boosts mining efficiency for all mining equipement at the current location by 6%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Hardware Tinkerer",
+        "type": "Person",
+        "unique": false
+      },
+      "3": {
+        "ID": "44",
+        "bonus": {
+          "development": 8,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 7,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "He's a great guy - just don't let him near the coffee machine again...",
+        "image": "hardware-tinkerer.jpg",
+        "level": 3,
+        "mechanicsText": "Boosts mining efficiency for all mining equipement at the current location by 7%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Hardware Tinkerer",
+        "type": "Person",
+        "unique": false
+      },
+      "4": {
+        "ID": "44",
+        "bonus": {
+          "development": 10,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 8,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "He's a great guy - just don't let him near the coffee machine again...",
+        "image": "hardware-tinkerer.jpg",
+        "level": 4,
+        "mechanicsText": "Boosts mining efficiency for all mining equipement at the current location by 8%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Hardware Tinkerer",
+        "type": "Person",
+        "unique": false
+      },
+      "5": {
+        "ID": "44",
+        "bonus": {
+          "development": 12,
+          "funds": 0,
+          "multiplierDev": 0,
+          "multiplierFunds": 9,
+          "multiplierTime": 0,
+          "power": 0,
+          "space": 0,
+          "xp": 0
+        },
+        "cost": {
+          "development": 0,
+          "funds": 4000,
+          "level": 1,
+          "power": 0,
+          "space": 20,
+          "time": 0
+        },
+        "flavorText": "He's a great guy - just don't let him near the coffee machine again...",
+        "image": "hardware-tinkerer.jpg",
+        "level": 5,
+        "mechanicsText": "Boosts mining efficiency for all mining equipement at the current location by 9%.",
+        "rarityScore": "600",
+        "special": true,
+        "title": "Hardware Tinkerer",
+        "type": "Person",
+        "unique": false
+      }
+    },
+    "5": {
       "1": {
         "ID": "5",
         "cost": {
@@ -5688,7 +5872,7 @@
         }
       }
     },
-    {
+    "6": {
       "1": {
         "ID": "6",
         "cost": {
@@ -5720,7 +5904,7 @@
         }
       }
     },
-    {
+    "7": {
       "1": {
         "ID": "7",
         "cost": {
@@ -5752,7 +5936,7 @@
         }
       }
     },
-    {
+    "8": {
       "1": {
         "ID": "8",
         "cost": {
@@ -5784,7 +5968,7 @@
         }
       }
     },
-    {
+    "9": {
       "1": {
         "ID": "9",
         "bonus": {
@@ -5936,5 +6120,20 @@
         "unique": false
       }
     }
-  ]
+  },
+  "cardTypes": ["Location", "Container", "Mining", "Person", "Power", "Misc", "Project"],
+  "boosters": {
+    "1": {
+      "id": "1",
+      "name": "Destiny",
+      "numOfCards": 25,
+      "price": 0.01
+    },
+    "2": {
+      "id": "2",
+      "name": "Solace",
+      "numOfCards": 25,
+      "price": 0.015
+    }
+  }
 }
